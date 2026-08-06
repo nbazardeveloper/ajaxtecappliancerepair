@@ -5,28 +5,19 @@ import { FinalCta } from "@/components/site/FinalCta";
 
 const AREAS = [
   {
-    name: "Staten Island",
+    name: "Trenton",
     blurb:
-      "Our home base. We know Staten Island neighborhoods and can typically reach customers same day when schedules allow.",
+      "Our home base. We know Trenton neighborhoods and can typically reach customers same day when schedules allow.",
   },
   {
-    name: "Brooklyn",
+    name: "Newark",
     blurb:
-      "Regular routes throughout Brooklyn, from brownstones to modern condos with built-in Sub-Zero and Wolf.",
+      "Regular routes throughout Newark, from historic brownstones to modern condos with built-in Sub-Zero and Wolf.",
   },
   {
-    name: "Queens",
+    name: "Camden",
     blurb:
-      "Coverage across Queens for premium refrigeration, ranges and ovens in single-family and multi-family homes.",
-  },
-  {
-    name: "Long Island (near Queens)",
-    blurb:
-      "Long Island is long, so our coverage is limited to the Nassau County communities closest to the Queens border — Great Neck, Manhasset, New Hyde Park and Floral Park. We don't currently reach central or eastern Nassau, or Suffolk County.",
-  },
-  {
-    name: "Great Neck",
-    blurb: "Frequent service in Great Neck and surrounding North Shore communities.",
+      "Coverage across Camden for premium refrigeration, ranges and ovens in single-family and multi-family homes.",
   },
   {
     name: "Jersey City",
@@ -35,6 +26,16 @@ const AREAS = [
   {
     name: "Elizabeth, NJ",
     blurb: "Serving Elizabeth NJ homeowners for repair and preventive maintenance.",
+  },
+  {
+    name: "Philadelphia, PA",
+    blurb:
+      "Frequent service across Philadelphia neighborhoods for built-in and professional-grade kitchen appliances.",
+  },
+  {
+    name: "Bucks County, PA",
+    blurb:
+      "Coverage limited to the Bucks County communities closest to the Trenton border — Yardley, Morrisville and Langhorne. We don't currently reach central or western Bucks County.",
   },
   {
     name: "North & Central NJ",
@@ -46,11 +47,11 @@ const AREAS = [
 export const Route = createFileRoute("/service-area")({
   head: () => ({
     meta: [
-      { title: "Service Area | Sub-Zero & Viking Repair Coverage in NY & NJ" },
+      { title: "Service Area | Sub-Zero & Viking Repair Coverage in NJ & PA" },
       {
         name: "description",
         content:
-          "We repair premium kitchen appliances across Staten Island, Brooklyn, Queens, Long Island near Queens, Jersey City, Elizabeth NJ and North & Central New Jersey.",
+          "We repair premium kitchen appliances across Trenton, Newark, Camden, Jersey City, Elizabeth NJ, Philadelphia, Bucks County PA and North & Central New Jersey.",
       },
       { property: "og:title", content: "Service Area" },
       { property: "og:description", content: "Where we repair premium kitchen appliances." },
@@ -71,9 +72,9 @@ function ServiceArea() {
             Service <span className="text-accent">area</span>
           </h1>
           <p className="mt-4 max-w-2xl text-muted-foreground">
-            We serve homeowners across the New York metro and Northern &amp; Central New Jersey.
-            Same-day service depends on technician availability — we'll tell you honestly when we
-            can be there.
+            We serve homeowners across the Trenton area, Philadelphia and Northern &amp; Central New
+            Jersey. Same-day service depends on technician availability — we'll tell you honestly
+            when we can be there.
           </p>
         </div>
       </section>
@@ -96,13 +97,13 @@ function ServiceArea() {
             Our completed <span className="text-accent">jobs</span>
           </h2>
           <p className="mt-3 text-muted-foreground">
-            A real map of repairs we've completed across the New York metro and New Jersey —
-            centered on Staten Island, radiating out through the service area above.
+            A real map of repairs we've completed across New Jersey and Pennsylvania — centered on
+            Trenton, radiating out through the service area above.
           </p>
           <div className="mt-8 h-[420px] overflow-hidden rounded-lg border border-border md:h-[640px]">
             <iframe
               title="Map of completed appliance repair jobs"
-              src="https://www.google.com/maps/d/embed?mid=1KRsUeTkfj5YfyxZIZ93085Ynm4D4Cz0&ll=40.63165163668629%2C-74.13427010000002&z=10"
+              src="https://www.google.com/maps/d/embed?mid=1KRsUeTkfj5YfyxZIZ93085Ynm4D4Cz0&ll=40.2206%2C-74.7597&z=10"
               width="100%"
               height="100%"
               className="border-0"
@@ -112,7 +113,7 @@ function ServiceArea() {
           </div>
           <p className="mt-4 text-sm text-muted-foreground">
             <a
-              href="https://www.google.com/maps/d/u/0/viewer?mid=1KRsUeTkfj5YfyxZIZ93085Ynm4D4Cz0&ll=40.63165163668629%2C-74.13427010000002&z=10"
+              href="https://www.google.com/maps/d/u/0/viewer?mid=1KRsUeTkfj5YfyxZIZ93085Ynm4D4Cz0&ll=40.2206%2C-74.7597&z=10"
               target="_blank"
               rel="noreferrer noopener"
               className="text-accent hover:underline"

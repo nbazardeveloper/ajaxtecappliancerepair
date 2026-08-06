@@ -15,7 +15,7 @@ const FAQ = [
   },
   {
     q: "How much is the diagnostic fee?",
-    a: "The diagnostic fee is $95 ($125 in Manhattan), and it's waived when you complete the repair with us.",
+    a: "The diagnostic fee is $95 ($125 in Philadelphia), and it's waived when you complete the repair with us.",
   },
   {
     q: "Do you use OEM parts?",
@@ -43,7 +43,7 @@ const FAQ = [
   },
   {
     q: "Where do you provide service?",
-    a: "We serve Staten Island, Brooklyn, Queens, Long Island near Queens (Great Neck and nearby Nassau towns), Jersey City, Elizabeth, and North & Central New Jersey.",
+    a: "We serve Trenton, Newark, Camden, Jersey City, Elizabeth, Philadelphia, Bucks County PA, and North & Central New Jersey.",
   },
   {
     q: "Do you service commercial appliances?",
@@ -58,7 +58,7 @@ const FAQ = [
 export const Route = createFileRoute("/faq")({
   head: () => ({
     meta: [
-      { title: "FAQ | Appliance Repair Questions Answered | NY & NJ Service" },
+      { title: "FAQ | Appliance Repair Questions Answered | NJ & PA Service" },
       {
         name: "description",
         content:

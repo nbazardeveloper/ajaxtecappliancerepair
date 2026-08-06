@@ -10,11 +10,11 @@ import { FinalCta } from "@/components/site/FinalCta";
 export const Route = createFileRoute("/projects_/gallery")({
   head: () => ({
     meta: [
-      { title: "Project Photo Gallery | Sub-Zero, Viking & Wolf | NY & NJ" },
+      { title: "Project Photo Gallery | Sub-Zero, Viking & Wolf | NJ & PA" },
       {
         name: "description",
         content:
-          "Photos from appliance repair projects completed across Staten Island, Brooklyn, Long Island near Queens and New Jersey.",
+          "Photos from appliance repair projects completed across New Jersey and Pennsylvania.",
       },
       { property: "og:title", content: "Project Photo Gallery" },
       {

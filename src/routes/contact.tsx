@@ -8,13 +8,13 @@ import { ReviewsBar } from "@/components/site/ReviewsBar";
 import { getSiteSettings } from "@/lib/site.functions";
 
 const AREAS = [
-  "Staten Island",
-  "Brooklyn",
-  "Queens",
-  "Long Island (near Queens)",
-  "Great Neck",
+  "Trenton",
+  "Newark",
+  "Camden",
   "Jersey City",
   "Elizabeth, NJ",
+  "Philadelphia, PA",
+  "Bucks County, PA",
   "North & Central NJ",
 ];
 
@@ -23,13 +23,13 @@ const BOOKING_URL = "https://api.prosbuddy.com/widget/bookings/now-schedule-serv
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Contact Us | Appliance Repair NY & NJ | (888) 702-8565" },
+      { title: "Contact Us | Appliance Repair NJ & PA | (888) 702-8565" },
       {
         name: "description",
         content:
-          "Call (888) 702-8565 or request service online for premium appliance repair across Staten Island, Brooklyn, Queens and North & Central NJ.",
+          "Call (888) 702-8565 or request service online for premium appliance repair across New Jersey and Pennsylvania.",
       },
-      { property: "og:title", content: "Contact Best Sub-Zero & Viking Service" },
+      { property: "og:title", content: "Contact Ajaxtec Appliance Repair" },
       { property: "og:description", content: "Get in touch to schedule a diagnostic or repair." },
       { property: "og:url", content: absUrl("/contact") },
       { property: "og:image", content: DEFAULT_OG_IMAGE },
@@ -41,9 +41,9 @@ export const Route = createFileRoute("/contact")({
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "LocalBusiness",
-          name: "Best Sub-Zero & Viking Service",
+          name: "Ajaxtec Appliance Repair",
           telephone: "+1-888-702-8565",
-          email: "info@bestsubzerovikingservices.com",
+          email: "ajaxtecappliancerepair@gmail.com",
           priceRange: "$$",
           areaServed: AREAS,
         }),

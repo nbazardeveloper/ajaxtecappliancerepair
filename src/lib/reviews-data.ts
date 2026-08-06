@@ -1,39 +1,32 @@
 import type { Testimonial } from "@/components/site/TestimonialCarousel";
 
-// Real Google reviews (client-provided, verbatim aside from minor brand-name
-// capitalization for consistency with the rest of the site). Shared between
-// the homepage testimonial carousel and the dedicated /reviews page so both
-// stay in sync.
+// Real Google reviews for this business (AjaxTec Appliance Repair, 780
+// Newtown-Yardley Rd, Newtown PA — same listing linked from the Google Maps
+// place page), pulled from the reviews already published on their own site
+// at ajaxtec.com. Exact review dates aren't exposed there, so `time` says
+// "Google review" instead of a fabricated relative date.
 export const SITE_REVIEWS: Testimonial[] = [
   {
     quote:
-      "Ben was incredibly helpful in my time of need. I had a high pitched noise coming from my Sub-Zero fridge and he was able to isolate the issue and get it resolved within the day. He was extremely professional and knowledgeable. He took the time to explain things and made sure everything was perfect as he wrapped up. Highly recommend.",
-    author: "Jessica Laurella",
-    meta: "8 reviews · 2 photos",
-    time: "a month ago",
-    service: "Refrigerator/freezer repair, stove, cooktop & oven repair",
+      "I hired this service to repair my Frigidaire refrigerator. I'm extremely pleased with the result. Kevin and his assistant came on time (and made two trips), took off their shoes at the front door without being asked, and informed me about each issue they found, showed me the new parts that were ordered, and showed me how to install the filter. He gave me a time window for his arrival, was prompt, efficient, and always respectful, polite, and professional. The price was fair. I highly recommend this service.",
+    author: "Sonia S.",
+    meta: "Verified customer",
+    time: "Google review",
+    service: "Refrigerator Repair",
   },
   {
     quote:
-      "Fast, skilled and reasonably priced! Ben and his assistant repaired my 13-year-old Wolf range without requiring a bunch of new parts or up-charging me for every little thing. After having several bad experiences with other repair people and seeing the difference, I won't ever call anyone other than Ben.",
-    author: "Ayla Yavin",
-    meta: "5 reviews",
-    time: "4 months ago",
-    service: "Oven repair",
+      "I was desperate to have my dryer repaired as I had wet clothes that needed drying. I called and they got back to me almost immediately and scheduled an appointment for the next day. Jonathan kept me informed as to his arrival. When he got to my home he was extremely professional, told me what he was going to do ahead of time, then told me what he found and offered his thoughts on repairing my dryer. He appeared to be knowledgeable in the appliance industry. Yes, I would definitely call Ajaxtec again.",
+    author: "Amy C.",
+    meta: "Verified customer",
+    time: "Google review",
+    service: "Dryer Repair",
   },
   {
     quote:
-      "Ben from Viking Sub-Zero is the best repair! He will contact you to let you know when he is coming. He is extremely knowledgeable, neat and polite. He is the best and we have used him for years.",
-    author: "Jill Miller",
-    meta: "6 reviews",
-    time: "a month ago",
-  },
-  {
-    quote:
-      "Ben was extremely knowledgeable and knew what to do right away for servicing our Sub-Zero refrigerator. He had the part ready to be replaced the same day. Highly recommend!",
-    author: "Saddia Patton",
-    meta: "Local Guide · 23 reviews · 15 photos",
-    time: "6 months ago",
-    service: "Refrigerator/freezer repair",
+      "Great job! Quickly identified the challenge and fixed the issue. He also took the time to explain what went wrong and how to troubleshoot other potential challenges. Asked him to look at a few other items as well. Do yourself a favor and hire Ajaxtec!",
+    author: "Sarah H.",
+    meta: "Verified customer",
+    time: "Google review",
   },
 ];

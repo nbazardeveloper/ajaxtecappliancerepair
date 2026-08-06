@@ -143,7 +143,7 @@ export function ChatWidget() {
         <div className="fixed inset-x-3 bottom-[9.5rem] z-50 flex max-h-[70vh] flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-2xl sm:inset-x-auto sm:bottom-24 sm:right-6 sm:w-96 md:bottom-[5.5rem]">
           <div className="flex items-center justify-between gap-2 bg-primary px-4 py-3 text-primary-foreground">
             <div>
-              <p className="text-sm font-semibold">Best Sub-Zero &amp; Viking Service</p>
+              <p className="text-sm font-semibold">Ajaxtec Appliance Repair</p>
               <p className="text-xs text-primary-foreground/70">
                 Usually replies within a few hours
               </p>

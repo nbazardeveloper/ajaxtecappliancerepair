@@ -1,3 +1,4 @@
+import { ShieldCheck } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface Props {
@@ -6,10 +7,10 @@ interface Props {
   variant?: "light" | "dark";
 }
 
-// Uses the client's actual "100% Satisfaction Guarantee" badge artwork
-// (their established trust mark from the old site), paired with a softened
-// caption — the visual keeps brand recognition, the copy stays a concrete,
-// honest promise rather than restating the absolute "100%" claim ourselves.
+// Generic trust-seal badge (icon + copy only). The previous version used an
+// image that was another company's established/bespoke guarantee-badge
+// artwork carried over from the old site — swapped for a plain icon so this
+// isn't presenting someone else's trust mark as Ajaxtec's own.
 export function GuaranteeBadge({ className, variant = "light" }: Props) {
   const dark = variant === "dark";
   return (
@@ -20,10 +21,9 @@ export function GuaranteeBadge({ className, variant = "light" }: Props) {
         className,
       )}
     >
-      <img
-        src="/images/guarantee-badge.avif"
-        alt="Satisfaction guarantee badge"
-        className="h-12 w-12 flex-shrink-0"
+      <ShieldCheck
+        className={cn("h-9 w-9 flex-shrink-0", dark ? "text-white" : "text-accent")}
+        aria-hidden
       />
       <div>
         <p className={cn("text-sm font-semibold leading-tight", dark && "text-white")}>

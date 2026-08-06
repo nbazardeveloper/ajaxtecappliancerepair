@@ -11,14 +11,14 @@ import { FinalCta } from "@/components/site/FinalCta";
 export const Route = createFileRoute("/reviews")({
   head: () => ({
     meta: [
-      { title: "Customer Reviews | Best Sub-Zero & Viking Service NY & NJ" },
+      { title: "Customer Reviews | Ajaxtec Appliance Repair NJ & PA" },
       {
         name: "description",
         content:
-          "Read what customers say about our premium appliance repair service. Real feedback and Google reviews from Sub-Zero, Viking and Wolf owners across NY and NJ.",
+          "Read what customers say about our premium appliance repair service. Real feedback and Google reviews from Sub-Zero, Viking and Wolf owners across NJ and PA.",
       },
       { property: "og:title", content: "Customer Reviews" },
-      { property: "og:description", content: "Feedback from NY & NJ customers." },
+      { property: "og:description", content: "Feedback from NJ & PA customers." },
       { property: "og:url", content: absUrl("/reviews") },
       { property: "og:image", content: DEFAULT_OG_IMAGE },
     ],
@@ -43,8 +43,8 @@ function Reviews() {
             Customer <span className="text-accent">reviews</span>
           </h1>
           <p className="mt-4 max-w-2xl text-muted-foreground">
-            We're proud of the reputation we've built repairing premium kitchen appliances across NY
-            &amp; NJ.
+            We're proud of the reputation we've built repairing premium kitchen appliances across NJ
+            &amp; PA.
           </p>
 
           {settings?.review_rating ? (
@@ -86,6 +86,12 @@ function Reviews() {
       </section>
 
       <section className="mx-auto max-w-7xl px-4 py-16 md:px-8">
+        {SITE_REVIEWS.length === 0 ? (
+          <p className="text-sm text-muted-foreground">
+            Reviews are on the way — check back soon, or read what customers say on Google and Yelp
+            above.
+          </p>
+        ) : null}
         <div className="grid gap-6 md:grid-cols-2">
           {SITE_REVIEWS.map((r, i) => (
             <blockquote key={i} className="rounded-lg border border-border bg-card p-6">

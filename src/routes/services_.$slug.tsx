@@ -9,13 +9,13 @@ import { buildTitle, buildMetaDescription, absUrl, DEFAULT_OG_IMAGE } from "@/li
 import { FinalCta } from "@/components/site/FinalCta";
 
 const AREAS = [
-  "Staten Island",
-  "Brooklyn",
-  "Queens",
-  "Long Island (near Queens)",
-  "Great Neck",
+  "Trenton",
+  "Newark",
+  "Camden",
   "Jersey City",
   "Elizabeth, NJ",
+  "Philadelphia, PA",
+  "Bucks County, PA",
   "North & Central NJ",
 ];
 
@@ -68,7 +68,7 @@ export const Route = createFileRoute("/services_/$slug")({
             description: s.description,
             provider: {
               "@type": "LocalBusiness",
-              name: "Best Sub-Zero & Viking Service",
+              name: "Ajaxtec Appliance Repair",
               telephone: "+1-888-702-8565",
             },
             areaServed: AREAS,
@@ -167,7 +167,7 @@ function ServiceDetail() {
               aspect="video"
               label={service.title}
               src={service.image_url}
-              alt={`${service.title} — appliance repair by Best Sub-Zero & Viking Service`}
+              alt={`${service.title} — appliance repair by Ajaxtec Appliance Repair`}
               priority
             />
           </div>

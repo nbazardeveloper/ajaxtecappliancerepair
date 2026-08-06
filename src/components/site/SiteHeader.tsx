@@ -30,54 +30,36 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-40 border-b border-border/70 bg-background">
       <div className="relative mx-auto flex h-24 max-w-7xl items-center justify-between gap-6 px-4 md:h-28 md:px-8">
-        {/* Desktop logo — sized to visually span this row PLUS the CTA bar
-            below it (168px = h-28 + h-14), so it overlaps both. Positioned
-            absolutely and pulled above the CTA bar with z-index. */}
+        {/* Logo + business name, one normal flex item in the header row —
+            no absolute positioning, no overlap with the CTA bar below.
+            The logo's real aspect ratio is 283x77 (wide, short), so it's
+            sized by height only and left to size itself proportionally. */}
         <Link
           to="/"
-          aria-label="Best Sub-Zero & Viking Service — home"
-          className="h-header-logo absolute left-4 top-0 z-30 hidden md:flex md:items-center lg:left-8"
+          aria-label="Ajaxtec Appliance Repair — home"
+          className="flex flex-shrink-0 items-center gap-3"
         >
           <img
             src="/images/logo.webp"
-            alt="Best Sub-Zero & Viking Service logo"
-            className="h-full w-auto flex-shrink-0 py-3 drop-shadow-sm"
-          />
-        </Link>
-
-        {/* Mobile logo — no CTA bar on mobile, so a normal small logo is fine.
-            No aria-label here: the visible name text already gives this link
-            an accessible name, and the logo is decorative (alt="") so it
-            doesn't get concatenated into a mismatched accessible name. */}
-        <Link to="/" className="flex items-center gap-3 md:hidden">
-          <img
-            src="/images/logo.webp"
             alt=""
-            width={395}
-            height={420}
-            className="h-12 w-auto flex-shrink-0"
+            width={283}
+            height={77}
+            className="h-10 w-auto flex-shrink-0 md:h-14"
           />
-          <span className="text-base font-semibold tracking-tight">
-            Best Sub-Zero &amp; Viking Service
+          {/* Business name/tagline. Hidden once the full nav takes over (xl+)
+              so the 9 nav items get the whole row instead of fighting the
+              name text for space. */}
+          <span className="flex flex-col leading-tight xl:hidden">
+            <span className="text-base font-semibold tracking-tight">Ajaxtec Appliance Repair</span>
+            <span className="hidden text-sm text-muted-foreground md:block">
+              Premium appliance repair · NJ &amp; PA
+            </span>
           </span>
         </Link>
 
-        {/* Business name/tagline — pushed right to clear the big logo. Hidden
-            once the full nav takes over (xl+) so the 9 nav items get the
-            whole row instead of fighting the name text for space. */}
-        <div className="hidden flex-col leading-tight md:ml-40 md:flex lg:ml-44 xl:hidden">
-          <span className="text-base font-semibold tracking-tight">
-            Best Sub-Zero &amp; Viking Service
-          </span>
-          <span className="text-sm text-muted-foreground">
-            Premium appliance repair · NY &amp; NJ
-          </span>
-        </div>
-
-        {/* Wrapper takes the remaining row width after the logo (xl:ml-44)
-            and centers the nav within that space, rather than the nav
-            hugging the logo's edge. */}
-        <div className="hidden xl:ml-44 xl:flex xl:flex-1 xl:justify-center">
+        {/* Wrapper takes the remaining row width and centers the nav within
+            that space, rather than the nav hugging the logo's edge. */}
+        <div className="hidden xl:flex xl:flex-1 xl:justify-center">
           <nav aria-label="Primary" className="flex items-center gap-5 text-base font-semibold">
             {nav.map((n) => (
               <Link

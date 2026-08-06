@@ -28,7 +28,7 @@ const ADVANTAGES = [
   {
     icon: YearsIcon,
     title: "Proven Experience",
-    body: "Insured & certified technicians servicing Sub-Zero, Wolf & Viking appliances across NY & NJ.",
+    body: "Insured & certified technicians servicing Sub-Zero, Wolf & Viking appliances across NJ & PA.",
   },
   {
     icon: DiagnosticsIcon,
@@ -64,7 +64,7 @@ const FAQ_PREVIEW = [
   },
   {
     q: "How much is the diagnostic fee?",
-    a: "The diagnostic fee is $95 ($125 in Manhattan), waived when you complete the repair with us.",
+    a: "The diagnostic fee is $95 ($125 in Philadelphia), waived when you complete the repair with us.",
   },
   {
     q: "Do you use OEM parts?",
@@ -111,22 +111,22 @@ export const Route = createFileRoute("/")({
 
     return {
       meta: [
-        { title: "Best Sub-Zero & Viking Service | NY & NJ Appliance Repair" },
+        { title: "Ajaxtec Appliance Repair | NJ & PA Appliance Repair" },
         {
           name: "description",
           content:
-            "Premium repair for Sub-Zero, Viking, Wolf and other high-end kitchen appliances across Staten Island, Brooklyn, Queens and New Jersey. Call today.",
+            "Premium repair for Sub-Zero, Viking, Wolf and other high-end kitchen appliances across New Jersey and Pennsylvania. Call today.",
         },
-        { property: "og:title", content: "Best Sub-Zero & Viking Service" },
+        { property: "og:title", content: "Ajaxtec Appliance Repair" },
         {
           property: "og:description",
           content:
-            "Honest, expert repair of premium residential kitchen appliances across NY & NJ.",
+            "Honest, expert repair of premium residential kitchen appliances across NJ & PA.",
         },
         { property: "og:url", content: absUrl("/") },
         {
           property: "og:image",
-          content: "https://bestsubzerovikingservices.com/images/hero.webp",
+          content: "https://ajaxtecappliancerepair.com/images/hero.webp",
         },
       ],
       links: [{ rel: "canonical", href: absUrl("/") }],
@@ -136,19 +136,19 @@ export const Route = createFileRoute("/")({
           children: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "LocalBusiness",
-            name: "Best Sub-Zero & Viking Service",
+            name: "Ajaxtec Appliance Repair",
             telephone: "+1-888-702-8565",
-            email: "info@bestsubzerovikingservices.com",
-            image: "https://bestsubzerovikingservices.com/images/hero.webp",
+            email: "ajaxtecappliancerepair@gmail.com",
+            image: "https://ajaxtecappliancerepair.com/images/hero.webp",
             priceRange: "$$",
             areaServed: [
-              "Staten Island",
-              "Brooklyn",
-              "Queens",
-              "Long Island (near Queens)",
-              "Great Neck",
+              "Trenton",
+              "Newark",
+              "Camden",
               "Jersey City",
               "Elizabeth NJ",
+              "Philadelphia PA",
+              "Bucks County PA",
               "North & Central New Jersey",
             ],
             ...aggregateRating,
@@ -207,7 +207,7 @@ function Home() {
             </h1>
             <p className="mt-5 max-w-xl text-base text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.7)] md:text-lg">
               Accurate diagnostics, transparent pricing and long-lasting repairs for high-end
-              residential appliances across New York and New Jersey.
+              residential appliances across New Jersey and Pennsylvania.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <a href={telHref}>
@@ -366,7 +366,7 @@ function Home() {
                 Recent <span className="text-accent">projects</span>
               </h2>
               <p className="mt-3 text-muted-foreground">
-                A sample of repairs completed for customers across NY &amp; NJ.
+                A sample of repairs completed for customers across NJ &amp; PA.
               </p>
             </div>
             <Link
@@ -379,7 +379,7 @@ function Home() {
 
           <LazyYouTubeBackground
             videoId="t0z6O0nhGfY"
-            title="Best Sub-Zero & Viking Service — recent work"
+            title="Ajaxtec Appliance Repair — recent work"
             className="relative mt-10 aspect-video overflow-hidden rounded-xl shadow-md"
           />
 
@@ -429,7 +429,9 @@ function Home() {
           <p className="text-xs uppercase tracking-[0.25em] text-primary-foreground/60">
             Customer feedback
           </p>
-          <TestimonialCarousel testimonials={SITE_REVIEWS} className="mt-6" />
+          {SITE_REVIEWS.length > 0 ? (
+            <TestimonialCarousel testimonials={SITE_REVIEWS} className="mt-6" />
+          ) : null}
           <ReviewsBar variant="dark" className="mt-10 justify-center" />
           <Link
             to="/reviews"
@@ -445,22 +447,21 @@ function Home() {
         <div className="grid gap-10 md:grid-cols-2">
           <div>
             <h2 className="text-3xl font-semibold tracking-tight md:text-4xl">
-              Serving NY &amp; NJ <span className="text-accent">homes</span>
+              Serving NJ &amp; PA <span className="text-accent">homes</span>
             </h2>
             <p className="mt-3 max-w-xl text-muted-foreground">
-              We're based in the New York metro and cover Staten Island, Brooklyn, Queens, Long
-              Island near Queens, Great Neck, Jersey City, Elizabeth NJ and North &amp; Central New
-              Jersey.
+              We're based in Trenton and cover Newark, Camden, Jersey City, Elizabeth NJ,
+              Philadelphia, Bucks County PA and North &amp; Central New Jersey.
             </p>
             <ul className="mt-6 grid grid-cols-2 gap-2 text-sm">
               {[
-                "Staten Island",
-                "Brooklyn",
-                "Queens",
-                "Long Island (near Queens)",
-                "Great Neck",
+                "Trenton",
+                "Newark",
+                "Camden",
                 "Jersey City",
                 "Elizabeth, NJ",
+                "Philadelphia, PA",
+                "Bucks County, PA",
                 "North & Central NJ",
               ].map((a) => (
                 <li key={a} className="flex items-center gap-2">
@@ -477,8 +478,8 @@ function Home() {
           </div>
           <div className="h-[420px] overflow-hidden rounded-lg border border-border md:h-[640px]">
             <iframe
-              title="Map of completed appliance repair jobs across NY & NJ"
-              src="https://www.google.com/maps/d/embed?mid=1KRsUeTkfj5YfyxZIZ93085Ynm4D4Cz0&ll=40.63165163668629%2C-74.13427010000002&z=10"
+              title="Map of completed appliance repair jobs across NJ & PA"
+              src="https://www.google.com/maps/d/embed?mid=1KRsUeTkfj5YfyxZIZ93085Ynm4D4Cz0&ll=40.2206%2C-74.7597&z=10"
               width="100%"
               height="100%"
               className="border-0"

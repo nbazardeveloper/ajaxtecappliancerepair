@@ -105,9 +105,9 @@ CREATE POLICY "admins update settings" ON public.site_settings FOR UPDATE TO aut
 INSERT INTO public.site_settings (id, business_name, phone, email, address, hours, diagnostic_fee, social_links)
 VALUES (
   1,
-  'Best Sub-Zero & Viking Service',
+  'Ajaxtec Appliance Repair',
   '+1 (347) 617-0717',
-  'bestsubzerovikingservices@gmail.com',
+  'ajaxtecappliancerepair@gmail.com',
   'Serving Staten Island, Brooklyn, Queens, Long Island, Great Neck, Jersey City, Elizabeth NJ, North & Central NJ',
   'Mon–Sat: 8:00 AM – 7:00 PM',
   '$95 (waived when repair is completed)',

@@ -16,13 +16,13 @@ import { VenmoIcon, ZelleIcon } from "@/components/site/icons/PaymentIcons";
 import { getSiteSettings } from "@/lib/site.functions";
 
 const AREAS = [
-  "Staten Island",
-  "Brooklyn",
-  "Queens",
-  "Long Island (near Queens)",
-  "Great Neck",
+  "Trenton",
+  "Newark",
+  "Camden",
   "Jersey City",
   "Elizabeth, NJ",
+  "Philadelphia, PA",
+  "Bucks County, PA",
   "North & Central NJ",
 ];
 
@@ -51,15 +51,15 @@ export function SiteFooter() {
             <img
               src="/images/logo.webp"
               alt=""
-              width={395}
-              height={420}
+              width={283}
+              height={77}
               className="h-10 w-auto flex-shrink-0"
             />
-            <span className="text-sm font-semibold">Best Sub-Zero &amp; Viking Service</span>
+            <span className="text-sm font-semibold">Ajaxtec Appliance Repair</span>
           </div>
           <p className="mt-4 max-w-xs text-sm text-primary-foreground/70">
             Honest, expert repair for Sub-Zero, Viking, Wolf and other premium residential kitchen
-            appliances, serving NY &amp; NJ. Residential appliance repair only.
+            appliances, serving NJ &amp; PA. Residential appliance repair only.
           </p>
           {s?.social_links?.google_reviews || s?.social_links?.yelp ? (
             <div className="mt-5 flex flex-wrap gap-2">
@@ -118,9 +118,11 @@ export function SiteFooter() {
             </li>
           </ul>
 
-          <h3 className="mt-6 text-sm font-semibold tracking-wide text-primary-foreground">
-            Follow us
-          </h3>
+          {s?.social_links?.instagram || s?.social_links?.facebook || s?.social_links?.youtube ? (
+            <h3 className="mt-6 text-sm font-semibold tracking-wide text-primary-foreground">
+              Follow us
+            </h3>
+          ) : null}
           <div className="mt-4 flex items-center gap-4 text-primary-foreground/70">
             {s?.social_links?.instagram ? (
               <a
@@ -253,8 +255,8 @@ export function SiteFooter() {
       <div className="border-t border-white/10">
         <div className="mx-auto max-w-7xl px-4 py-5 text-xs text-primary-foreground/60 md:px-8">
           <span>
-            © {year} Best Sub-Zero &amp; Viking Service. All rights reserved. Independent appliance
-            repair service. Not affiliated with Sub-Zero Group, Inc. or Viking Range, LLC.
+            © {year} Ajaxtec Appliance Repair. All rights reserved. Independent appliance repair
+            service. Not affiliated with Sub-Zero Group, Inc. or Viking Range, LLC.
           </span>
         </div>
       </div>

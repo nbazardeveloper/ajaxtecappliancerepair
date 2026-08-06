@@ -1,5 +1,5 @@
 /* ============================================================================
- * Best Sub-Zero & Viking Service — centralized design system
+ * Ajaxtec Appliance Repair — centralized design system
  * ----------------------------------------------------------------------------
  * All reusable design values (fonts, colors, type scale, one-off decorative
  * utilities) live in this file. Components should reach for a Tailwind class
@@ -267,13 +267,6 @@
       oklch(0.88 0.006 250) 50%,
       oklch(0.92 0.005 250) 100%
     );
-  }
-
-  /* Header logo height: tall enough to visually span the main nav row PLUS
-     the dark CTA bar directly beneath it (h-28 + h-14 on desktop). See
-     SiteHeader for how this is used. */
-  .h-header-logo {
-    height: calc(100% + 3.5rem);
   }
 
   /* Route-transition progress bar (see RouteProgressBar component). Fixed/

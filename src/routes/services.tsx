@@ -17,10 +17,10 @@ export const Route = createFileRoute("/services")({
       {
         name: "description",
         content:
-          "Refrigerator, range, oven, cooktop, wine cooler, ice maker and ventilation repair for Sub-Zero, Viking, Wolf, Thermador and other premium brands in NY and NJ.",
+          "Refrigerator, range, oven, cooktop, wine cooler, ice maker and ventilation repair for Sub-Zero, Viking, Wolf, Thermador and other premium brands in NJ and PA.",
       },
       { property: "og:title", content: "Premium Appliance Repair Services" },
-      { property: "og:description", content: "All services we offer across NY & NJ." },
+      { property: "og:description", content: "All services we offer across NJ & PA." },
       { property: "og:url", content: absUrl("/services") },
       { property: "og:image", content: DEFAULT_OG_IMAGE },
     ],

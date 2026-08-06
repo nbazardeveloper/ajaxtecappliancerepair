@@ -4,11 +4,11 @@ import { absUrl, DEFAULT_OG_IMAGE } from "@/lib/seo";
 export const Route = createFileRoute("/privacy-policy")({
   head: () => ({
     meta: [
-      { title: "Privacy Policy | Best Sub-Zero & Viking Service NY & NJ" },
+      { title: "Privacy Policy | Ajaxtec Appliance Repair NJ & PA" },
       {
         name: "description",
         content:
-          "How Best Sub-Zero & Viking Service collects, uses and protects information submitted through this website when you request an appliance repair estimate.",
+          "How Ajaxtec Appliance Repair collects, uses and protects information submitted through this website when you request an appliance repair estimate.",
       },
       { property: "og:title", content: "Privacy Policy" },
       { property: "og:description", content: "Our privacy policy." },
@@ -75,10 +75,7 @@ function Privacy() {
         </p>
 
         <h2>Contact</h2>
-        <p>
-          Best Sub-Zero &amp; Viking Service — +1 (888) 702-8565 —
-          info@bestsubzerovikingservices.com.
-        </p>
+        <p>Ajaxtec Appliance Repair — +1 (888) 702-8565 — ajaxtecappliancerepair@gmail.com.</p>
       </div>
     </div>
   );

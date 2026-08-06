@@ -9,17 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as WolfApplianceRepairRouteImport } from './routes/wolf-appliance-repair'
-import { Route as VikingStoveRepairRouteImport } from './routes/viking-stove-repair'
-import { Route as VikingApplianceRepairRouteImport } from './routes/viking-appliance-repair'
-import { Route as SubzeroVikingWolfBrooklynRouteImport } from './routes/subzero-viking-wolf-brooklyn'
-import { Route as SubZeroVikingWolfRepairRouteImport } from './routes/sub-zero-viking-wolf-repair'
-import { Route as SubZeroRepairNycNjRouteImport } from './routes/sub-zero-repair-nyc-nj'
-import { Route as SubZeroRepairRouteImport } from './routes/sub-zero-repair'
-import { Route as SubZeroRefrigeratorRepairNycRouteImport } from './routes/sub-zero-refrigerator-repair-nyc'
-import { Route as StoveRepairRouteImport } from './routes/stove-repair'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
-import { Route as Services8RouteImport } from './routes/services-8'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as ServiceAreaRouteImport } from './routes/service-area'
 import { Route as ReviewsRouteImport } from './routes/reviews'
@@ -29,7 +19,6 @@ import { Route as FaqRouteImport } from './routes/faq'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as BlogRouteImport } from './routes/blog'
 import { Route as AuthRouteImport } from './routes/auth'
-import { Route as ApplianceRepairStatenIslandRouteImport } from './routes/appliance-repair-staten-island'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as IndexRouteImport } from './routes/index'
@@ -44,61 +33,9 @@ import { Route as AuthenticatedAdminServicesRouteImport } from './routes/_authen
 import { Route as AuthenticatedAdminProjectsRouteImport } from './routes/_authenticated/admin.projects'
 import { Route as AuthenticatedAdminLeadsRouteImport } from './routes/_authenticated/admin.leads'
 
-const WolfApplianceRepairRoute = WolfApplianceRepairRouteImport.update({
-  id: '/wolf-appliance-repair',
-  path: '/wolf-appliance-repair',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const VikingStoveRepairRoute = VikingStoveRepairRouteImport.update({
-  id: '/viking-stove-repair',
-  path: '/viking-stove-repair',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const VikingApplianceRepairRoute = VikingApplianceRepairRouteImport.update({
-  id: '/viking-appliance-repair',
-  path: '/viking-appliance-repair',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SubzeroVikingWolfBrooklynRoute =
-  SubzeroVikingWolfBrooklynRouteImport.update({
-    id: '/subzero-viking-wolf-brooklyn',
-    path: '/subzero-viking-wolf-brooklyn',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const SubZeroVikingWolfRepairRoute = SubZeroVikingWolfRepairRouteImport.update({
-  id: '/sub-zero-viking-wolf-repair',
-  path: '/sub-zero-viking-wolf-repair',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SubZeroRepairNycNjRoute = SubZeroRepairNycNjRouteImport.update({
-  id: '/sub-zero-repair-nyc-nj',
-  path: '/sub-zero-repair-nyc-nj',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SubZeroRepairRoute = SubZeroRepairRouteImport.update({
-  id: '/sub-zero-repair',
-  path: '/sub-zero-repair',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SubZeroRefrigeratorRepairNycRoute =
-  SubZeroRefrigeratorRepairNycRouteImport.update({
-    id: '/sub-zero-refrigerator-repair-nyc',
-    path: '/sub-zero-refrigerator-repair-nyc',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const StoveRepairRoute = StoveRepairRouteImport.update({
-  id: '/stove-repair',
-  path: '/stove-repair',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const Services8Route = Services8RouteImport.update({
-  id: '/services-8',
-  path: '/services-8',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ServicesRoute = ServicesRouteImport.update({
@@ -146,12 +83,6 @@ const AuthRoute = AuthRouteImport.update({
   path: '/auth',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ApplianceRepairStatenIslandRoute =
-  ApplianceRepairStatenIslandRouteImport.update({
-    id: '/appliance-repair-staten-island',
-    path: '/appliance-repair-staten-island',
-    getParentRoute: () => rootRouteImport,
-  } as any)
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
@@ -223,7 +154,6 @@ const AuthenticatedAdminLeadsRoute = AuthenticatedAdminLeadsRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/appliance-repair-staten-island': typeof ApplianceRepairStatenIslandRoute
   '/auth': typeof AuthRoute
   '/blog': typeof BlogRoute
   '/contact': typeof ContactRoute
@@ -233,17 +163,7 @@ export interface FileRoutesByFullPath {
   '/reviews': typeof ReviewsRoute
   '/service-area': typeof ServiceAreaRoute
   '/services': typeof ServicesRoute
-  '/services-8': typeof Services8Route
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/stove-repair': typeof StoveRepairRoute
-  '/sub-zero-refrigerator-repair-nyc': typeof SubZeroRefrigeratorRepairNycRoute
-  '/sub-zero-repair': typeof SubZeroRepairRoute
-  '/sub-zero-repair-nyc-nj': typeof SubZeroRepairNycNjRoute
-  '/sub-zero-viking-wolf-repair': typeof SubZeroVikingWolfRepairRoute
-  '/subzero-viking-wolf-brooklyn': typeof SubzeroVikingWolfBrooklynRoute
-  '/viking-appliance-repair': typeof VikingApplianceRepairRoute
-  '/viking-stove-repair': typeof VikingStoveRepairRoute
-  '/wolf-appliance-repair': typeof WolfApplianceRepairRoute
   '/admin': typeof AuthenticatedAdminRouteWithChildren
   '/api/soro-webhook': typeof ApiSoroWebhookRoute
   '/post/$slug': typeof PostSlugRoute
@@ -258,7 +178,6 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/appliance-repair-staten-island': typeof ApplianceRepairStatenIslandRoute
   '/auth': typeof AuthRoute
   '/blog': typeof BlogRoute
   '/contact': typeof ContactRoute
@@ -268,17 +187,7 @@ export interface FileRoutesByTo {
   '/reviews': typeof ReviewsRoute
   '/service-area': typeof ServiceAreaRoute
   '/services': typeof ServicesRoute
-  '/services-8': typeof Services8Route
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/stove-repair': typeof StoveRepairRoute
-  '/sub-zero-refrigerator-repair-nyc': typeof SubZeroRefrigeratorRepairNycRoute
-  '/sub-zero-repair': typeof SubZeroRepairRoute
-  '/sub-zero-repair-nyc-nj': typeof SubZeroRepairNycNjRoute
-  '/sub-zero-viking-wolf-repair': typeof SubZeroVikingWolfRepairRoute
-  '/subzero-viking-wolf-brooklyn': typeof SubzeroVikingWolfBrooklynRoute
-  '/viking-appliance-repair': typeof VikingApplianceRepairRoute
-  '/viking-stove-repair': typeof VikingStoveRepairRoute
-  '/wolf-appliance-repair': typeof WolfApplianceRepairRoute
   '/api/soro-webhook': typeof ApiSoroWebhookRoute
   '/post/$slug': typeof PostSlugRoute
   '/projects/gallery': typeof ProjectsGalleryRoute
@@ -294,7 +203,6 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/about': typeof AboutRoute
-  '/appliance-repair-staten-island': typeof ApplianceRepairStatenIslandRoute
   '/auth': typeof AuthRoute
   '/blog': typeof BlogRoute
   '/contact': typeof ContactRoute
@@ -304,17 +212,7 @@ export interface FileRoutesById {
   '/reviews': typeof ReviewsRoute
   '/service-area': typeof ServiceAreaRoute
   '/services': typeof ServicesRoute
-  '/services-8': typeof Services8Route
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/stove-repair': typeof StoveRepairRoute
-  '/sub-zero-refrigerator-repair-nyc': typeof SubZeroRefrigeratorRepairNycRoute
-  '/sub-zero-repair': typeof SubZeroRepairRoute
-  '/sub-zero-repair-nyc-nj': typeof SubZeroRepairNycNjRoute
-  '/sub-zero-viking-wolf-repair': typeof SubZeroVikingWolfRepairRoute
-  '/subzero-viking-wolf-brooklyn': typeof SubzeroVikingWolfBrooklynRoute
-  '/viking-appliance-repair': typeof VikingApplianceRepairRoute
-  '/viking-stove-repair': typeof VikingStoveRepairRoute
-  '/wolf-appliance-repair': typeof WolfApplianceRepairRoute
   '/_authenticated/admin': typeof AuthenticatedAdminRouteWithChildren
   '/api/soro-webhook': typeof ApiSoroWebhookRoute
   '/post/$slug': typeof PostSlugRoute
@@ -331,7 +229,6 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
-    | '/appliance-repair-staten-island'
     | '/auth'
     | '/blog'
     | '/contact'
@@ -341,17 +238,7 @@ export interface FileRouteTypes {
     | '/reviews'
     | '/service-area'
     | '/services'
-    | '/services-8'
     | '/sitemap.xml'
-    | '/stove-repair'
-    | '/sub-zero-refrigerator-repair-nyc'
-    | '/sub-zero-repair'
-    | '/sub-zero-repair-nyc-nj'
-    | '/sub-zero-viking-wolf-repair'
-    | '/subzero-viking-wolf-brooklyn'
-    | '/viking-appliance-repair'
-    | '/viking-stove-repair'
-    | '/wolf-appliance-repair'
     | '/admin'
     | '/api/soro-webhook'
     | '/post/$slug'
@@ -366,7 +253,6 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/about'
-    | '/appliance-repair-staten-island'
     | '/auth'
     | '/blog'
     | '/contact'
@@ -376,17 +262,7 @@ export interface FileRouteTypes {
     | '/reviews'
     | '/service-area'
     | '/services'
-    | '/services-8'
     | '/sitemap.xml'
-    | '/stove-repair'
-    | '/sub-zero-refrigerator-repair-nyc'
-    | '/sub-zero-repair'
-    | '/sub-zero-repair-nyc-nj'
-    | '/sub-zero-viking-wolf-repair'
-    | '/subzero-viking-wolf-brooklyn'
-    | '/viking-appliance-repair'
-    | '/viking-stove-repair'
-    | '/wolf-appliance-repair'
     | '/api/soro-webhook'
     | '/post/$slug'
     | '/projects/gallery'
@@ -401,7 +277,6 @@ export interface FileRouteTypes {
     | '/'
     | '/_authenticated'
     | '/about'
-    | '/appliance-repair-staten-island'
     | '/auth'
     | '/blog'
     | '/contact'
@@ -411,17 +286,7 @@ export interface FileRouteTypes {
     | '/reviews'
     | '/service-area'
     | '/services'
-    | '/services-8'
     | '/sitemap.xml'
-    | '/stove-repair'
-    | '/sub-zero-refrigerator-repair-nyc'
-    | '/sub-zero-repair'
-    | '/sub-zero-repair-nyc-nj'
-    | '/sub-zero-viking-wolf-repair'
-    | '/subzero-viking-wolf-brooklyn'
-    | '/viking-appliance-repair'
-    | '/viking-stove-repair'
-    | '/wolf-appliance-repair'
     | '/_authenticated/admin'
     | '/api/soro-webhook'
     | '/post/$slug'
@@ -438,7 +303,6 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
   AboutRoute: typeof AboutRoute
-  ApplianceRepairStatenIslandRoute: typeof ApplianceRepairStatenIslandRoute
   AuthRoute: typeof AuthRoute
   BlogRoute: typeof BlogRoute
   ContactRoute: typeof ContactRoute
@@ -448,17 +312,7 @@ export interface RootRouteChildren {
   ReviewsRoute: typeof ReviewsRoute
   ServiceAreaRoute: typeof ServiceAreaRoute
   ServicesRoute: typeof ServicesRoute
-  Services8Route: typeof Services8Route
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
-  StoveRepairRoute: typeof StoveRepairRoute
-  SubZeroRefrigeratorRepairNycRoute: typeof SubZeroRefrigeratorRepairNycRoute
-  SubZeroRepairRoute: typeof SubZeroRepairRoute
-  SubZeroRepairNycNjRoute: typeof SubZeroRepairNycNjRoute
-  SubZeroVikingWolfRepairRoute: typeof SubZeroVikingWolfRepairRoute
-  SubzeroVikingWolfBrooklynRoute: typeof SubzeroVikingWolfBrooklynRoute
-  VikingApplianceRepairRoute: typeof VikingApplianceRepairRoute
-  VikingStoveRepairRoute: typeof VikingStoveRepairRoute
-  WolfApplianceRepairRoute: typeof WolfApplianceRepairRoute
   ApiSoroWebhookRoute: typeof ApiSoroWebhookRoute
   PostSlugRoute: typeof PostSlugRoute
   ProjectsGalleryRoute: typeof ProjectsGalleryRoute
@@ -467,81 +321,11 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/wolf-appliance-repair': {
-      id: '/wolf-appliance-repair'
-      path: '/wolf-appliance-repair'
-      fullPath: '/wolf-appliance-repair'
-      preLoaderRoute: typeof WolfApplianceRepairRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/viking-stove-repair': {
-      id: '/viking-stove-repair'
-      path: '/viking-stove-repair'
-      fullPath: '/viking-stove-repair'
-      preLoaderRoute: typeof VikingStoveRepairRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/viking-appliance-repair': {
-      id: '/viking-appliance-repair'
-      path: '/viking-appliance-repair'
-      fullPath: '/viking-appliance-repair'
-      preLoaderRoute: typeof VikingApplianceRepairRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/subzero-viking-wolf-brooklyn': {
-      id: '/subzero-viking-wolf-brooklyn'
-      path: '/subzero-viking-wolf-brooklyn'
-      fullPath: '/subzero-viking-wolf-brooklyn'
-      preLoaderRoute: typeof SubzeroVikingWolfBrooklynRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/sub-zero-viking-wolf-repair': {
-      id: '/sub-zero-viking-wolf-repair'
-      path: '/sub-zero-viking-wolf-repair'
-      fullPath: '/sub-zero-viking-wolf-repair'
-      preLoaderRoute: typeof SubZeroVikingWolfRepairRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/sub-zero-repair-nyc-nj': {
-      id: '/sub-zero-repair-nyc-nj'
-      path: '/sub-zero-repair-nyc-nj'
-      fullPath: '/sub-zero-repair-nyc-nj'
-      preLoaderRoute: typeof SubZeroRepairNycNjRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/sub-zero-repair': {
-      id: '/sub-zero-repair'
-      path: '/sub-zero-repair'
-      fullPath: '/sub-zero-repair'
-      preLoaderRoute: typeof SubZeroRepairRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/sub-zero-refrigerator-repair-nyc': {
-      id: '/sub-zero-refrigerator-repair-nyc'
-      path: '/sub-zero-refrigerator-repair-nyc'
-      fullPath: '/sub-zero-refrigerator-repair-nyc'
-      preLoaderRoute: typeof SubZeroRefrigeratorRepairNycRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/stove-repair': {
-      id: '/stove-repair'
-      path: '/stove-repair'
-      fullPath: '/stove-repair'
-      preLoaderRoute: typeof StoveRepairRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/sitemap.xml': {
       id: '/sitemap.xml'
       path: '/sitemap.xml'
       fullPath: '/sitemap.xml'
       preLoaderRoute: typeof SitemapDotxmlRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/services-8': {
-      id: '/services-8'
-      path: '/services-8'
-      fullPath: '/services-8'
-      preLoaderRoute: typeof Services8RouteImport
       parentRoute: typeof rootRouteImport
     }
     '/services': {
@@ -605,13 +389,6 @@ declare module '@tanstack/react-router' {
       path: '/auth'
       fullPath: '/auth'
       preLoaderRoute: typeof AuthRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/appliance-repair-staten-island': {
-      id: '/appliance-repair-staten-island'
-      path: '/appliance-repair-staten-island'
-      fullPath: '/appliance-repair-staten-island'
-      preLoaderRoute: typeof ApplianceRepairStatenIslandRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/about': {
@@ -742,7 +519,6 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
   AboutRoute: AboutRoute,
-  ApplianceRepairStatenIslandRoute: ApplianceRepairStatenIslandRoute,
   AuthRoute: AuthRoute,
   BlogRoute: BlogRoute,
   ContactRoute: ContactRoute,
@@ -752,17 +528,7 @@ const rootRouteChildren: RootRouteChildren = {
   ReviewsRoute: ReviewsRoute,
   ServiceAreaRoute: ServiceAreaRoute,
   ServicesRoute: ServicesRoute,
-  Services8Route: Services8Route,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
-  StoveRepairRoute: StoveRepairRoute,
-  SubZeroRefrigeratorRepairNycRoute: SubZeroRefrigeratorRepairNycRoute,
-  SubZeroRepairRoute: SubZeroRepairRoute,
-  SubZeroRepairNycNjRoute: SubZeroRepairNycNjRoute,
-  SubZeroVikingWolfRepairRoute: SubZeroVikingWolfRepairRoute,
-  SubzeroVikingWolfBrooklynRoute: SubzeroVikingWolfBrooklynRoute,
-  VikingApplianceRepairRoute: VikingApplianceRepairRoute,
-  VikingStoveRepairRoute: VikingStoveRepairRoute,
-  WolfApplianceRepairRoute: WolfApplianceRepairRoute,
   ApiSoroWebhookRoute: ApiSoroWebhookRoute,
   PostSlugRoute: PostSlugRoute,
   ProjectsGalleryRoute: ProjectsGalleryRoute,

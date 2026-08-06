@@ -87,18 +87,17 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Best Sub-Zero & Viking Service | NY & NJ Appliance Repair" },
+      { title: "Ajaxtec Appliance Repair | NJ & PA Appliance Repair" },
       {
         name: "description",
         content:
-          "Premium residential appliance repair in NY & NJ — Sub-Zero, Viking, Wolf, Thermador, Bosch and Dacor. 13 years of honest, transparent, expert service.",
+          "Premium residential appliance repair in NJ & PA — Sub-Zero, Viking, Wolf, Thermador, Bosch and Dacor. 13 years of honest, transparent, expert service.",
       },
-      { name: "author", content: "Best Sub-Zero & Viking Service" },
-      { property: "og:site_name", content: "Best Sub-Zero & Viking Service" },
+      { name: "author", content: "Ajaxtec Appliance Repair" },
+      { property: "og:site_name", content: "Ajaxtec Appliance Repair" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "theme-color", content: "#0f1115" },
-      { name: "msvalidate.01", content: "8603B5AEE860A3E9A624B9A128FDD7C7" },
     ],
     links: [
       // Fonts are self-hosted (see styles.css) and preloaded here so they
@@ -123,24 +122,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "apple-touch-icon", href: "/favicon-512.png" },
     ],
     scripts: [
-      // Microsoft Advertising UET (Universal Event Tracking) — lets
-      // Microsoft Advertising see site visits and attribute conversions
-      // (calls, form submissions, etc.) back to Bing/Microsoft Ads clicks.
-      {
-        children: `(function(w,d,t,r,u){
-  var f,n,i;
-  w[u]=w[u]||[],f=function(){
-    var o={ti:"343195501", enableAutoSpaAdTracking:true};
-    o.q=w[u],w[u]=new UET(o),w[u].push("pageLoad")
-  },
-  n=d.createElement(t),n.src=r,n.async=1,n.onload=n.onreadystatechange=function(){
-    var s=this.readyState;
-    s&&s!=="loaded"&&s!=="complete"||(f(),n.onload=n.onreadystatechange=null)
-  },
-  i=d.getElementsByTagName(t)[0],
-  i.parentNode.insertBefore(n,i)
-})(window,document,"script","https://bat.bing.com/bat.js","uetq");`,
-      },
       // GoHighLevel (LeadConnector) chat widget — replaces the site's old
       // custom ChatWidget. Chat conversations captured here go straight to
       // the CRM directly through GHL, not through Supabase, so they won't
@@ -155,23 +136,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "Organization",
-          name: "Best Sub-Zero & Viking Service",
+          name: "Ajaxtec Appliance Repair",
           telephone: "+1-888-702-8565",
-          email: "info@bestsubzerovikingservices.com",
+          email: "ajaxtecappliancerepair@gmail.com",
           areaServed: [
-            "Staten Island",
-            "Brooklyn",
-            "Queens",
-            "Long Island (near Queens)",
-            "Great Neck",
+            "Trenton",
+            "Newark",
+            "Camden",
             "Jersey City",
             "Elizabeth NJ",
+            "Philadelphia PA",
+            "Bucks County PA",
             "North & Central New Jersey",
-          ],
-          sameAs: [
-            "https://instagram.com/best_subzero_viking_service",
-            "https://www.facebook.com/BSZVS",
-            "https://www.youtube.com/@bestsubzerovikingservice",
           ],
         }),
       },

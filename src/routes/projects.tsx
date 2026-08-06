@@ -15,11 +15,11 @@ const COMPLETED_JOBS_MAP_URL =
 export const Route = createFileRoute("/projects")({
   head: () => ({
     meta: [
-      { title: "Recent Repair Projects | Sub-Zero, Viking & Wolf | NY & NJ" },
+      { title: "Recent Repair Projects | Sub-Zero, Viking & Wolf | NJ & PA" },
       {
         name: "description",
         content:
-          "A sample of premium appliance repair projects completed for customers across Staten Island, Brooklyn, Long Island near Queens and New Jersey.",
+          "A sample of premium appliance repair projects completed for customers across New Jersey and Pennsylvania.",
       },
       { property: "og:title", content: "Recent Repair Projects" },
       {

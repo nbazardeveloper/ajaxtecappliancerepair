@@ -9,13 +9,13 @@ import { Label } from "@/components/ui/label";
 import { submitLead } from "@/lib/site.functions";
 
 const AREAS = [
-  "Staten Island",
-  "Brooklyn",
-  "Queens",
-  "Long Island (near Queens)",
-  "Great Neck",
+  "Trenton",
+  "Newark",
+  "Camden",
   "Jersey City",
   "Elizabeth, NJ",
+  "Philadelphia, PA",
+  "Bucks County, PA",
   "North & Central NJ",
   "Other",
 ];

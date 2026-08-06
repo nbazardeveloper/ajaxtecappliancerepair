@@ -3,8 +3,8 @@
 // in the 150–160 char range, per project SEO standards, even for dynamic
 // (DB-driven) content such as individual service pages.
 
-const SITE_NAME = "Best Sub-Zero & Viking Service";
-const SITE_URL = "https://bestsubzerovikingservices.com";
+const SITE_NAME = "Ajaxtec Appliance Repair";
+const SITE_URL = "https://ajaxtecappliancerepair.com";
 
 /**
  * Turns a site-relative path into an absolute URL. Canonical links and
@@ -25,12 +25,12 @@ export function absUrl(path: string): string {
 export const DEFAULT_OG_IMAGE = absUrl("/images/hero.webp");
 
 const TITLE_SUFFIXES = [
-  ` | Sub-Zero & Viking Repair Experts in NY & NJ`,
+  ` | Sub-Zero & Viking Repair Experts in NJ & PA`,
   ` | Sub-Zero & Viking Repair Experts`,
   ` | ${SITE_NAME}`,
-  ` | NY & NJ Appliance Repair`,
-  ` | NY & NJ Repair`,
-  ` | NY & NJ`,
+  ` | NJ & PA Appliance Repair`,
+  ` | NJ & PA Repair`,
+  ` | NJ & PA`,
 ];
 
 /**

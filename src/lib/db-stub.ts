@@ -17,23 +17,22 @@ import type { SiteSettings } from "./site.functions";
 import { BLOG_POSTS } from "./blog-data";
 
 export const mockSiteSettings: SiteSettings = {
-  business_name: "Best Sub-Zero & Viking Service",
+  business_name: "Ajaxtec Appliance Repair",
   phone: "+1 (888) 702-8565",
-  email: "info@bestsubzerovikingservices.com",
+  email: "ajaxtecappliancerepair@gmail.com",
   address: null,
   hours: "Mon–Sat: 8:00 AM – 7:00 PM",
-  diagnostic_fee: "$95, waived when the repair is completed ($125 in Manhattan, also waived)",
-  social_links: {
-    instagram: "https://instagram.com/best_subzero_viking_service",
-    facebook: "https://www.facebook.com/BSZVS",
-    youtube: "https://www.youtube.com/@bestsubzerovikingservice",
-    google_reviews: "https://share.google/JpOFNRbqklRGN26Ui",
-    yelp: "https://www.yelp.com/biz/best-sub-zero-and-viking-service-staten-island-14",
-  },
+  diagnostic_fee: "$95, waived when the repair is completed ($125 in Philadelphia, also waived)",
+  // Empty until Ajaxtec has its own social/review profiles — the previous
+  // values here were another company's real accounts and review scores;
+  // linking them under this name would send visitors to a different
+  // business. ReviewsBar/SiteFooter already hide each icon/link when its
+  // value is missing, so this is safe to leave empty.
+  social_links: {},
   review_count: null,
-  review_rating: 5.0,
+  review_rating: null,
   yelp_review_count: null,
-  yelp_review_rating: 4.9,
+  yelp_review_rating: null,
 };
 
 type MockService = {
@@ -261,7 +260,7 @@ export const mockProjects: MockProject[] = [
     description:
       "Complete diagnostics and compressor replacement on a Sub-Zero 648PRO built-in refrigerator/freezer. Restored proper cooling on both sides and re-sealed all gaskets.",
     brands: ["Sub-Zero"],
-    service_area: "Staten Island",
+    service_area: "Trenton",
     image_urls: [],
     completed_on: null,
     is_published: true,
@@ -274,7 +273,7 @@ export const mockProjects: MockProject[] = [
     description:
       "Rebuilt spark ignition system and replaced safety valves on a Viking Professional gas range. Verified flame stability across all burners.",
     brands: ["Viking"],
-    service_area: "Brooklyn",
+    service_area: "Newark",
     image_urls: [],
     completed_on: null,
     is_published: true,
@@ -287,7 +286,7 @@ export const mockProjects: MockProject[] = [
     description:
       "Diagnosed erratic temperature behavior on a Wolf built-in double oven, replaced control board and recalibrated both cavities.",
     brands: ["Wolf"],
-    service_area: "Long Island",
+    service_area: "Bucks County, PA",
     image_urls: [],
     completed_on: null,
     is_published: true,
