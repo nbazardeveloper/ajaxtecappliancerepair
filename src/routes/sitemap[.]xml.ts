@@ -6,7 +6,7 @@ import { DB_STUBBED, mockServices, mockBlogPosts } from "@/lib/db-stub";
 
 // Sitemap URLs must be absolute per the sitemap protocol. Falls back to the
 // production domain if SITE_URL isn't set in the environment.
-const BASE_URL = process.env.SITE_URL || "https://ajaxtecappliancerepair.com";
+const BASE_URL = process.env.SITE_URL || "https://ajaxtec.com";
 
 const STATIC_ROUTES = [
   { path: "/", priority: "1.0", changefreq: "weekly" as const },

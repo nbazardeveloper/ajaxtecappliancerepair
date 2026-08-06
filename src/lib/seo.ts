@@ -4,7 +4,7 @@
 // (DB-driven) content such as individual service pages.
 
 const SITE_NAME = "Ajaxtec Appliance Repair";
-const SITE_URL = "https://ajaxtecappliancerepair.com";
+const SITE_URL = "https://ajaxtec.com";
 
 /**
  * Turns a site-relative path into an absolute URL. Canonical links and

@@ -126,7 +126,7 @@ export const Route = createFileRoute("/")({
         { property: "og:url", content: absUrl("/") },
         {
           property: "og:image",
-          content: "https://ajaxtecappliancerepair.com/images/hero.webp",
+          content: "https://ajaxtec.com/images/hero.webp",
         },
       ],
       links: [{ rel: "canonical", href: absUrl("/") }],
@@ -139,7 +139,7 @@ export const Route = createFileRoute("/")({
             name: "Ajaxtec Appliance Repair",
             telephone: "+1-888-702-8565",
             email: "ajaxtecappliancerepair@gmail.com",
-            image: "https://ajaxtecappliancerepair.com/images/hero.webp",
+            image: "https://ajaxtec.com/images/hero.webp",
             priceRange: "$$",
             areaServed: [
               "Trenton",

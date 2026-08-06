@@ -1,5 +1,5 @@
 -- Update site_settings with the client-provided NAP address, phone, email
--- (matched to the existing ajaxtecappliancerepair.com site to keep NAP
+-- (matched to the existing ajaxtec.com site to keep NAP
 -- consistent with Google Business Profile) and the Manhattan diagnostic-fee
 -- tier. Written as an UPDATE rather than editing the original seed
 -- migration, since that migration may already have run against the live
