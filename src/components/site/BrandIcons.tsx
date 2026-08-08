@@ -1,5 +1,5 @@
 // Small inline brand marks for linking OUT to third-party review platforms
-// (Google, Yelp) — this is standard, low-risk nominative use (like a
+// (Google) — this is standard, low-risk nominative use (like a
 // "pay with Visa" icon), unlike reproducing a competitor/manufacturer's
 // own logo as if we were an authorized dealer.
 
@@ -22,22 +22,6 @@ export function GoogleIcon({ className }: { className?: string }) {
         fill="#1976D2"
         d="M43.611,20.083H42V20H24v8h11.303c-0.792,2.237-2.231,4.166-4.087,5.571l0.003-0.002l6.19,5.238C36.971,39.205,44,34,44,24C44,22.659,43.862,21.35,43.611,20.083z"
       />
-    </svg>
-  );
-}
-
-export function YelpIcon({ className }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 24 24" className={className} aria-hidden>
-      <circle cx="12" cy="12" r="12" fill="#D32323" />
-      <g fill="#fff">
-        <ellipse cx="12" cy="6.2" rx="1.7" ry="3.4" />
-        <ellipse cx="6.4" cy="9.6" rx="1.6" ry="3.2" transform="rotate(-58 6.4 9.6)" />
-        <ellipse cx="6.7" cy="16.1" rx="1.6" ry="3.1" transform="rotate(38 6.7 16.1)" />
-        <ellipse cx="13" cy="18" rx="1.6" ry="3.2" transform="rotate(-12 13 18)" />
-        <ellipse cx="17.9" cy="13.6" rx="1.6" ry="3.2" transform="rotate(65 17.9 13.6)" />
-      </g>
-      <circle cx="12" cy="12" r="2.6" fill="#D32323" />
     </svg>
   );
 }

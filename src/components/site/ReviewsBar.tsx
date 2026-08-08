@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { Star } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { GoogleIcon, YelpIcon } from "@/components/site/BrandIcons";
+import { GoogleIcon } from "@/components/site/BrandIcons";
 import { getSiteSettings } from "@/lib/site.functions";
 
 function Stars({ rating, dark }: { rating: number; dark?: boolean }) {
@@ -42,8 +42,7 @@ export function ReviewsBar({ className, variant = "light" }: Props) {
     staleTime: 5 * 60 * 1000,
   });
   const googleUrl = s?.social_links?.google_reviews;
-  const yelpUrl = s?.social_links?.yelp;
-  if (!googleUrl && !yelpUrl) return null;
+  if (!googleUrl) return null;
 
   const pillClass = cn(
     "inline-flex items-center gap-2 rounded-lg border px-3 py-2 transition-colors",
@@ -68,24 +67,6 @@ export function ReviewsBar({ className, variant = "light" }: Props) {
           ) : (
             <span className={cn("text-xs font-medium", dark ? "text-white" : "text-foreground")}>
               Google Reviews
-            </span>
-          )}
-        </a>
-      ) : null}
-      {yelpUrl ? (
-        <a href={yelpUrl} target="_blank" rel="noreferrer noopener" className={pillClass}>
-          <YelpIcon className="h-5 w-5 flex-shrink-0" />
-          {s?.yelp_review_rating ? (
-            <span className="flex items-center gap-1.5">
-              <Stars rating={s.yelp_review_rating} dark={dark} />
-              <span className={cn("text-xs font-medium", dark ? "text-white" : "text-foreground")}>
-                {s.yelp_review_rating.toFixed(1)}
-                {s.yelp_review_count ? ` (${s.yelp_review_count})` : ""}
-              </span>
-            </span>
-          ) : (
-            <span className={cn("text-xs font-medium", dark ? "text-white" : "text-foreground")}>
-              Yelp Reviews
             </span>
           )}
         </a>

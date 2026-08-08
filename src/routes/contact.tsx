@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { absUrl, DEFAULT_OG_IMAGE } from "@/lib/seo";
 import { useQuery } from "@tanstack/react-query";
-import { Phone, Mail, MessageCircle, MapPin, CalendarClock, Clock } from "lucide-react";
+import { Phone, Mail, MapPin, CalendarClock, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { GuaranteeBadge } from "@/components/site/GuaranteeBadge";
 import { ReviewsBar } from "@/components/site/ReviewsBar";
@@ -18,16 +18,16 @@ const AREAS = [
   "North & Central NJ",
 ];
 
-const BOOKING_URL = "https://api.prosbuddy.com/widget/bookings/now-schedule-service";
+const BOOKING_URL = "https://nexfield.pro/crm/book?u=257";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Contact Us | Appliance Repair NJ & PA | (888) 702-8565" },
+      { title: "Contact Us | Appliance Repair NJ & PA | (267) 699-2599" },
       {
         name: "description",
         content:
-          "Call (888) 702-8565 or request service online for premium appliance repair across New Jersey and Pennsylvania.",
+          "Call (267) 699-2599 or request service online for premium appliance repair across New Jersey and Pennsylvania.",
       },
       { property: "og:title", content: "Contact Ajaxtec Appliance Repair" },
       { property: "og:description", content: "Get in touch to schedule a diagnostic or repair." },
@@ -42,7 +42,7 @@ export const Route = createFileRoute("/contact")({
           "@context": "https://schema.org",
           "@type": "LocalBusiness",
           name: "Ajaxtec Appliance Repair",
-          telephone: "+1-888-702-8565",
+          telephone: "+1-267-699-2599",
           email: "ajaxtecappliancerepair@gmail.com",
           priceRange: "$$",
           areaServed: AREAS,
@@ -60,12 +60,8 @@ export const Route = createFileRoute("/contact")({
 
 function Contact() {
   const { data: s } = useQuery({ queryKey: ["site-settings"], queryFn: () => getSiteSettings() });
-  const phone = s?.phone ?? "+1 (888) 702-8565";
+  const phone = s?.phone ?? "+1 (267) 699-2599";
   const digits = phone.replace(/[^+\d]/g, "");
-  // WhatsApp runs on a separate mobile line — toll-free numbers like
-  // (888) 702-8565 generally can't run a WhatsApp Business account.
-  const whatsappPhone = "+1 (347) 617-0717";
-  const whatsappDigits = "13476170717";
 
   return (
     <div>
@@ -75,8 +71,8 @@ function Contact() {
             Contact <span className="text-accent">us</span>
           </h1>
           <p className="mt-4 max-w-2xl text-muted-foreground">
-            Call, message on WhatsApp, or book online below. Please have your appliance's model
-            number, serial number and a brief problem description ready.
+            Call or book online below. Please have your appliance's model number, serial number and
+            a brief problem description ready.
           </p>
         </div>
       </section>
@@ -146,20 +142,6 @@ function Contact() {
                   className="w-full min-w-0 justify-start gap-3 whitespace-normal text-left"
                 >
                   <Phone className="h-4 w-4 flex-shrink-0" /> Call {phone}
-                </Button>
-              </a>
-              <a
-                href={`https://wa.me/${whatsappDigits}`}
-                target="_blank"
-                rel="noreferrer noopener"
-                className="min-w-0"
-              >
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="w-full min-w-0 justify-start gap-3 whitespace-normal text-left"
-                >
-                  <MessageCircle className="h-4 w-4 flex-shrink-0" /> WhatsApp {whatsappPhone}
                 </Button>
               </a>
               {s?.email ? (

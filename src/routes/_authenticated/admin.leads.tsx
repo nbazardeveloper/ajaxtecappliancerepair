@@ -17,10 +17,13 @@ const STATUS_STYLES: Record<string, string> = {
   done: "bg-secondary text-secondary-foreground",
 };
 
-// The Contact page form writes to the `leads` table via submitLead() — this
-// page is where those submissions show up (see the "Source" column, driven
-// by source_page). Chat conversations from the GoHighLevel widget go
-// straight to the CRM and do NOT appear here.
+// NOTE: nothing currently writes to the `leads` table. The Contact page
+// used to submit here via submitLead(), but it was replaced by the
+// nexfield.pro booking widget (an embedded iframe, not a form on this
+// site), and chat conversations go straight to the GoHighLevel CRM instead
+// of this table. This page and the underlying leads table are effectively
+// dormant until something is wired back up to call submitLead() — any
+// entries you see below would only exist from a manual/legacy insert.
 function LeadsAdmin() {
   const qc = useQueryClient();
   const { data = [], isLoading } = useQuery({
@@ -44,14 +47,18 @@ function LeadsAdmin() {
       <header className="mb-8">
         <h1 className="text-3xl font-semibold tracking-tight">Leads</h1>
         <p className="mt-2 text-sm text-muted-foreground">
-          Submissions from the Contact page form. Chat widget conversations go straight to the CRM.
+          This table is not currently connected to anything on the live site — booking now goes
+          through the nexfield.pro CRM widget on /contact, and chat conversations go straight to the
+          GoHighLevel CRM. Nothing writes to this list at the moment.
         </p>
       </header>
 
       {isLoading ? (
         <p className="text-sm text-muted-foreground">Loading…</p>
       ) : data.length === 0 ? (
-        <p className="text-sm text-muted-foreground">No leads yet.</p>
+        <p className="text-sm text-muted-foreground">
+          No leads yet — and none are expected while nothing on the site submits here.
+        </p>
       ) : (
         <div className="grid gap-3">
           {data.map((lead) => (

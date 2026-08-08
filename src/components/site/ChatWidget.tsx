@@ -10,7 +10,7 @@ import { submitLead } from "@/lib/site.functions";
 // Same booking widget used on /contact — reused here so a chat visitor can
 // go straight from "I have a question" to "I picked a time" without leaving
 // the conversation.
-const BOOKING_URL = "https://api.prosbuddy.com/widget/bookings/now-schedule-service";
+const BOOKING_URL = "https://nexfield.pro/crm/book?u=257";
 
 type Step = "name" | "phone" | "message" | "submitting" | "scheduler";
 

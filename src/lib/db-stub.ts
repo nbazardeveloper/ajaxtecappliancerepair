@@ -18,19 +18,19 @@ import { BLOG_POSTS } from "./blog-data";
 
 export const mockSiteSettings: SiteSettings = {
   business_name: "Ajaxtec Appliance Repair",
-  phone: "+1 (888) 702-8565",
+  phone: "+1 (267) 699-2599",
   email: "ajaxtecappliancerepair@gmail.com",
   address: null,
   hours: "Mon–Sat: 8:00 AM – 7:00 PM",
   diagnostic_fee: "$95, waived when the repair is completed ($125 in Philadelphia, also waived)",
-  // Empty until Ajaxtec has its own social/review profiles — the previous
-  // values here were another company's real accounts and review scores;
-  // linking them under this name would send visitors to a different
-  // business. ReviewsBar/SiteFooter already hide each icon/link when its
-  // value is missing, so this is safe to leave empty.
-  social_links: {},
-  review_count: null,
-  review_rating: null,
+  // Real AjaxTec Appliance Repair Google Business Profile (Newtown, PA).
+  social_links: {
+    facebook: "https://www.facebook.com/AjaxTec-107763788061097/",
+    google_reviews:
+      "https://www.google.com/maps/place/AjaxTec+Appliance+Repair/@40.2339745,-75.0458739,17z/data=!4m8!3m7!1s0x89c6b3c19d3b9243:0x9898463ffa3952c6!8m2!3d40.2339745!4d-75.0458739!9m1!1b1!16s%2Fg%2F11lgxc35kb",
+  },
+  review_count: 88,
+  review_rating: 4.9,
   yelp_review_count: null,
   yelp_review_rating: null,
 };

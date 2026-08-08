@@ -32,7 +32,7 @@ export function FinalCta({
     queryKey: ["site-settings"],
     queryFn: () => getSiteSettings(),
   });
-  const phone = settings?.phone ?? "+1 (888) 702-8565";
+  const phone = settings?.phone ?? "+1 (267) 699-2599";
   const telHref = `tel:${phone.replace(/[^+\d]/g, "")}`;
 
   return (

@@ -1,31 +1,44 @@
 import type { Testimonial } from "@/components/site/TestimonialCarousel";
 
-// Real Google reviews for this business (AjaxTec Appliance Repair, 780
-// Newtown-Yardley Rd, Newtown PA — same listing linked from the Google Maps
-// place page), pulled from the reviews already published on their own site
-// at ajaxtec.com. Exact review dates aren't exposed there, so `time` says
-// "Google review" instead of a fabricated relative date.
+// Real Google reviews for this business, pulled directly from the AjaxTec
+// Appliance Repair Google Business Profile (Newtown, PA — 4.9★, 88 reviews):
+// https://www.google.com/maps/place/AjaxTec+Appliance+Repair/@40.2339745,-75.0458739,17z/data=!4m8!3m7!1s0x89c6b3c19d3b9243:0x9898463ffa3952c6!8m2!3d40.2339745!4d-75.0458739!9m1!1b1!16s%2Fg%2F11lgxc35kb
 export const SITE_REVIEWS: Testimonial[] = [
   {
     quote:
-      "I hired this service to repair my Frigidaire refrigerator. I'm extremely pleased with the result. Kevin and his assistant came on time (and made two trips), took off their shoes at the front door without being asked, and informed me about each issue they found, showed me the new parts that were ordered, and showed me how to install the filter. He gave me a time window for his arrival, was prompt, efficient, and always respectful, polite, and professional. The price was fair. I highly recommend this service.",
-    author: "Sonia S.",
+      "Jonathan did an amazing job with our refrigerator. He was able to quickly assess the issue and talked us through the whole process. He's a top tier technician.",
+    author: "Marcus C.",
     meta: "Verified customer",
     time: "Google review",
     service: "Refrigerator Repair",
   },
   {
     quote:
-      "I was desperate to have my dryer repaired as I had wet clothes that needed drying. I called and they got back to me almost immediately and scheduled an appointment for the next day. Jonathan kept me informed as to his arrival. When he got to my home he was extremely professional, told me what he was going to do ahead of time, then told me what he found and offered his thoughts on repairing my dryer. He appeared to be knowledgeable in the appliance industry. Yes, I would definitely call Ajaxtec again.",
-    author: "Amy C.",
+      "Great service. Jonathan showed me and explained in detail why my refrigerator wasn't working, and he was able to fix it right away! Would recommend if you have appliance issues.",
+    author: "Jason X.",
+    meta: "Local Guide",
+    time: "Google review",
+    service: "Refrigerator Repair",
+  },
+  {
+    quote:
+      "Jonathan came quickly and was able to repair my dryer in less than 24 hours! He communicated thoroughly and was a pleasure to work with. I would definitely use him again for any future needs.",
+    author: "Haley Johnson",
     meta: "Verified customer",
     time: "Google review",
     service: "Dryer Repair",
   },
   {
     quote:
-      "Great job! Quickly identified the challenge and fixed the issue. He also took the time to explain what went wrong and how to troubleshoot other potential challenges. Asked him to look at a few other items as well. Do yourself a favor and hire Ajaxtec!",
-    author: "Sarah H.",
+      "We have used this company more than once and every time we are impressed by their quick response time, efficiency, and good communication. With each repair they have saved us from buying new appliances, and their prices are affordable. I have and will continue to refer them to others!",
+    author: "A. Laken",
+    meta: "Verified customer",
+    time: "Google review",
+  },
+  {
+    quote:
+      "Amazing service — called back in a timely manner, very accommodating with schedule, fair pricing, highly recommended!! Overall... outstanding!!",
+    author: "Karen Damato",
     meta: "Verified customer",
     time: "Google review",
   },

@@ -69,7 +69,7 @@ export const Route = createFileRoute("/services_/$slug")({
             provider: {
               "@type": "LocalBusiness",
               name: "Ajaxtec Appliance Repair",
-              telephone: "+1-888-702-8565",
+              telephone: "+1-267-699-2599",
             },
             areaServed: AREAS,
             brand: s.brands.map((b) => ({ "@type": "Brand", name: b })),
@@ -114,7 +114,7 @@ function ServiceDetail() {
   const related = all
     .filter((s) => s.slug !== service.slug && s.category === service.category)
     .slice(0, 3);
-  const phone = settings?.phone ?? "+1 (888) 702-8565";
+  const phone = settings?.phone ?? "+1 (267) 699-2599";
   const telHref = `tel:${phone.replace(/[^+\d]/g, "")}`;
 
   // Every service title ends in its category keyword ("... Repair" /

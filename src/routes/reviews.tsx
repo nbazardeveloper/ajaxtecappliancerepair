@@ -3,7 +3,7 @@ import { absUrl, DEFAULT_OG_IMAGE } from "@/lib/seo";
 import { useQuery } from "@tanstack/react-query";
 import { Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { GoogleIcon, YelpIcon } from "@/components/site/BrandIcons";
+import { GoogleIcon } from "@/components/site/BrandIcons";
 import { getSiteSettings } from "@/lib/site.functions";
 import { SITE_REVIEWS } from "@/lib/reviews-data";
 import { FinalCta } from "@/components/site/FinalCta";
@@ -33,7 +33,6 @@ function Reviews() {
     queryFn: () => getSiteSettings(),
   });
   const googleUrl = settings?.social_links?.google_reviews;
-  const yelpUrl = settings?.social_links?.yelp;
 
   return (
     <div>
@@ -73,14 +72,6 @@ function Reviews() {
                 </Button>
               </a>
             ) : null}
-            {yelpUrl ? (
-              <a href={yelpUrl} target="_blank" rel="noreferrer noopener">
-                <Button size="lg" variant="outline" className="gap-2 border-2">
-                  <YelpIcon className="h-5 w-5 flex-shrink-0" />
-                  Read reviews on Yelp
-                </Button>
-              </a>
-            ) : null}
           </div>
         </div>
       </section>
@@ -88,8 +79,7 @@ function Reviews() {
       <section className="mx-auto max-w-7xl px-4 py-16 md:px-8">
         {SITE_REVIEWS.length === 0 ? (
           <p className="text-sm text-muted-foreground">
-            Reviews are on the way — check back soon, or read what customers say on Google and Yelp
-            above.
+            Reviews are on the way — check back soon, or read what customers say on Google above.
           </p>
         ) : null}
         <div className="grid gap-6 md:grid-cols-2">

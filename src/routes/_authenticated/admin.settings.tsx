@@ -137,27 +137,6 @@ function SettingsAdmin() {
             />
           </div>
         </div>
-        <div className="grid gap-4 md:grid-cols-2">
-          <div>
-            <Label>Yelp review count (optional)</Label>
-            <Input
-              type="number"
-              value={form.yelp_review_count ?? ""}
-              onChange={(e) => S("yelp_review_count", e.target.value)}
-            />
-          </div>
-          <div>
-            <Label>Yelp review rating (optional, 0-5)</Label>
-            <Input
-              type="number"
-              step="0.1"
-              min="0"
-              max="5"
-              value={form.yelp_review_rating ?? ""}
-              onChange={(e) => S("yelp_review_rating", e.target.value)}
-            />
-          </div>
-        </div>
         <div>
           <Label>Social links</Label>
           <div className="mt-2 grid gap-3">
@@ -172,19 +151,9 @@ function SettingsAdmin() {
               onChange={(e) => L("facebook", e.target.value)}
             />
             <Input
-              placeholder="YouTube URL"
-              value={form.social_links.youtube ?? ""}
-              onChange={(e) => L("youtube", e.target.value)}
-            />
-            <Input
               placeholder="Google reviews URL"
               value={form.social_links.google_reviews ?? ""}
               onChange={(e) => L("google_reviews", e.target.value)}
-            />
-            <Input
-              placeholder="Yelp URL"
-              value={form.social_links.yelp ?? ""}
-              onChange={(e) => L("yelp", e.target.value)}
             />
           </div>
         </div>

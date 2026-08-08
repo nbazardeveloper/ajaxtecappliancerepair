@@ -3,7 +3,6 @@ import { useQuery } from "@tanstack/react-query";
 import {
   Instagram,
   Facebook,
-  Youtube,
   Phone,
   Mail,
   Banknote,
@@ -11,7 +10,7 @@ import {
   FileSignature,
   FileText,
 } from "lucide-react";
-import { GoogleIcon, YelpIcon } from "@/components/site/BrandIcons";
+import { GoogleIcon } from "@/components/site/BrandIcons";
 import { VenmoIcon, ZelleIcon } from "@/components/site/icons/PaymentIcons";
 import { getSiteSettings } from "@/lib/site.functions";
 
@@ -61,28 +60,16 @@ export function SiteFooter() {
             Honest, expert repair for Sub-Zero, Viking, Wolf and other premium residential kitchen
             appliances, serving NJ &amp; PA. Residential appliance repair only.
           </p>
-          {s?.social_links?.google_reviews || s?.social_links?.yelp ? (
+          {s?.social_links?.google_reviews ? (
             <div className="mt-5 flex flex-wrap gap-2">
-              {s.social_links.google_reviews ? (
-                <a
-                  href={s.social_links.google_reviews}
-                  target="_blank"
-                  rel="noreferrer noopener"
-                  className="inline-flex items-center gap-1.5 rounded-full border border-border bg-background px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:border-accent"
-                >
-                  <GoogleIcon className="h-3.5 w-3.5 flex-shrink-0" /> Google Reviews
-                </a>
-              ) : null}
-              {s.social_links.yelp ? (
-                <a
-                  href={s.social_links.yelp}
-                  target="_blank"
-                  rel="noreferrer noopener"
-                  className="inline-flex items-center gap-1.5 rounded-full border border-border bg-background px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:border-accent"
-                >
-                  <YelpIcon className="h-3.5 w-3.5 flex-shrink-0" /> Yelp Reviews
-                </a>
-              ) : null}
+              <a
+                href={s.social_links.google_reviews}
+                target="_blank"
+                rel="noreferrer noopener"
+                className="inline-flex items-center gap-1.5 rounded-full border border-border bg-background px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:border-accent"
+              >
+                <GoogleIcon className="h-3.5 w-3.5 flex-shrink-0" /> Google Reviews
+              </a>
             </div>
           ) : null}
         </div>
@@ -118,7 +105,7 @@ export function SiteFooter() {
             </li>
           </ul>
 
-          {s?.social_links?.instagram || s?.social_links?.facebook || s?.social_links?.youtube ? (
+          {s?.social_links?.instagram || s?.social_links?.facebook ? (
             <h3 className="mt-6 text-sm font-semibold tracking-wide text-primary-foreground">
               Follow us
             </h3>
@@ -144,17 +131,6 @@ export function SiteFooter() {
                 className="transition-colors hover:text-accent"
               >
                 <Facebook className="h-[18px] w-[18px]" />
-              </a>
-            ) : null}
-            {s?.social_links?.youtube ? (
-              <a
-                href={s.social_links.youtube}
-                target="_blank"
-                rel="noreferrer noopener"
-                aria-label="YouTube"
-                className="transition-colors hover:text-accent"
-              >
-                <Youtube className="h-[18px] w-[18px]" />
               </a>
             ) : null}
           </div>
