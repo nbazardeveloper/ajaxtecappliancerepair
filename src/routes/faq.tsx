@@ -15,7 +15,7 @@ const FAQ = [
   },
   {
     q: "How much is the diagnostic fee?",
-    a: "The diagnostic fee is $95 ($125 in Philadelphia), and it's waived when you complete the repair with us.",
+    a: "The diagnostic fee is $95, and it's waived when you complete the repair with us.",
   },
   {
     q: "Do you use OEM parts?",
@@ -27,7 +27,7 @@ const FAQ = [
   },
   {
     q: "Which brands do you service?",
-    a: "We specialize in Sub-Zero, Viking and Wolf — across ranges, stoves, cooktops, ovens and refrigeration. We also service other premium residential brands including Thermador, Bosch, Dacor, GE Monogram and Bertazzoni.",
+    a: "We specialize in Sub-Zero, Viking and Wolf — across ranges, stoves, cooktops, ovens and refrigeration. We also service other premium residential brands including Thermador, Bosch, Dacor, GE Monogram, Bertazzoni and Blue Star.",
   },
   {
     q: "Which appliances or brands do you NOT service?",

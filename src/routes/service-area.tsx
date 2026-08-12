@@ -94,16 +94,15 @@ function ServiceArea() {
       <section className="border-t border-border bg-muted/30">
         <div className="mx-auto max-w-7xl px-4 py-16 md:px-8">
           <h2 className="text-2xl font-semibold tracking-tight md:text-3xl">
-            Our completed <span className="text-accent">jobs</span>
+            Where we <span className="text-accent">service</span>
           </h2>
           <p className="mt-3 text-muted-foreground">
-            A real map of repairs we've completed across New Jersey and Pennsylvania — centered on
-            Trenton, radiating out through the service area above.
+            Our coverage spans New Jersey and Pennsylvania, centered on the Trenton area.
           </p>
           <div className="mt-8 h-[420px] overflow-hidden rounded-lg border border-border md:h-[640px]">
             <iframe
-              title="Map of completed appliance repair jobs"
-              src="https://www.google.com/maps/d/embed?mid=1KRsUeTkfj5YfyxZIZ93085Ynm4D4Cz0&ll=40.2206%2C-74.7597&z=10"
+              title="Map of NJ and PA service area"
+              src="https://maps.google.com/maps?ll=40.927171,-75.77488&z=8&output=embed"
               width="100%"
               height="100%"
               className="border-0"
@@ -112,15 +111,7 @@ function ServiceArea() {
             />
           </div>
           <p className="mt-4 text-sm text-muted-foreground">
-            <a
-              href="https://www.google.com/maps/d/u/0/viewer?mid=1KRsUeTkfj5YfyxZIZ93085Ynm4D4Cz0&ll=40.2206%2C-74.7597&z=10"
-              target="_blank"
-              rel="noreferrer noopener"
-              className="text-accent hover:underline"
-            >
-              Open the full map
-            </a>{" "}
-            · Not sure if we cover your address?{" "}
+            Not sure if we cover your address?{" "}
             <Link to="/contact" className="text-accent hover:underline">
               Send us a request
             </Link>{" "}

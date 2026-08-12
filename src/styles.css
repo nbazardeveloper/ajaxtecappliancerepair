@@ -319,3 +319,15 @@
     -webkit-mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
   }
 }
+
+/* Chat widget (GoHighLevel / LeadConnector, loaded via loader.js in
+   __root.tsx) — hidden per request, but the loader script is left in place
+   so it's a one-line removal of this rule to bring it back. The widget
+   renders as a <chat-widget> custom element (Stencil web component)
+   appended to the page, not a plain id'd div — confirmed via devtools. */
+chat-widget,
+#chat-widget-container,
+#chat-widget,
+iframe[src*="leadconnectorhq.com"] {
+  display: none !important;
+}

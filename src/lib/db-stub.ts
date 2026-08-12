@@ -22,7 +22,7 @@ export const mockSiteSettings: SiteSettings = {
   email: "ajaxtecappliancerepair@gmail.com",
   address: null,
   hours: "Mon–Sat: 8:00 AM – 7:00 PM",
-  diagnostic_fee: "$95, waived when the repair is completed ($125 in Philadelphia, also waived)",
+  diagnostic_fee: "$95, waived when the repair is completed",
   // Real AjaxTec Appliance Repair Google Business Profile (Newtown, PA).
   social_links: {
     facebook: "https://www.facebook.com/AjaxTec-107763788061097/",

@@ -63,7 +63,7 @@ const FAQ_PREVIEW = [
   },
   {
     q: "How much is the diagnostic fee?",
-    a: "The diagnostic fee is $95 ($125 in Philadelphia), waived when you complete the repair with us.",
+    a: "The diagnostic fee is $95, waived when you complete the repair with us.",
   },
   {
     q: "Do you use OEM parts?",
@@ -471,8 +471,8 @@ function Home() {
           </div>
           <div className="h-[420px] overflow-hidden rounded-lg border border-border md:h-[640px]">
             <iframe
-              title="Map of completed appliance repair jobs across NJ & PA"
-              src="https://www.google.com/maps/d/embed?mid=1KRsUeTkfj5YfyxZIZ93085Ynm4D4Cz0&ll=40.2206%2C-74.7597&z=10"
+              title="Map of NJ and PA service area"
+              src="https://maps.google.com/maps?ll=40.927171,-75.77488&z=8&output=embed"
               width="100%"
               height="100%"
               className="border-0"
