@@ -229,11 +229,19 @@ export function SiteFooter() {
       </div>
 
       <div className="border-t border-white/10">
-        <div className="mx-auto max-w-7xl px-4 py-5 text-xs text-primary-foreground/60 md:px-8">
+        <div className="mx-auto flex max-w-7xl flex-col gap-2 px-4 py-5 text-xs text-primary-foreground/60 md:flex-row md:items-center md:justify-between md:px-8">
           <span>
             © {year} Ajaxtec Appliance Repair. All rights reserved. Independent appliance repair
             service. Not affiliated with Sub-Zero Group, Inc. or Viking Range, LLC.
           </span>
+          <a
+            href="https://nousframe.com"
+            target="_blank"
+            rel="noreferrer noopener"
+            className="text-[11px] text-primary-foreground/40 transition-colors hover:text-primary-foreground/70"
+          >
+            Made by nousframe.com
+          </a>
         </div>
       </div>
     </footer>
