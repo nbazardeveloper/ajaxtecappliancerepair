@@ -17,6 +17,14 @@
 // build-time copy of the same value, protected by Supabase Row Level
 // Security, not by secrecy). SITE_URL is just the public site domain.
 //
+// VITE_SUPABASE_URL / VITE_SUPABASE_PUBLISHABLE_KEY are declared here too
+// (same public values as above) because Cloudflare Workers Builds injects
+// this file's "vars" as real env vars into the build container — that's
+// what Vite reads at build time to bake `import.meta.env.VITE_*` into the
+// client bundle. Dashboard-only "Variable" entries not declared here get
+// wiped by `wrangler deploy` on every build, which is why the client bundle
+// kept losing them.
+//
 // Do NOT add SUPABASE_SERVICE_ROLE_KEY, SORO_WEBHOOK_SECRET, or
 // GHL_WEBHOOK_URL here — those are real secrets (service role bypasses Row
 // Level Security entirely; the webhook secret authenticates inbound
@@ -32,6 +40,8 @@
   "vars": {
     "SUPABASE_URL": "https://zuwvbcwzukbwzqrcrqcn.supabase.co",
     "SUPABASE_PUBLISHABLE_KEY": "sb_publishable_UY1DzTIHhH5BK-pqoIk_6g_gkD9-GJo",
+    "VITE_SUPABASE_URL": "https://zuwvbcwzukbwzqrcrqcn.supabase.co",
+    "VITE_SUPABASE_PUBLISHABLE_KEY": "sb_publishable_UY1DzTIHhH5BK-pqoIk_6g_gkD9-GJo",
     "SITE_URL": "https://ajaxtec.com"
   }
 }
