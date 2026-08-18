@@ -91,7 +91,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         name: "description",
         content:
-          "Premium residential appliance repair in NJ & PA — Sub-Zero, Viking, Wolf, Thermador, Bosch and Dacor. 13 years of honest, transparent, expert service.",
+          "Premium residential appliance repair in NJ & PA — Sub-Zero, Viking, Wolf, Thermador, Bosch and Dacor. 17 years of honest, transparent, expert service.",
       },
       { name: "author", content: "Ajaxtec Appliance Repair" },
       { property: "og:site_name", content: "Ajaxtec Appliance Repair" },
@@ -122,6 +122,20 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "apple-touch-icon", href: "/favicon-512.png" },
     ],
     scripts: [
+      // Google tag (gtag.js) — loaded first, as early in <head> as possible,
+      // per Google's own placement guidance.
+      {
+        async: true,
+        src: "https://www.googletagmanager.com/gtag/js?id=G-1XS264HGL8",
+      },
+      {
+        children:
+          "window.dataLayer = window.dataLayer || [];\n" +
+          "function gtag(){dataLayer.push(arguments);}\n" +
+          "gtag('js', new Date());\n" +
+          "\n" +
+          "gtag('config', 'G-1XS264HGL8');",
+      },
       // GoHighLevel (LeadConnector) chat widget — replaces the site's old
       // custom ChatWidget. Chat conversations captured here go straight to
       // the CRM directly through GHL, not through Supabase, so they won't

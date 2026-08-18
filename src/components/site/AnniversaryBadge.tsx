@@ -1,7 +1,7 @@
 import { useId } from "react";
 import { cn } from "@/lib/utils";
 
-const RING_UNIT = "13 YEARS ✦ TRUSTED SERVICE ✦ ";
+const RING_UNIT = "17 YEARS ✦ TRUSTED SERVICE ✦ ";
 const RING_TEXT = RING_UNIT.repeat(2);
 
 interface Props {
@@ -17,7 +17,7 @@ export function AnniversaryBadge({ className }: Props) {
   return (
     <div
       role="img"
-      aria-label="13 years of trusted appliance repair service"
+      aria-label="17 years of trusted appliance repair service"
       className={cn("relative h-32 w-32 flex-shrink-0 md:h-36 md:w-36", className)}
     >
       <svg
@@ -43,7 +43,7 @@ export function AnniversaryBadge({ className }: Props) {
         aria-hidden
         className="absolute inset-[21%] flex flex-col items-center justify-center rounded-full bg-accent text-accent-foreground shadow-md"
       >
-        <span className="text-2xl font-bold leading-none md:text-3xl">13</span>
+        <span className="text-2xl font-bold leading-none md:text-3xl">17</span>
         <span className="mt-1 text-[10px] font-semibold uppercase tracking-wide md:text-xs">
           Years
         </span>

@@ -37,16 +37,16 @@ const VALUES = [
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About Us | 13 Years of Premium Appliance Repair in NJ & PA" },
+      { title: "About Us | 17 Years of Premium Appliance Repair in NJ & PA" },
       {
         name: "description",
         content:
-          "Founded to give homeowners honest, professional, long-lasting repair for premium kitchen appliances. 13 years of accurate diagnostics and transparent pricing.",
+          "Founded to give homeowners honest, professional, long-lasting repair for premium kitchen appliances. 17 years of accurate diagnostics and transparent pricing.",
       },
       { property: "og:title", content: "About Ajaxtec Appliance Repair" },
       {
         property: "og:description",
-        content: "13 years of premium appliance repair across NJ & PA.",
+        content: "17 years of premium appliance repair across NJ & PA.",
       },
       { property: "og:url", content: absUrl("/about") },
       { property: "og:image", content: DEFAULT_OG_IMAGE },
@@ -71,7 +71,7 @@ function About() {
               servicing other high-end residential brands.
             </p>
             <p className="mt-4 max-w-xl text-muted-foreground">
-              13 years of accurate diagnostics, transparent communication and quality workmanship —
+              17 years of accurate diagnostics, transparent communication and quality workmanship —
               helping customers avoid unnecessary replacements.
             </p>
             <p className="mt-4 max-w-xl text-sm text-muted-foreground">
