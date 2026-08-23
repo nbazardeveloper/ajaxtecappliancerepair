@@ -82,6 +82,28 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   );
 }
 
+// Cloudflare's build step doesn't reliably bake VITE_-prefixed vars into the
+// client bundle (import.meta.env) on this project — Workers Builds is
+// supposed to inject wrangler.jsonc's "vars" into the build container, but
+// in practice the shipped bundle keeps coming back without them, which
+// throws "Missing Supabase environment variable(s)" in every visitor's
+// browser as soon as the root layout mounts (see client.ts).
+//
+// Runtime env (process.env, read here during SSR) is proven reliable
+// instead — nitro's cloudflare-module preset maps the Worker's runtime
+// bindings from wrangler.jsonc onto process.env on every request, which is
+// exactly what sitemap.xml.ts already depends on. So we read the public
+// (RLS-protected, non-secret) Supabase values here at request time and
+// stamp them into the HTML as window.__ENV__, and client.ts reads that
+// first instead of trusting the build-time bake.
+function getPublicRuntimeEnv() {
+  return {
+    VITE_SUPABASE_URL: import.meta.env.VITE_SUPABASE_URL || process.env.SUPABASE_URL || "",
+    VITE_SUPABASE_PUBLISHABLE_KEY:
+      import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY || process.env.SUPABASE_PUBLISHABLE_KEY || "",
+  };
+}
+
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
   head: () => ({
     meta: [
@@ -122,6 +144,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "apple-touch-icon", href: "/favicon-512.png" },
     ],
     scripts: [
+      // Public runtime config for the browser Supabase client — must come
+      // before any other script/component that might read window.__ENV__.
+      // See getPublicRuntimeEnv() above for why this exists.
+      {
+        children: `window.__ENV__ = ${JSON.stringify(getPublicRuntimeEnv()).replace(/</g, "\\u003c")};`,
+      },
       // Google tag (gtag.js) — loaded first, as early in <head> as possible,
       // per Google's own placement guidance.
       {
