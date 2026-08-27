@@ -18,7 +18,7 @@ import { BLOG_POSTS } from "./blog-data";
 
 export const mockSiteSettings: SiteSettings = {
   business_name: "Ajaxtec Appliance Repair",
-  phone: "+1 (267) 699-2599",
+  phone: "+1 (267) 447-8580",
   email: "ajaxtecappliancerepair@gmail.com",
   address: null,
   hours: "Mon–Sat: 8:00 AM – 7:00 PM",

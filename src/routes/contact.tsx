@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useEffect, useRef } from "react";
 import { absUrl, DEFAULT_OG_IMAGE } from "@/lib/seo";
 import { useQuery } from "@tanstack/react-query";
 import { Phone, Mail, MapPin, CalendarClock, Clock } from "lucide-react";
@@ -18,16 +19,53 @@ const AREAS = [
   "North & Central NJ",
 ];
 
-const BOOKING_URL = "https://nexfield.pro/crm/book?u=257";
+const JOBY_BOOKING_ORIGIN = "https://ajaxtec-appliance-repair.joby.io";
+const JOBY_BOOKING_URL = `${JOBY_BOOKING_ORIGIN}/book-appointment`;
+const JOBY_BOOKING_EMBED_URL = `${JOBY_BOOKING_URL}?embed=1`;
+
+// Joby booking widget: listens for postMessage resize events from the embedded
+// iframe and grows/shrinks the iframe to match its content height.
+function JobyBookingWidget() {
+  const iframeRef = useRef<HTMLIFrameElement>(null);
+
+  useEffect(() => {
+    function handleMessage(event: MessageEvent) {
+      if (event.origin !== JOBY_BOOKING_ORIGIN) return;
+      const iframe = iframeRef.current;
+      const data = event.data || {};
+      if (!iframe || data.type !== "joby-booking-widget-resize") return;
+      const height = Number(data.height);
+      if (!Number.isFinite(height)) return;
+      const nextHeight = Math.max(220, Math.ceil(height));
+      iframe.height = String(nextHeight);
+      iframe.style.height = `${nextHeight}px`;
+    }
+    window.addEventListener("message", handleMessage);
+    return () => window.removeEventListener("message", handleMessage);
+  }, []);
+
+  return (
+    <iframe
+      ref={iframeRef}
+      id="joby-booking-widget-4091b958"
+      src={JOBY_BOOKING_EMBED_URL}
+      width="100%"
+      height={900}
+      frameBorder={0}
+      style={{ border: 0, maxWidth: 640, display: "block", margin: "0 auto" }}
+      title="Book an appointment"
+    />
+  );
+}
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Contact Us | Appliance Repair NJ & PA | (267) 699-2599" },
+      { title: "Contact Us | Appliance Repair NJ & PA | (267) 447-8580" },
       {
         name: "description",
         content:
-          "Call (267) 699-2599 or request service online for premium appliance repair across New Jersey and Pennsylvania.",
+          "Call (267) 447-8580 or request service online for premium appliance repair across New Jersey and Pennsylvania.",
       },
       { property: "og:title", content: "Contact Ajaxtec Appliance Repair" },
       { property: "og:description", content: "Get in touch to schedule a diagnostic or repair." },
@@ -42,7 +80,7 @@ export const Route = createFileRoute("/contact")({
           "@context": "https://schema.org",
           "@type": "LocalBusiness",
           name: "Ajaxtec Appliance Repair",
-          telephone: "+1-267-699-2599",
+          telephone: "+1-267-447-8580",
           email: "ajaxtecappliancerepair@gmail.com",
           priceRange: "$$",
           areaServed: AREAS,
@@ -60,7 +98,7 @@ export const Route = createFileRoute("/contact")({
 
 function Contact() {
   const { data: s } = useQuery({ queryKey: ["site-settings"], queryFn: () => getSiteSettings() });
-  const phone = s?.phone ?? "+1 (267) 699-2599";
+  const phone = s?.phone ?? "+1 (267) 447-8580";
   const digits = phone.replace(/[^+\d]/g, "");
 
   return (
@@ -89,7 +127,7 @@ function Contact() {
                 </p>
               </div>
               <a
-                href={BOOKING_URL}
+                href={JOBY_BOOKING_URL}
                 target="_blank"
                 rel="noreferrer noopener"
                 className="hidden sm:inline-flex"
@@ -100,17 +138,10 @@ function Contact() {
               </a>
             </div>
             <div className="mt-6 overflow-hidden rounded-lg border border-border">
-              <iframe
-                title="Book a service appointment online"
-                src={BOOKING_URL}
-                width="100%"
-                height="720"
-                className="border-0"
-                loading="lazy"
-              />
+              <JobyBookingWidget />
             </div>
             <a
-              href={BOOKING_URL}
+              href={JOBY_BOOKING_URL}
               target="_blank"
               rel="noreferrer noopener"
               className="mt-3 inline-flex text-sm text-accent hover:underline sm:hidden"
@@ -120,7 +151,7 @@ function Contact() {
             <p className="mt-3 text-xs text-muted-foreground">
               Trouble loading the scheduler above?{" "}
               <a
-                href={BOOKING_URL}
+                href={JOBY_BOOKING_URL}
                 target="_blank"
                 rel="noreferrer noopener"
                 className="text-accent hover:underline"

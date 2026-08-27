@@ -75,7 +75,7 @@ function Privacy() {
         </p>
 
         <h2>Contact</h2>
-        <p>Ajaxtec Appliance Repair — +1 (267) 699-2599 — ajaxtecappliancerepair@gmail.com.</p>
+        <p>Ajaxtec Appliance Repair — +1 (267) 447-8580 — ajaxtecappliancerepair@gmail.com.</p>
       </div>
     </div>
   );

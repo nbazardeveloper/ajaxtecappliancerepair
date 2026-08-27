@@ -24,7 +24,7 @@ export function SiteHeader() {
     queryFn: () => getSiteSettings(),
     staleTime: 5 * 60 * 1000,
   });
-  const phone = settings?.phone ?? "+1 (267) 699-2599";
+  const phone = settings?.phone ?? "+1 (267) 447-8580";
   const telHref = `tel:${phone.replace(/[^+\d]/g, "")}`;
 
   return (

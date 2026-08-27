@@ -136,7 +136,7 @@ export const Route = createFileRoute("/")({
             "@context": "https://schema.org",
             "@type": "LocalBusiness",
             name: "Ajaxtec Appliance Repair",
-            telephone: "+1-267-699-2599",
+            telephone: "+1-267-447-8580",
             email: "ajaxtecappliancerepair@gmail.com",
             image: "https://ajaxtec.com/images/hero.webp",
             priceRange: "$$",
@@ -173,7 +173,7 @@ function Home() {
     queryFn: () => listFeaturedProjects(),
   });
 
-  const phone = settings?.phone ?? "+1 (267) 699-2599";
+  const phone = settings?.phone ?? "+1 (267) 447-8580";
   const telHref = `tel:${phone.replace(/[^+\d]/g, "")}`;
 
   return (

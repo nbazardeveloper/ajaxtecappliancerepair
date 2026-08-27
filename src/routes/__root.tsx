@@ -179,7 +179,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "@context": "https://schema.org",
           "@type": "Organization",
           name: "Ajaxtec Appliance Repair",
-          telephone: "+1-267-699-2599",
+          telephone: "+1-267-447-8580",
           email: "ajaxtecappliancerepair@gmail.com",
           areaServed: [
             "Trenton",
