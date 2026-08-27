@@ -37,6 +37,14 @@
 // Secrets on the Worker in the Cloudflare dashboard, and use "Secret" as the
 // type when adding them.
 {
+  // Pins the Worker name so it always matches the one Cloudflare Workers
+  // Builds/CI expects for this project ("ajaxtecappliancerepair"). Without
+  // this, Nitro auto-generates a name from the git remote
+  // ("nbazardeveloper-ajaxtecappliancerepair"), which doesn't match and
+  // makes every deploy log a "Failed to match Worker name" warning (CI
+  // silently overrides it, but it also offers to open a PR to "fix" this
+  // file to the wrong name — don't merge such a PR; this line is correct).
+  "name": "ajaxtecappliancerepair",
   "vars": {
     "SUPABASE_URL": "https://zuwvbcwzukbwzqrcrqcn.supabase.co",
     "SUPABASE_PUBLISHABLE_KEY": "sb_publishable_UY1DzTIHhH5BK-pqoIk_6g_gkD9-GJo",
