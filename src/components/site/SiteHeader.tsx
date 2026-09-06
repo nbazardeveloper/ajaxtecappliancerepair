@@ -46,10 +46,9 @@ export function SiteHeader() {
             height={77}
             className="h-10 w-auto flex-shrink-0 md:h-14"
           />
-          {/* Business name/tagline. Hidden once the full nav takes over (xl+)
-              so the 9 nav items get the whole row instead of fighting the
-              name text for space. */}
-          <span className="flex flex-col leading-tight xl:hidden">
+          {/* Business name/tagline. Hidden on mobile (no room next to the
+              logo/menu button) and once the full nav takes over (xl+). */}
+          <span className="hidden flex-col leading-tight md:flex xl:hidden">
             <span className="text-base font-semibold tracking-tight">Ajaxtec Appliance Repair</span>
             <span className="hidden text-sm text-muted-foreground md:block">
               Premium appliance repair · NJ &amp; PA
