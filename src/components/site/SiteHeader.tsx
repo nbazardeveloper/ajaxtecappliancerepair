@@ -4,6 +4,7 @@ import { Phone, Menu, X } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { getSiteSettings } from "@/lib/site.functions";
+import { trackCallConversion } from "@/lib/analytics";
 
 const nav = [
   { to: "/", label: "Home" },
@@ -81,6 +82,7 @@ export function SiteHeader() {
               one-tap call action directly in the header. */}
           <a
             href={telHref}
+            onClick={trackCallConversion}
             aria-label={`Call ${phone}`}
             className="inline-flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full bg-accent text-accent-foreground md:hidden"
           >
@@ -102,6 +104,7 @@ export function SiteHeader() {
         <div className="mx-auto flex h-14 max-w-7xl items-center justify-end gap-6 px-4 md:px-8">
           <a
             href={telHref}
+            onClick={trackCallConversion}
             className="inline-flex items-center gap-2 text-lg font-semibold tabular-nums hover:text-accent"
           >
             <Phone className="h-4 w-4" aria-hidden /> {phone}
@@ -131,7 +134,7 @@ export function SiteHeader() {
               </Link>
             ))}
             <div className="mt-3 flex flex-col gap-2">
-              <a href={telHref}>
+              <a href={telHref} onClick={trackCallConversion}>
                 <Button variant="outline" className="w-full gap-2">
                   <Phone className="h-4 w-4" /> Call {phone}
                 </Button>

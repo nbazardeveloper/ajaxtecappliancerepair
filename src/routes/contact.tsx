@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { GuaranteeBadge } from "@/components/site/GuaranteeBadge";
 import { ReviewsBar } from "@/components/site/ReviewsBar";
 import { getSiteSettings } from "@/lib/site.functions";
+import { trackCallConversion } from "@/lib/analytics";
 
 const AREAS = [
   "Trenton",
@@ -167,7 +168,7 @@ function Contact() {
           <div className="min-w-0">
             <h2 className="text-xs uppercase tracking-[0.2em] text-accent">Direct contact</h2>
             <div className="mt-4 grid gap-4">
-              <a href={`tel:${digits}`} className="min-w-0">
+              <a href={`tel:${digits}`} onClick={trackCallConversion} className="min-w-0">
                 <Button
                   size="lg"
                   className="w-full min-w-0 justify-start gap-3 whitespace-normal text-left"

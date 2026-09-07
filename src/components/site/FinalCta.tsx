@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import { Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { getSiteSettings } from "@/lib/site.functions";
+import { trackCallConversion } from "@/lib/analytics";
 import { cn } from "@/lib/utils";
 
 interface FinalCtaProps {
@@ -41,7 +42,7 @@ export function FinalCta({
         <h2 className="text-3xl font-semibold tracking-tight md:text-4xl">{heading}</h2>
         <p className="mx-auto mt-3 max-w-xl text-primary-foreground/75">{subtitle}</p>
         <div className="mt-8 flex flex-wrap justify-center gap-3">
-          <a href={telHref}>
+          <a href={telHref} onClick={trackCallConversion}>
             <Button size="lg" className="gap-2 bg-white text-primary hover:bg-white/90">
               <Phone className="h-4 w-4" /> Call {phone}
             </Button>

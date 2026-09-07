@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { absUrl } from "@/lib/seo";
 import { useQuery } from "@tanstack/react-query";
 import { Phone, CheckCircle2 } from "lucide-react";
+import { trackCallConversion } from "@/lib/analytics";
 import { Button } from "@/components/ui/button";
 import { ImagePlaceholder } from "@/components/site/ImagePlaceholder";
 import { GuaranteeBadge } from "@/components/site/GuaranteeBadge";
@@ -209,7 +210,7 @@ function Home() {
               residential appliances across New Jersey and Pennsylvania.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <a href={telHref}>
+              <a href={telHref} onClick={trackCallConversion}>
                 <Button size="lg" className="gap-2 bg-white text-primary hover:bg-white/90">
                   <Phone className="h-4 w-4" /> Call {phone}
                 </Button>

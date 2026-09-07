@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ImagePlaceholder } from "@/components/site/ImagePlaceholder";
 import { getServiceBySlug, listServices, getSiteSettings } from "@/lib/site.functions";
+import { trackCallConversion } from "@/lib/analytics";
 import { buildTitle, buildMetaDescription, absUrl, DEFAULT_OG_IMAGE } from "@/lib/seo";
 import { FinalCta } from "@/components/site/FinalCta";
 
@@ -151,7 +152,7 @@ function ServiceDetail() {
                 ))}
               </div>
               <div className="mt-8 flex flex-wrap gap-3">
-                <a href={telHref}>
+                <a href={telHref} onClick={trackCallConversion}>
                   <Button size="lg" className="gap-2">
                     <Phone className="h-4 w-4" /> Call {phone}
                   </Button>

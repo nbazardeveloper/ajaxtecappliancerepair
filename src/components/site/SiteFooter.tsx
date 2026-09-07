@@ -13,6 +13,7 @@ import {
 import { GoogleIcon } from "@/components/site/BrandIcons";
 import { VenmoIcon, ZelleIcon } from "@/components/site/icons/PaymentIcons";
 import { getSiteSettings } from "@/lib/site.functions";
+import { trackCallConversion } from "@/lib/analytics";
 
 const AREAS = [
   "Trenton",
@@ -82,6 +83,7 @@ export function SiteFooter() {
                 <li className="min-w-0">
                   <a
                     href={`tel:${s.phone.replace(/[^+\d]/g, "")}`}
+                    onClick={trackCallConversion}
                     className="flex min-w-0 items-center gap-2 transition-colors hover:text-primary-foreground"
                   >
                     <Phone className="h-4 w-4 flex-shrink-0" aria-hidden />
