@@ -17,9 +17,15 @@ export function SpecialistBrandsBand({ className }: { className?: string }) {
         <p className="text-center text-[11px] font-semibold uppercase tracking-[0.3em] text-primary-foreground/60">
           Certified specialists in
         </p>
-        <div className="mt-5 flex flex-col items-center justify-center gap-5 sm:flex-row sm:gap-0 sm:divide-x sm:divide-primary-foreground/20">
+        {/* Each brand name is a different length, so centering every row on
+            its own (items-center) let the icons drift into a staircase —
+            each row's left edge landed somewhere different. Centering the
+            whole fixed-width block instead and left-aligning rows within it
+            keeps the icons on one straight line while the group still reads
+            as centered on the page. */}
+        <div className="mx-auto mt-5 flex w-fit flex-col items-start gap-5 sm:w-full sm:flex-row sm:items-center sm:justify-center sm:gap-0 sm:divide-x sm:divide-primary-foreground/20">
           {SPECIALTY_BRANDS.map((b) => (
-            <div key={b} className="flex items-center gap-3 px-6 first:pl-0 last:pr-0 sm:px-10">
+            <div key={b} className="flex items-center gap-3 sm:px-10 sm:first:pl-0 sm:last:pr-0">
               <BadgeCheck className="h-7 w-7 flex-shrink-0 text-accent" aria-hidden />
               <span className="font-display text-2xl font-bold tracking-tight sm:text-3xl">
                 {b}

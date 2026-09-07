@@ -154,7 +154,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       // per Google's own placement guidance.
       {
         async: true,
-        src: "https://www.googletagmanager.com/gtag/js?id=G-1XS264HGL8",
+        src: "https://www.googletagmanager.com/gtag/js?id=AW-990368648",
       },
       {
         children:
@@ -162,7 +162,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "function gtag(){dataLayer.push(arguments);}\n" +
           "gtag('js', new Date());\n" +
           "\n" +
-          "gtag('config', 'G-1XS264HGL8');",
+          "gtag('config', 'AW-990368648');",
       },
       // GoHighLevel (LeadConnector) chat widget — replaces the site's old
       // custom ChatWidget. Chat conversations captured here go straight to
