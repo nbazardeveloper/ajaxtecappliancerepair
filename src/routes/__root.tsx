@@ -141,6 +141,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       { rel: "stylesheet", href: appCss },
       { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      // Google's search-result favicon requires an icon at least 48x48px —
+      // the .ico above is only 16x16, so Search was falling back to a
+      // generic globe. A larger PNG icon fixes that (and benefits any other
+      // consumer that prefers a higher-res icon over the tiny .ico).
+      { rel: "icon", href: "/favicon-512.png", type: "image/png", sizes: "192x192" },
       { rel: "apple-touch-icon", href: "/favicon-512.png" },
     ],
     scripts: [
