@@ -4,9 +4,9 @@ import viteReact from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 import tsConfigPaths from "vite-tsconfig-paths";
 import { tanstackStart } from "@tanstack/react-start/plugin/vite";
-import { nitro } from "nitro/vite";
+import { SERVICES } from "./src/lib/static-data";
 
-export default defineConfig(({ command }) => ({
+export default defineConfig(() => ({
   server: {
     host: true,
     port: 8080,
@@ -40,18 +40,40 @@ export default defineConfig(({ command }) => ({
     tailwindcss(),
     tsConfigPaths({ projects: ["./tsconfig.json"] }),
     tanstackStart({
-      // Prevents server-only code (Supabase service-role client, etc.) from
-      // being pulled into the client bundle by accident.
-      importProtection: {
-        behavior: "error",
-        client: { files: ["**/server/**"], specifiers: ["server-only"] },
+      // The site has no backend: every route reads from static-data.ts
+      // instead of calling a server function. SPA mode drops all server
+      // rendering/server functions, and — combined with `prerender` — still
+      // bakes each route into its own static HTML file (so SEO/social-share
+      // tags stay intact) via crawling <Link> anchors from the nav/list
+      // pages, instead of falling back to a single client-only shell.
+      // Plain `prerender` (not `spa.enabled`) — every route on this site is
+      // known ahead of time (no user-generated/dynamic paths), so there's no
+      // need for SPA mode's client-only fallback shell for "unknown" URLs.
+      // (`spa.enabled` was tried first: it pushes a synthetic shell page at
+      // `spa.maskPath`, which defaults to "/" and silently steals the home
+      // route — the shell becomes the only output for "/" and the real
+      // homepage content never reaches a servable file. Any other maskPath
+      // 404s during prerender because nothing in the route tree matches
+      // it. Not needed here anyway since there's no unmapped-path case to
+      // fall back for.)
+      prerender: {
+        enabled: true,
+        crawlLinks: true,
+        autoStaticPathsDiscovery: true,
       },
-      // Route TanStack Start's bundled server entry through src/server.ts,
-      // which wraps SSR errors into a friendly error page instead of a raw 500.
-      server: { entry: "server" },
+      pages: [
+        // Not link-crawled (it's a raw XML handler, not a page with
+        // <Link>s to it) — list it explicitly so it's baked into a file.
+        { path: "/sitemap.xml" },
+        // /services (the list page) only links each card to /contact, not
+        // to its own /services/$slug detail page — so nothing in the
+        // crawlable link graph ever points at these. They're still in
+        // sitemap.xml for search engines, but crawlLinks alone would never
+        // generate the actual static files for them, so list them
+        // explicitly here too.
+        ...SERVICES.map((s) => ({ path: `/services/${s.slug}` })),
+      ],
     }),
-    // Deploy adapter — only needed when producing a build, not during `vite dev`.
-    ...(command === "build" ? [nitro({ preset: "cloudflare-module" })] : []),
     viteReact(),
   ],
 }));

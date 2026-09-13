@@ -6,18 +6,15 @@ import {
   useRouter,
   HeadContent,
   Scripts,
-  useMatches,
 } from "@tanstack/react-router";
-import { lazy, Suspense, useEffect, type ReactNode } from "react";
+import { lazy, Suspense, type ReactNode } from "react";
 import { CalendarClock } from "lucide-react";
 
 import appCss from "../styles.css?url";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { Button } from "@/components/ui/button";
-import { supabase } from "@/integrations/supabase/client";
 import { getSiteSettings } from "@/lib/site.functions";
-import { cn } from "@/lib/utils";
 
 // Toasts (sonner) are only ever triggered by form submissions (lead form,
 // admin, auth) — never needed for the initial render of any page. Loading
@@ -82,28 +79,6 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   );
 }
 
-// Cloudflare's build step doesn't reliably bake VITE_-prefixed vars into the
-// client bundle (import.meta.env) on this project — Workers Builds is
-// supposed to inject wrangler.jsonc's "vars" into the build container, but
-// in practice the shipped bundle keeps coming back without them, which
-// throws "Missing Supabase environment variable(s)" in every visitor's
-// browser as soon as the root layout mounts (see client.ts).
-//
-// Runtime env (process.env, read here during SSR) is proven reliable
-// instead — nitro's cloudflare-module preset maps the Worker's runtime
-// bindings from wrangler.jsonc onto process.env on every request, which is
-// exactly what sitemap.xml.ts already depends on. So we read the public
-// (RLS-protected, non-secret) Supabase values here at request time and
-// stamp them into the HTML as window.__ENV__, and client.ts reads that
-// first instead of trusting the build-time bake.
-function getPublicRuntimeEnv() {
-  return {
-    VITE_SUPABASE_URL: import.meta.env.VITE_SUPABASE_URL || process.env.SUPABASE_URL || "",
-    VITE_SUPABASE_PUBLISHABLE_KEY:
-      import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY || process.env.SUPABASE_PUBLISHABLE_KEY || "",
-  };
-}
-
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
   head: () => ({
     meta: [
@@ -149,12 +124,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "apple-touch-icon", href: "/favicon-512.png" },
     ],
     scripts: [
-      // Public runtime config for the browser Supabase client — must come
-      // before any other script/component that might read window.__ENV__.
-      // See getPublicRuntimeEnv() above for why this exists.
-      {
-        children: `window.__ENV__ = ${JSON.stringify(getPublicRuntimeEnv()).replace(/</g, "\\u003c")};`,
-      },
       // Google tag (gtag.js) — loaded first, as early in <head> as possible,
       // per Google's own placement guidance.
       {
@@ -234,42 +203,26 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
-  const router = useRouter();
-  const matches = useMatches();
-  const hideChrome = matches.some(
-    (m) => m.pathname.startsWith("/admin") || m.pathname.startsWith("/auth"),
-  );
-
-  useEffect(() => {
-    const { data: sub } = supabase.auth.onAuthStateChange((event) => {
-      if (event !== "SIGNED_IN" && event !== "SIGNED_OUT" && event !== "USER_UPDATED") return;
-      router.invalidate();
-      if (event !== "SIGNED_OUT") queryClient.invalidateQueries();
-    });
-    return () => sub.subscription.unsubscribe();
-  }, [router, queryClient]);
 
   return (
     <QueryClientProvider client={queryClient}>
-      <div className={cn("flex min-h-screen flex-col", !hideChrome && "pb-20 md:pb-0")}>
-        {!hideChrome && <SiteHeader />}
+      <div className="flex min-h-screen flex-col pb-20 md:pb-0">
+        <SiteHeader />
         <main className="flex-1">
           <Outlet />
         </main>
-        {!hideChrome && <SiteFooter />}
+        <SiteFooter />
       </div>
-      {!hideChrome && (
-        <div className="fixed inset-x-0 bottom-0 z-40 border-t border-border bg-background p-3 shadow-[0_-4px_16px_rgba(0,0,0,0.1)] md:hidden">
-          <Link to="/contact">
-            <Button
-              size="lg"
-              className="w-full gap-2 bg-accent text-accent-foreground hover:bg-accent/90"
-            >
-              <CalendarClock className="h-4 w-4" /> Request Service
-            </Button>
-          </Link>
-        </div>
-      )}
+      <div className="fixed inset-x-0 bottom-0 z-40 border-t border-border bg-background p-3 shadow-[0_-4px_16px_rgba(0,0,0,0.1)] md:hidden">
+        <Link to="/contact">
+          <Button
+            size="lg"
+            className="w-full gap-2 bg-accent text-accent-foreground hover:bg-accent/90"
+          >
+            <CalendarClock className="h-4 w-4" /> Request Service
+          </Button>
+        </Link>
+      </div>
       <Suspense fallback={null}>
         <Toaster position="top-right" richColors closeButton />
       </Suspense>

@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { GuaranteeBadge } from "@/components/site/GuaranteeBadge";
 import { ReviewsBar } from "@/components/site/ReviewsBar";
 import { getSiteSettings } from "@/lib/site.functions";
-import { trackCallConversion } from "@/lib/analytics";
+import { trackCallConversion, trackContactPageViewConversion } from "@/lib/analytics";
 
 const AREAS = [
   "Trenton",
@@ -101,6 +101,10 @@ function Contact() {
   const { data: s } = useQuery({ queryKey: ["site-settings"], queryFn: () => getSiteSettings() });
   const phone = s?.phone ?? "+1 (267) 447-8580";
   const digits = phone.replace(/[^+\d]/g, "");
+
+  useEffect(() => {
+    trackContactPageViewConversion();
+  }, []);
 
   return (
     <div>

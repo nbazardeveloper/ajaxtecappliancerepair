@@ -1,0 +1,18 @@
+# Cloudflare Workers Static Assets default to "Cache-Control: public,
+# max-age=0, must-revalidate" for everything in public/ — safe, but it forces
+# a revalidation round-trip on every repeat visit even for content that
+# rarely or never changes. Override it for fonts (self-hosted, effectively
+# immutable — replacing one means renaming/adding a new file) and images
+# (business photos that can change, so a shorter max-age lets an update
+# reach returning visitors within a few weeks instead of a full year).
+/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/images/*
+  Cache-Control: public, max-age=2592000
+
+/favicon.ico
+  Cache-Control: public, max-age=2592000
+
+/favicon-512.png
+  Cache-Control: public, max-age=2592000

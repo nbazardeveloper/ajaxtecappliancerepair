@@ -1,12 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import type {} from "@tanstack/react-start";
-import { createClient } from "@supabase/supabase-js";
-import type { Database } from "@/integrations/supabase/types";
-import { DB_STUBBED, mockServices, mockBlogPosts } from "@/lib/db-stub";
+import { SERVICES, BLOG_POSTS } from "@/lib/static-data";
 
-// Sitemap URLs must be absolute per the sitemap protocol. Falls back to the
-// production domain if SITE_URL isn't set in the environment.
-const BASE_URL = process.env.SITE_URL || "https://ajaxtec.com";
+// Sitemap URLs must be absolute per the sitemap protocol.
+const BASE_URL = "https://ajaxtec.com";
 
 const STATIC_ROUTES = [
   { path: "/", priority: "1.0", changefreq: "weekly" as const },
@@ -25,28 +22,8 @@ export const Route = createFileRoute("/sitemap.xml")({
   server: {
     handlers: {
       GET: async () => {
-        let services: { slug: string }[] = [];
-        let posts: { slug: string }[] = [];
-
-        if (DB_STUBBED) {
-          services = mockServices.filter((s) => s.is_published).map((s) => ({ slug: s.slug }));
-          posts = mockBlogPosts.filter((p) => p.is_published).map((p) => ({ slug: p.slug }));
-        } else {
-          // Prefer build-time VITE_ vars — they survive Cloudflare "Retry
-          // build" runs, unlike plaintext runtime vars (see auth-middleware.ts).
-          const url = import.meta.env.VITE_SUPABASE_URL || process.env.SUPABASE_URL!;
-          const key =
-            import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY || process.env.SUPABASE_PUBLISHABLE_KEY!;
-          const s = createClient<Database>(url, key, {
-            auth: { storage: undefined, persistSession: false, autoRefreshToken: false },
-          });
-          const [{ data: svc }, { data: blog }] = await Promise.all([
-            s.from("services").select("slug").eq("is_published", true),
-            s.from("blog_posts").select("slug").eq("is_published", true),
-          ]);
-          services = svc ?? [];
-          posts = blog ?? [];
-        }
+        const services = SERVICES.filter((s) => s.is_published);
+        const posts = BLOG_POSTS.filter((p) => p.is_published);
 
         const urls = [
           ...STATIC_ROUTES.map((r) => ({
