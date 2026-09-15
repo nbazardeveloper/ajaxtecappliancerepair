@@ -203,11 +203,12 @@ function Home() {
               Sub-Zero · Viking · Wolf specialists
             </span>
             <h1 className="mt-4 max-w-2xl text-balance text-4xl font-semibold tracking-tight text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.7)] md:text-5xl">
-              Premium kitchen appliance repair, done right the first time.
+              Premium kitchen, washer &amp; dryer repair, done right the first time.
             </h1>
             <p className="mt-5 max-w-xl text-base text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.7)] md:text-lg">
               Accurate diagnostics, transparent pricing and long-lasting repairs for high-end
-              residential appliances across New Jersey and Pennsylvania.
+              refrigerators, ranges, washing machines and dryers across New Jersey and
+              Pennsylvania.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <a href={telHref} onClick={trackCallConversion}>
