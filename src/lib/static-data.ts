@@ -238,6 +238,21 @@ export const SERVICES: Service[] = [
     sort_order: 11,
     created_at: "2026-07-17T16:31:20.095328+00:00",
   },
+  {
+    id: "f3a9c1e2-7b4d-4a6f-9c2e-1d8b5a7f6c3e",
+    slug: "washing-machine-repair",
+    title: "Washing Machine Repair",
+    brands: ["Any Brand"],
+    category: "Laundry",
+    short_description: "Repair for washing machines of any brand.",
+    description:
+      "We repair washing machines of any brand — front-load, top-load and stackable units. Common issues we resolve include drainage and drum problems, leaks, spin cycle failures, control board faults and door seal replacement.",
+    image_url: null,
+    is_published: true,
+    is_featured: false,
+    sort_order: 12,
+    created_at: "2026-09-14T00:00:00.000000+00:00",
+  },
 ];
 
 export type Project = {

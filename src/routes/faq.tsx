@@ -31,7 +31,11 @@ const FAQ = [
   },
   {
     q: "Which appliances or brands do you NOT service?",
-    a: "We do not service LG, Samsung or Liebherr refrigerators, and we do not repair dishwashers, washing machines or dryers. Our focus is premium residential kitchen appliances and high-end refrigeration.",
+    a: "We do not service LG, Samsung or Liebherr refrigerators, and we do not repair dishwashers or dryers. Our focus is premium residential kitchen appliances, high-end refrigeration and washing machines.",
+  },
+  {
+    q: "Do you repair washing machines?",
+    a: "Yes. We repair washing machines of any brand — front-load, top-load and stackable units.",
   },
   {
     q: "Do you install new appliances?",
