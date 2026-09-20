@@ -9,6 +9,7 @@ import {
   CreditCard,
   FileSignature,
   FileText,
+  Newspaper,
 } from "lucide-react";
 import { GoogleIcon } from "@/components/site/BrandIcons";
 import { VenmoIcon, ZelleIcon } from "@/components/site/icons/PaymentIcons";
@@ -61,8 +62,8 @@ export function SiteFooter() {
             Honest, expert repair for Sub-Zero, Viking, Wolf and other premium residential kitchen
             appliances, serving NJ &amp; PA. Residential appliance repair only.
           </p>
-          {s?.social_links?.google_reviews ? (
-            <div className="mt-5 flex flex-wrap gap-2">
+          <div className="mt-5 flex flex-wrap gap-2">
+            {s?.social_links?.google_reviews ? (
               <a
                 href={s.social_links.google_reviews}
                 target="_blank"
@@ -71,8 +72,16 @@ export function SiteFooter() {
               >
                 <GoogleIcon className="h-3.5 w-3.5 flex-shrink-0" /> Google Reviews
               </a>
-            </div>
-          ) : null}
+            ) : null}
+            <a
+              href="https://patch.com/pennsylvania/philadelphia/business/listing/593941/ajaxtec-appliance-repair"
+              target="_blank"
+              rel="noreferrer noopener"
+              className="inline-flex items-center gap-1.5 rounded-full border border-border bg-background px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:border-accent"
+            >
+              <Newspaper className="h-3.5 w-3.5 flex-shrink-0" aria-hidden /> Patch.com listing
+            </a>
+          </div>
         </div>
 
         <div className="min-w-0">
