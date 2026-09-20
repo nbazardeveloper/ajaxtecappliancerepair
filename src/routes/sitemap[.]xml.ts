@@ -15,6 +15,7 @@ const STATIC_ROUTES = [
   { path: "/blog", priority: "0.7", changefreq: "weekly" as const },
   { path: "/faq", priority: "0.7", changefreq: "monthly" as const },
   { path: "/contact", priority: "0.9", changefreq: "monthly" as const },
+  { path: "/washing-machine-dryer-repair", priority: "0.8", changefreq: "monthly" as const },
   { path: "/privacy-policy", priority: "0.3", changefreq: "yearly" as const },
 ];
 

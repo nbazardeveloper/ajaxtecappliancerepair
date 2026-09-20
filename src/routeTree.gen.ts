@@ -9,6 +9,8 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as WashingMachineDryerRepairRouteImport } from './routes/washing-machine-dryer-repair'
+import { Route as ThankYouRouteImport } from './routes/thank-you'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as ServiceAreaRouteImport } from './routes/service-area'
@@ -24,6 +26,17 @@ import { Route as ServicesSlugRouteImport } from './routes/services_.$slug'
 import { Route as ProjectsGalleryRouteImport } from './routes/projects_.gallery'
 import { Route as PostSlugRouteImport } from './routes/post.$slug'
 
+const WashingMachineDryerRepairRoute =
+  WashingMachineDryerRepairRouteImport.update({
+    id: '/washing-machine-dryer-repair',
+    path: '/washing-machine-dryer-repair',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ThankYouRoute = ThankYouRouteImport.update({
+  id: '/thank-you',
+  path: '/thank-you',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
@@ -107,6 +120,8 @@ export interface FileRoutesByFullPath {
   '/service-area': typeof ServiceAreaRoute
   '/services': typeof ServicesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/thank-you': typeof ThankYouRoute
+  '/washing-machine-dryer-repair': typeof WashingMachineDryerRepairRoute
   '/post/$slug': typeof PostSlugRoute
   '/projects/gallery': typeof ProjectsGalleryRoute
   '/services/$slug': typeof ServicesSlugRoute
@@ -123,6 +138,8 @@ export interface FileRoutesByTo {
   '/service-area': typeof ServiceAreaRoute
   '/services': typeof ServicesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/thank-you': typeof ThankYouRoute
+  '/washing-machine-dryer-repair': typeof WashingMachineDryerRepairRoute
   '/post/$slug': typeof PostSlugRoute
   '/projects/gallery': typeof ProjectsGalleryRoute
   '/services/$slug': typeof ServicesSlugRoute
@@ -140,6 +157,8 @@ export interface FileRoutesById {
   '/service-area': typeof ServiceAreaRoute
   '/services': typeof ServicesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/thank-you': typeof ThankYouRoute
+  '/washing-machine-dryer-repair': typeof WashingMachineDryerRepairRoute
   '/post/$slug': typeof PostSlugRoute
   '/projects_/gallery': typeof ProjectsGalleryRoute
   '/services_/$slug': typeof ServicesSlugRoute
@@ -158,6 +177,8 @@ export interface FileRouteTypes {
     | '/service-area'
     | '/services'
     | '/sitemap.xml'
+    | '/thank-you'
+    | '/washing-machine-dryer-repair'
     | '/post/$slug'
     | '/projects/gallery'
     | '/services/$slug'
@@ -174,6 +195,8 @@ export interface FileRouteTypes {
     | '/service-area'
     | '/services'
     | '/sitemap.xml'
+    | '/thank-you'
+    | '/washing-machine-dryer-repair'
     | '/post/$slug'
     | '/projects/gallery'
     | '/services/$slug'
@@ -190,6 +213,8 @@ export interface FileRouteTypes {
     | '/service-area'
     | '/services'
     | '/sitemap.xml'
+    | '/thank-you'
+    | '/washing-machine-dryer-repair'
     | '/post/$slug'
     | '/projects_/gallery'
     | '/services_/$slug'
@@ -207,6 +232,8 @@ export interface RootRouteChildren {
   ServiceAreaRoute: typeof ServiceAreaRoute
   ServicesRoute: typeof ServicesRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  ThankYouRoute: typeof ThankYouRoute
+  WashingMachineDryerRepairRoute: typeof WashingMachineDryerRepairRoute
   PostSlugRoute: typeof PostSlugRoute
   ProjectsGalleryRoute: typeof ProjectsGalleryRoute
   ServicesSlugRoute: typeof ServicesSlugRoute
@@ -214,6 +241,20 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/washing-machine-dryer-repair': {
+      id: '/washing-machine-dryer-repair'
+      path: '/washing-machine-dryer-repair'
+      fullPath: '/washing-machine-dryer-repair'
+      preLoaderRoute: typeof WashingMachineDryerRepairRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/thank-you': {
+      id: '/thank-you'
+      path: '/thank-you'
+      fullPath: '/thank-you'
+      preLoaderRoute: typeof ThankYouRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/sitemap.xml': {
       id: '/sitemap.xml'
       path: '/sitemap.xml'
@@ -327,6 +368,8 @@ const rootRouteChildren: RootRouteChildren = {
   ServiceAreaRoute: ServiceAreaRoute,
   ServicesRoute: ServicesRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
+  ThankYouRoute: ThankYouRoute,
+  WashingMachineDryerRepairRoute: WashingMachineDryerRepairRoute,
   PostSlugRoute: PostSlugRoute,
   ProjectsGalleryRoute: ProjectsGalleryRoute,
   ServicesSlugRoute: ServicesSlugRoute,

@@ -152,7 +152,7 @@ function ServiceDetail() {
                 ))}
               </div>
               <div className="mt-8 flex flex-wrap gap-3">
-                <a href={telHref} onClick={trackCallConversion}>
+                <a href={telHref} onClick={trackCallConversion(telHref)}>
                   <Button size="lg" className="gap-2">
                     <Phone className="h-4 w-4" /> Call {phone}
                   </Button>

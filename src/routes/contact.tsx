@@ -1,11 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import { absUrl, DEFAULT_OG_IMAGE } from "@/lib/seo";
 import { useQuery } from "@tanstack/react-query";
 import { Phone, Mail, MapPin, CalendarClock, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { GuaranteeBadge } from "@/components/site/GuaranteeBadge";
 import { ReviewsBar } from "@/components/site/ReviewsBar";
+import { JobyBookingWidget, JOBY_BOOKING_URL } from "@/components/site/JobyBookingWidget";
 import { getSiteSettings } from "@/lib/site.functions";
 import { trackCallConversion, trackContactPageViewConversion } from "@/lib/analytics";
 
@@ -19,45 +20,6 @@ const AREAS = [
   "Bucks County, PA",
   "North & Central NJ",
 ];
-
-const JOBY_BOOKING_ORIGIN = "https://ajaxtec-appliance-repair.joby.io";
-const JOBY_BOOKING_URL = `${JOBY_BOOKING_ORIGIN}/book-appointment`;
-const JOBY_BOOKING_EMBED_URL = `${JOBY_BOOKING_URL}?embed=1`;
-
-// Joby booking widget: listens for postMessage resize events from the embedded
-// iframe and grows/shrinks the iframe to match its content height.
-function JobyBookingWidget() {
-  const iframeRef = useRef<HTMLIFrameElement>(null);
-
-  useEffect(() => {
-    function handleMessage(event: MessageEvent) {
-      if (event.origin !== JOBY_BOOKING_ORIGIN) return;
-      const iframe = iframeRef.current;
-      const data = event.data || {};
-      if (!iframe || data.type !== "joby-booking-widget-resize") return;
-      const height = Number(data.height);
-      if (!Number.isFinite(height)) return;
-      const nextHeight = Math.max(220, Math.ceil(height));
-      iframe.height = String(nextHeight);
-      iframe.style.height = `${nextHeight}px`;
-    }
-    window.addEventListener("message", handleMessage);
-    return () => window.removeEventListener("message", handleMessage);
-  }, []);
-
-  return (
-    <iframe
-      ref={iframeRef}
-      id="joby-booking-widget-4091b958"
-      src={JOBY_BOOKING_EMBED_URL}
-      width="100%"
-      height={900}
-      frameBorder={0}
-      style={{ border: 0, maxWidth: 640, display: "block", margin: "0 auto" }}
-      title="Book an appointment"
-    />
-  );
-}
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -172,7 +134,11 @@ function Contact() {
           <div className="min-w-0">
             <h2 className="text-xs uppercase tracking-[0.2em] text-accent">Direct contact</h2>
             <div className="mt-4 grid gap-4">
-              <a href={`tel:${digits}`} onClick={trackCallConversion} className="min-w-0">
+              <a
+                href={`tel:${digits}`}
+                onClick={trackCallConversion(`tel:${digits}`)}
+                className="min-w-0"
+              >
                 <Button
                   size="lg"
                   className="w-full min-w-0 justify-start gap-3 whitespace-normal text-left"

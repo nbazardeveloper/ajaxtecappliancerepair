@@ -42,7 +42,7 @@ export function FinalCta({
         <h2 className="text-3xl font-semibold tracking-tight md:text-4xl">{heading}</h2>
         <p className="mx-auto mt-3 max-w-xl text-primary-foreground/75">{subtitle}</p>
         <div className="mt-8 flex flex-wrap justify-center gap-3">
-          <a href={telHref} onClick={trackCallConversion}>
+          <a href={telHref} onClick={trackCallConversion(telHref)}>
             <Button size="lg" className="gap-2 bg-white text-primary hover:bg-white/90">
               <Phone className="h-4 w-4" /> Call {phone}
             </Button>

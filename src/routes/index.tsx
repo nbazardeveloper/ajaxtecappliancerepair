@@ -207,11 +207,10 @@ function Home() {
             </h1>
             <p className="mt-5 max-w-xl text-base text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.7)] md:text-lg">
               Accurate diagnostics, transparent pricing and long-lasting repairs for high-end
-              refrigerators, ranges, washing machines and dryers across New Jersey and
-              Pennsylvania.
+              refrigerators, ranges, washing machines and dryers across New Jersey and Pennsylvania.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <a href={telHref} onClick={trackCallConversion}>
+              <a href={telHref} onClick={trackCallConversion(telHref)}>
                 <Button size="lg" className="gap-2 bg-white text-primary hover:bg-white/90">
                   <Phone className="h-4 w-4" /> Call {phone}
                 </Button>
