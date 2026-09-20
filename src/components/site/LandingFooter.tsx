@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { Phone, Mail, Banknote, CreditCard } from "lucide-react";
 import { VenmoIcon, ZelleIcon } from "@/components/site/icons/PaymentIcons";
+import { GoogleIcon, PatchIcon } from "@/components/site/BrandIcons";
 import { getSiteSettings } from "@/lib/site.functions";
 import { trackCallConversion } from "@/lib/analytics";
 
@@ -52,6 +53,26 @@ export function LandingFooter() {
               <Mail className="h-4 w-4 flex-shrink-0" aria-hidden /> {s.email}
             </a>
           ) : null}
+        </div>
+        <div className="flex flex-wrap items-center justify-center gap-2">
+          {s?.social_links?.google_reviews ? (
+            <a
+              href={s.social_links.google_reviews}
+              target="_blank"
+              rel="noreferrer noopener"
+              className="inline-flex items-center gap-1.5 rounded-full border border-white/20 bg-black/20 px-3 py-1.5 text-xs font-medium transition-colors hover:border-accent"
+            >
+              <GoogleIcon className="h-3.5 w-3.5 flex-shrink-0" /> Google Reviews
+            </a>
+          ) : null}
+          <a
+            href="https://patch.com/pennsylvania/philadelphia/business/listing/593941/ajaxtec-appliance-repair"
+            target="_blank"
+            rel="noreferrer noopener"
+            className="inline-flex items-center gap-1.5 rounded-full border border-white/20 bg-black/20 px-3 py-1.5 text-xs font-medium transition-colors hover:border-accent"
+          >
+            <PatchIcon className="h-3 w-auto flex-shrink-0" /> Listing
+          </a>
         </div>
         <div className="flex flex-wrap items-center justify-center gap-2">
           {PAYMENT_METHODS.map(({ label, icon: Icon }) => (

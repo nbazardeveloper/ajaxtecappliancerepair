@@ -9,9 +9,8 @@ import {
   CreditCard,
   FileSignature,
   FileText,
-  Newspaper,
 } from "lucide-react";
-import { GoogleIcon } from "@/components/site/BrandIcons";
+import { GoogleIcon, PatchIcon } from "@/components/site/BrandIcons";
 import { VenmoIcon, ZelleIcon } from "@/components/site/icons/PaymentIcons";
 import { getSiteSettings } from "@/lib/site.functions";
 import { trackCallConversion } from "@/lib/analytics";
@@ -79,7 +78,7 @@ export function SiteFooter() {
               rel="noreferrer noopener"
               className="inline-flex items-center gap-1.5 rounded-full border border-border bg-background px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:border-accent"
             >
-              <Newspaper className="h-3.5 w-3.5 flex-shrink-0" aria-hidden /> Patch.com listing
+              <PatchIcon className="h-3 w-auto flex-shrink-0" /> Listing
             </a>
           </div>
         </div>
