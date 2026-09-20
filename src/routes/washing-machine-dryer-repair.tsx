@@ -63,10 +63,10 @@ export const Route = createFileRoute("/washing-machine-dryer-repair")({
   head: () => {
     const title = buildTitle("Washing Machine & Dryer Repair");
     const shortDescription =
-      "Same-day washing machine and dryer repair across NJ & PA — any brand, any problem.";
+      "Same-day washing machine and dryer repair across NJ & PA — most major brands.";
     const description = buildMetaDescription(
       shortDescription,
-      "From a washer that won't spin or drain to a dryer that won't heat, plus door seal (gasket) replacement — licensed technicians, upfront pricing, $95 diagnostic waived with repair.",
+      "From a washer that won't spin or drain to a dryer that won't heat, plus door seal (gasket) replacement — licensed technicians, upfront pricing, $95 diagnostic waived with repair. We do not currently service Samsung or LG.",
     );
     return {
       meta: [
@@ -120,9 +120,9 @@ function WasherDryerLanding() {
               Washing Machine &amp; Dryer <span className="text-accent">Repair</span>
             </h1>
             <p className="mt-4 max-w-xl text-lg text-muted-foreground">
-              Any brand, any problem — from a washer that won't spin or drain to a dryer that runs
-              cold. Licensed technicians, upfront pricing, and a diagnostic fee that's waived when
-              you complete the repair with us.
+              From a washer that won't spin or drain to a dryer that runs cold. Licensed
+              technicians, upfront pricing, and a diagnostic fee that's waived when you complete the
+              repair with us.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <a href={telHref} onClick={trackCallConversion(telHref)}>
@@ -136,6 +136,9 @@ function WasherDryerLanding() {
                 </Button>
               </a>
             </div>
+            <p className="mt-4 text-xs text-muted-foreground">
+              Note: we do not currently service Samsung or LG washers and dryers.
+            </p>
             <ReviewsBar className="mt-6" />
           </div>
           <ImagePlaceholder
