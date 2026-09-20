@@ -9,7 +9,7 @@ import { ImagePlaceholder } from "@/components/site/ImagePlaceholder";
 import { FinalCta } from "@/components/site/FinalCta";
 import { JobyBookingWidget, JOBY_BOOKING_URL } from "@/components/site/JobyBookingWidget";
 import { getSiteSettings } from "@/lib/site.functions";
-import { trackCallConversion, trackBookingPageViewConversion } from "@/lib/analytics";
+import { trackCallConversion, trackLandingPageViewConversion } from "@/lib/analytics";
 import { buildTitle, buildMetaDescription, absUrl, DEFAULT_OG_IMAGE } from "@/lib/seo";
 
 const AREAS = [
@@ -107,7 +107,7 @@ function WasherDryerLanding() {
   const telHref = `tel:${phone.replace(/[^+\d]/g, "")}`;
 
   useEffect(() => {
-    trackBookingPageViewConversion();
+    trackLandingPageViewConversion();
   }, []);
 
   return (
