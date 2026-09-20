@@ -4,6 +4,7 @@ import {
   Link,
   createRootRouteWithContext,
   useRouter,
+  useRouterState,
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
@@ -13,8 +14,14 @@ import { CalendarClock } from "lucide-react";
 import appCss from "../styles.css?url";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
+import { LandingHeader } from "@/components/site/LandingHeader";
+import { LandingFooter } from "@/components/site/LandingFooter";
 import { Button } from "@/components/ui/button";
 import { getSiteSettings } from "@/lib/site.functions";
+
+// Standalone ad landing pages (no site nav — see LandingHeader/LandingFooter)
+// keyed by path so the root shell knows to swap chrome for them.
+const LANDING_ROUTES = ["/washing-machine-dryer-repair"];
 
 // Toasts (sonner) are only ever triggered by form submissions (lead form,
 // admin, auth) — never needed for the initial render of any page. Loading
@@ -203,25 +210,38 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const isLandingRoute = LANDING_ROUTES.some((p) => pathname === p || pathname === `${p}/`);
 
   return (
     <QueryClientProvider client={queryClient}>
       <div className="flex min-h-screen flex-col pb-20 md:pb-0">
-        <SiteHeader />
+        {isLandingRoute ? <LandingHeader /> : <SiteHeader />}
         <main className="flex-1">
           <Outlet />
         </main>
-        <SiteFooter />
+        {isLandingRoute ? <LandingFooter /> : <SiteFooter />}
       </div>
       <div className="fixed inset-x-0 bottom-0 z-40 border-t border-border bg-background p-3 shadow-[0_-4px_16px_rgba(0,0,0,0.1)] md:hidden">
-        <Link to="/contact">
-          <Button
-            size="lg"
-            className="w-full gap-2 bg-accent text-accent-foreground hover:bg-accent/90"
-          >
-            <CalendarClock className="h-4 w-4" /> Request Service
-          </Button>
-        </Link>
+        {isLandingRoute ? (
+          <a href="#book">
+            <Button
+              size="lg"
+              className="w-full gap-2 bg-accent text-accent-foreground hover:bg-accent/90"
+            >
+              <CalendarClock className="h-4 w-4" /> Book Appointment
+            </Button>
+          </a>
+        ) : (
+          <Link to="/contact">
+            <Button
+              size="lg"
+              className="w-full gap-2 bg-accent text-accent-foreground hover:bg-accent/90"
+            >
+              <CalendarClock className="h-4 w-4" /> Request Service
+            </Button>
+          </Link>
+        )}
       </div>
       <Suspense fallback={null}>
         <Toaster position="top-right" richColors closeButton />
