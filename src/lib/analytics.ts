@@ -35,13 +35,14 @@ export function trackCallConversion(telHref: string) {
   };
 }
 
-// Google Ads "Page view (3)" conversion — a proxy conversion for the
-// /contact page. The actual booking happens inside Joby's embedded iframe
-// (a different origin), which doesn't expose a "booking completed" signal
-// we can listen for, so this counts every visit to the booking page instead
-// of the real completed booking. Less precise, but the only client-side
-// signal available until Joby offers a postMessage/webhook on success.
-export function trackContactPageViewConversion() {
+// Google Ads "Page view (3)" conversion — a proxy conversion for any page
+// that embeds the Joby booking widget (/contact, the washer/dryer landing
+// page). The actual booking happens inside Joby's embedded iframe (a
+// different origin), which doesn't expose a "booking completed" signal we
+// can listen for, so this counts every visit to a booking page instead of
+// the real completed booking. Less precise, but the only client-side signal
+// available until Joby offers a postMessage/webhook on success.
+export function trackBookingPageViewConversion() {
   if (typeof window === "undefined") return;
   window.gtag?.("event", "conversion", {
     send_to: "AW-990368648/cnAUCJWq7PUcEIinn9gD",

@@ -8,7 +8,7 @@ import { GuaranteeBadge } from "@/components/site/GuaranteeBadge";
 import { ReviewsBar } from "@/components/site/ReviewsBar";
 import { JobyBookingWidget, JOBY_BOOKING_URL } from "@/components/site/JobyBookingWidget";
 import { getSiteSettings } from "@/lib/site.functions";
-import { trackCallConversion, trackContactPageViewConversion } from "@/lib/analytics";
+import { trackCallConversion, trackBookingPageViewConversion } from "@/lib/analytics";
 
 const AREAS = [
   "Trenton",
@@ -65,7 +65,7 @@ function Contact() {
   const digits = phone.replace(/[^+\d]/g, "");
 
   useEffect(() => {
-    trackContactPageViewConversion();
+    trackBookingPageViewConversion();
   }, []);
 
   return (

@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { Phone, CalendarClock, CheckCircle2, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -8,7 +9,7 @@ import { ImagePlaceholder } from "@/components/site/ImagePlaceholder";
 import { FinalCta } from "@/components/site/FinalCta";
 import { JobyBookingWidget, JOBY_BOOKING_URL } from "@/components/site/JobyBookingWidget";
 import { getSiteSettings } from "@/lib/site.functions";
-import { trackCallConversion } from "@/lib/analytics";
+import { trackCallConversion, trackBookingPageViewConversion } from "@/lib/analytics";
 import { buildTitle, buildMetaDescription, absUrl, DEFAULT_OG_IMAGE } from "@/lib/seo";
 
 const AREAS = [
@@ -104,6 +105,10 @@ function WasherDryerLanding() {
   const { data: s } = useQuery({ queryKey: ["site-settings"], queryFn: () => getSiteSettings() });
   const phone = s?.phone ?? "+1 (267) 447-8580";
   const telHref = `tel:${phone.replace(/[^+\d]/g, "")}`;
+
+  useEffect(() => {
+    trackBookingPageViewConversion();
+  }, []);
 
   return (
     <div>
