@@ -9,7 +9,7 @@ import { ImagePlaceholder } from "@/components/site/ImagePlaceholder";
 import { FinalCta } from "@/components/site/FinalCta";
 import { JobyBookingWidget, JOBY_BOOKING_URL } from "@/components/site/JobyBookingWidget";
 import { getSiteSettings } from "@/lib/site.functions";
-import { trackCallConversion, trackLandingPageViewConversion } from "@/lib/analytics";
+import { trackLandingCallConversion, trackLandingPageViewConversion } from "@/lib/analytics";
 import { buildTitle, buildMetaDescription, absUrl, DEFAULT_OG_IMAGE } from "@/lib/seo";
 
 const AREAS = [
@@ -125,7 +125,7 @@ function WasherDryerLanding() {
               repair with us.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <a href={telHref} onClick={trackCallConversion(telHref)}>
+              <a href={telHref} onClick={trackLandingCallConversion(telHref)}>
                 <Button size="lg" className="gap-2">
                   <Phone className="h-4 w-4" /> Call {phone}
                 </Button>
@@ -265,6 +265,7 @@ function WasherDryerLanding() {
           </>
         }
         subtitle="Book your appointment online, or call us directly for same-day help."
+        trackCall={trackLandingCallConversion}
       />
     </div>
   );

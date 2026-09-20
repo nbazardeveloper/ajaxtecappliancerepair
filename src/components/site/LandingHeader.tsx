@@ -3,7 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import { Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { getSiteSettings } from "@/lib/site.functions";
-import { trackCallConversion } from "@/lib/analytics";
+import { trackLandingCallConversion } from "@/lib/analytics";
 
 // Stripped-down header for standalone ad landing pages — logo + phone only,
 // no site nav / hamburger menu. A PPC visitor who can click away into the
@@ -42,7 +42,7 @@ export function LandingHeader() {
           </span>
         </Link>
 
-        <a href={telHref} onClick={trackCallConversion(telHref)}>
+        <a href={telHref} onClick={trackLandingCallConversion(telHref)}>
           <Button size="lg" className="gap-2">
             <Phone className="h-4 w-4" /> {phone}
           </Button>

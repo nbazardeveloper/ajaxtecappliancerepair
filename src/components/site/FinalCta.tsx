@@ -11,6 +11,13 @@ interface FinalCtaProps {
   heading?: ReactNode;
   subtitle?: string;
   className?: string;
+  /**
+   * Click-to-call conversion tracker to use for this instance's phone
+   * button. Defaults to the site-wide conversion; pages with their own
+   * dedicated Google Ads conversion action (e.g. the washer/dryer landing
+   * page) pass that page-specific tracker instead.
+   */
+  trackCall?: (telHref: string) => (event: { preventDefault: () => void }) => void;
 }
 
 // Shared "book now / call us" banner shown near the bottom of every content
@@ -28,6 +35,7 @@ export function FinalCta({
   ),
   subtitle = "Book your appointment online, or call us directly for same-day help.",
   className,
+  trackCall = trackCallConversion,
 }: FinalCtaProps) {
   const { data: settings } = useQuery({
     queryKey: ["site-settings"],
@@ -42,7 +50,7 @@ export function FinalCta({
         <h2 className="text-3xl font-semibold tracking-tight md:text-4xl">{heading}</h2>
         <p className="mx-auto mt-3 max-w-xl text-primary-foreground/75">{subtitle}</p>
         <div className="mt-8 flex flex-wrap justify-center gap-3">
-          <a href={telHref} onClick={trackCallConversion(telHref)}>
+          <a href={telHref} onClick={trackCall(telHref)}>
             <Button size="lg" className="gap-2 bg-white text-primary hover:bg-white/90">
               <Phone className="h-4 w-4" /> Call {phone}
             </Button>

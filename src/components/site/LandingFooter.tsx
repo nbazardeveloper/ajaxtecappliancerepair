@@ -4,7 +4,7 @@ import { Phone, Mail, Banknote, CreditCard } from "lucide-react";
 import { VenmoIcon, ZelleIcon } from "@/components/site/icons/PaymentIcons";
 import { GoogleIcon, PatchIcon } from "@/components/site/BrandIcons";
 import { getSiteSettings } from "@/lib/site.functions";
-import { trackCallConversion } from "@/lib/analytics";
+import { trackLandingCallConversion } from "@/lib/analytics";
 
 const PAYMENT_METHODS = [
   { label: "Cash", icon: Banknote },
@@ -40,7 +40,7 @@ export function LandingFooter() {
         <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-primary-foreground/70">
           <a
             href={`tel:${phone.replace(/[^+\d]/g, "")}`}
-            onClick={trackCallConversion(`tel:${phone.replace(/[^+\d]/g, "")}`)}
+            onClick={trackLandingCallConversion(`tel:${phone.replace(/[^+\d]/g, "")}`)}
             className="inline-flex items-center gap-2 transition-colors hover:text-primary-foreground"
           >
             <Phone className="h-4 w-4 flex-shrink-0" aria-hidden /> {phone}
