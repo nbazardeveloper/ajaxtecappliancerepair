@@ -3,14 +3,17 @@ import { useQuery } from "@tanstack/react-query";
 import { Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { getSiteSettings } from "@/lib/site.functions";
-import { trackLandingCallConversion } from "@/lib/analytics";
 
 // Stripped-down header for standalone ad landing pages — logo + phone only,
 // no site nav / hamburger menu. A PPC visitor who can click away into the
 // full site (services, blog, etc.) instead of calling or booking is a
 // conversion the ad spend already paid for and lost, so this keeps the page
 // a single-path funnel instead of just another content page with a header.
-export function LandingHeader() {
+export function LandingHeader({
+  trackCall,
+}: {
+  trackCall: (telHref: string) => (event: { preventDefault: () => void }) => void;
+}) {
   const { data: settings } = useQuery({
     queryKey: ["site-settings"],
     queryFn: () => getSiteSettings(),
@@ -42,7 +45,7 @@ export function LandingHeader() {
           </span>
         </Link>
 
-        <a href={telHref} onClick={trackLandingCallConversion(telHref)}>
+        <a href={telHref} onClick={trackCall(telHref)}>
           <Button size="lg" className="gap-2">
             <Phone className="h-4 w-4" /> {phone}
           </Button>

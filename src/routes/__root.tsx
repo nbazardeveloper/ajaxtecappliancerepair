@@ -18,10 +18,19 @@ import { LandingHeader } from "@/components/site/LandingHeader";
 import { LandingFooter } from "@/components/site/LandingFooter";
 import { Button } from "@/components/ui/button";
 import { getSiteSettings } from "@/lib/site.functions";
+import { trackLandingCallConversion, trackApplianceRepairCallConversion } from "@/lib/analytics";
 
 // Standalone ad landing pages (no site nav — see LandingHeader/LandingFooter)
-// keyed by path so the root shell knows to swap chrome for them.
-const LANDING_ROUTES = ["/washing-machine-dryer-repair"];
+// keyed by path so the root shell knows to swap chrome for them. Each maps to
+// its own Google Ads click-to-call conversion so the header/footer phone
+// links report under the right page.
+const LANDING_ROUTES: Record<
+  string,
+  (telHref: string) => (event: { preventDefault: () => void }) => void
+> = {
+  "/washing-machine-dryer-repair": trackLandingCallConversion,
+  "/appliance-repair": trackApplianceRepairCallConversion,
+};
 
 // Toasts (sonner) are only ever triggered by form submissions (lead form,
 // admin, auth) — never needed for the initial render of any page. Loading
@@ -211,16 +220,17 @@ function RootShell({ children }: { children: ReactNode }) {
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
   const pathname = useRouterState({ select: (s) => s.location.pathname });
-  const isLandingRoute = LANDING_ROUTES.some((p) => pathname === p || pathname === `${p}/`);
+  const landingCallTracker = LANDING_ROUTES[pathname.replace(/(.)\/$/, "$1")];
+  const isLandingRoute = landingCallTracker !== undefined;
 
   return (
     <QueryClientProvider client={queryClient}>
       <div className="flex min-h-screen flex-col pb-20 md:pb-0">
-        {isLandingRoute ? <LandingHeader /> : <SiteHeader />}
+        {isLandingRoute ? <LandingHeader trackCall={landingCallTracker} /> : <SiteHeader />}
         <main className="flex-1">
           <Outlet />
         </main>
-        {isLandingRoute ? <LandingFooter /> : <SiteFooter />}
+        {isLandingRoute ? <LandingFooter trackCall={landingCallTracker} /> : <SiteFooter />}
       </div>
       <div className="fixed inset-x-0 bottom-0 z-40 border-t border-border bg-background p-3 shadow-[0_-4px_16px_rgba(0,0,0,0.1)] md:hidden">
         {isLandingRoute ? (

@@ -115,7 +115,7 @@ export const Route = createFileRoute("/")({
         {
           name: "description",
           content:
-            "Premium repair for Sub-Zero, Viking, Wolf and other high-end kitchen appliances across New Jersey and Pennsylvania. Call today.",
+            "Local appliance repair company in NJ & PA — fridges, washers, dryers, ovens and more, plus Sub-Zero, Viking & Wolf. Urgent same-day or next-day service.",
         },
         { property: "og:title", content: "Ajaxtec Appliance Repair" },
         {

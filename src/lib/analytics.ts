@@ -86,6 +86,17 @@ export function trackLandingPageViewConversion() {
   });
 }
 
+// Dedicated click-to-call and page-load conversions for the /appliance-repair
+// landing page, kept separate from the washer/dryer page's so the two ad
+// groups report independently. Intentionally no-ops until that page's own
+// conversion actions are created in Ads — firing the washer/dryer ones here
+// would mix the two pages' numbers.
+export function trackApplianceRepairCallConversion(_telHref: string) {
+  return (_event: { preventDefault: () => void }) => {};
+}
+
+export function trackApplianceRepairPageViewConversion() {}
+
 declare global {
   interface Window {
     gtag?: (...args: unknown[]) => void;

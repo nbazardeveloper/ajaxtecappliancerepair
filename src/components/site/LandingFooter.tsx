@@ -4,7 +4,6 @@ import { Phone, Mail, Banknote, CreditCard } from "lucide-react";
 import { VenmoIcon, ZelleIcon } from "@/components/site/icons/PaymentIcons";
 import { GoogleIcon, PatchIcon } from "@/components/site/BrandIcons";
 import { getSiteSettings } from "@/lib/site.functions";
-import { trackLandingCallConversion } from "@/lib/analytics";
 
 const PAYMENT_METHODS = [
   { label: "Cash", icon: Banknote },
@@ -18,7 +17,11 @@ const PAYMENT_METHODS = [
 // navigation (services, blog, reviews, etc.) SiteFooter normally carries.
 // Those links are exactly the kind of exit a paid landing page shouldn't
 // offer; see LandingHeader for the same reasoning.
-export function LandingFooter() {
+export function LandingFooter({
+  trackCall,
+}: {
+  trackCall: (telHref: string) => (event: { preventDefault: () => void }) => void;
+}) {
   const { data: s } = useQuery({
     queryKey: ["site-settings"],
     queryFn: () => getSiteSettings(),
@@ -40,7 +43,7 @@ export function LandingFooter() {
         <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-primary-foreground/70">
           <a
             href={`tel:${phone.replace(/[^+\d]/g, "")}`}
-            onClick={trackLandingCallConversion(`tel:${phone.replace(/[^+\d]/g, "")}`)}
+            onClick={trackCall(`tel:${phone.replace(/[^+\d]/g, "")}`)}
             className="inline-flex items-center gap-2 transition-colors hover:text-primary-foreground"
           >
             <Phone className="h-4 w-4 flex-shrink-0" aria-hidden /> {phone}
