@@ -126,6 +126,18 @@ export function trackLandingFormStartConversion() {
   });
 }
 
+// Google Ads "Submit lead form" conversion for the main site's booking form
+// on /contact — its own conversion action, fired on form start for the same
+// reason as trackApplianceRepairFormStartConversion above.
+export function trackContactFormStartConversion() {
+  if (typeof window === "undefined") return;
+  window.gtag?.("event", "conversion", {
+    send_to: "AW-990368648/w8BQCKXwoYcdEIinn9gD",
+    value: 1.0,
+    currency: "USD",
+  });
+}
+
 // Page-load conversion for /appliance-repair — intentionally a no-op until
 // that page gets its own page-view conversion action in Ads (firing the
 // washer/dryer page's "Page view (4)" here would mix the two pages' numbers).

@@ -8,7 +8,11 @@ import { GuaranteeBadge } from "@/components/site/GuaranteeBadge";
 import { ReviewsBar } from "@/components/site/ReviewsBar";
 import { JobyBookingWidget, JOBY_BOOKING_URL } from "@/components/site/JobyBookingWidget";
 import { getSiteSettings } from "@/lib/site.functions";
-import { trackCallConversion, trackBookingPageViewConversion } from "@/lib/analytics";
+import {
+  trackCallConversion,
+  trackBookingPageViewConversion,
+  trackContactFormStartConversion,
+} from "@/lib/analytics";
 
 const AREAS = [
   "Trenton",
@@ -105,7 +109,7 @@ function Contact() {
               </a>
             </div>
             <div className="mt-6 overflow-hidden rounded-lg border border-border">
-              <JobyBookingWidget />
+              <JobyBookingWidget onFormStart={trackContactFormStartConversion} />
             </div>
             <a
               href={JOBY_BOOKING_URL}
