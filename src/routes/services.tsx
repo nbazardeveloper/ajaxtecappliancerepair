@@ -58,15 +58,12 @@ function ServicesPage() {
         <div className="mx-auto max-w-7xl px-4 py-16 md:px-8 md:py-20">
           <h1 className="text-4xl font-semibold tracking-tight md:text-5xl">Services</h1>
           <p className="mt-4 max-w-2xl text-muted-foreground">
-            We repair premium residential kitchen appliances and specialize in Sub-Zero, Viking and
-            Wolf — across ranges, stoves, cooktops, ovens and refrigeration. We also service other
-            high-end brands including Thermador, Bosch, Dacor, GE Monogram, Bertazzoni and Blue
-            Star.
+            From refrigerators and ranges to washers and dryers, we fix every kind of home
+            appliance.
           </p>
           <p className="mt-3 max-w-2xl text-sm text-muted-foreground">
-            We do not service LG, Samsung or Liebherr refrigerators, and we do not repair
-            dishwashers or dryers. We also repair washing machines of any brand. We provide repair
-            and maintenance only — we do not perform new appliance installations.
+            We service all brands except Samsung, LG and Liebherr. We handle repairs and
+            maintenance only — we don't install new appliances.
           </p>
         </div>
       </section>
