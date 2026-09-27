@@ -27,18 +27,32 @@ function isBookingSuccessMessage(data: unknown): boolean {
 // Shared by every page that embeds the scheduler (contact page, service
 // landing pages) so they all point at the same form and behave the same way.
 export function JobyBookingWidget({
-  trackBooking,
+  onFormStart,
 }: {
   /**
-   * Page-specific Google Ads form conversion to fire on a completed booking
-   * before redirecting to /thank-you (e.g. the /appliance-repair landing
-   * page's own "Submit lead form" action). Receives the redirect as its
-   * callback so the beacon can go out first.
+   * Called once, the first time the visitor clicks/taps into the scheduler.
+   * The iframe is cross-origin, so clicks inside it can't be observed
+   * directly — instead this watches for the parent window losing focus to
+   * the iframe, the standard way to detect interaction with an embed.
    */
-  trackBooking?: (onDone: () => void) => void;
+  onFormStart?: () => void;
 } = {}) {
   const iframeRef = useRef<HTMLIFrameElement>(null);
-  const bookedRef = useRef(false);
+
+  useEffect(() => {
+    if (!onFormStart) return;
+    let started = false;
+    function handleBlur() {
+      // activeElement only updates to the iframe after the blur event.
+      window.setTimeout(() => {
+        if (started || document.activeElement !== iframeRef.current) return;
+        started = true;
+        onFormStart?.();
+      }, 0);
+    }
+    window.addEventListener("blur", handleBlur);
+    return () => window.removeEventListener("blur", handleBlur);
+  }, [onFormStart]);
 
   useEffect(() => {
     function handleMessage(event: MessageEvent) {
@@ -57,20 +71,12 @@ export function JobyBookingWidget({
       }
 
       if (isBookingSuccessMessage(data)) {
-        // Joby may post more than one success-shaped message per booking —
-        // only count (and redirect) once.
-        if (bookedRef.current) return;
-        bookedRef.current = true;
-        const goToThankYou = () => {
-          window.location.href = "/thank-you";
-        };
-        if (trackBooking) trackBooking(goToThankYou);
-        else goToThankYou();
+        window.location.href = "/thank-you";
       }
     }
     window.addEventListener("message", handleMessage);
     return () => window.removeEventListener("message", handleMessage);
-  }, [trackBooking]);
+  }, []);
 
   return (
     <iframe

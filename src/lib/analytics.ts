@@ -99,33 +99,18 @@ export function trackApplianceRepairCallConversion(telHref: string) {
 }
 
 // Google Ads "Submit lead form" conversion for the /appliance-repair landing
-// page — fired when the embedded Joby scheduler reports a completed booking
-// (see JobyBookingWidget), then calls onDone (the redirect to /thank-you).
-// Same beacon-before-navigation pattern as reportCallConversion: wait for
-// gtag's event_callback, with a short fallback so a blocked/slow beacon
-// never strands the visitor on the form.
-export function trackApplianceRepairFormConversion(onDone: () => void) {
-  if (typeof window === "undefined" || typeof window.gtag !== "function") {
-    onDone();
-    return;
-  }
-
-  let done = false;
-  const finish = () => {
-    if (done) return;
-    done = true;
-    onDone();
-  };
-
-  const fallback = window.setTimeout(finish, 1000);
-  window.gtag("event", "conversion", {
+// page — fired when the visitor STARTS filling in the embedded Joby scheduler
+// (first click/tap into it; see JobyBookingWidget's onFormStart), not on a
+// completed booking. Joby's embed never tells the parent page a booking went
+// through (it only posts resize messages, and has no redirect-after-submit
+// setting), so "started the form" is the closest signal available. It
+// overcounts real bookings — swap it for a completion signal if Joby adds one.
+export function trackApplianceRepairFormStartConversion() {
+  if (typeof window === "undefined") return;
+  window.gtag?.("event", "conversion", {
     send_to: "AW-990368648/t4XWCJyzkocdEIinn9gD",
     value: 1.0,
     currency: "USD",
-    event_callback: () => {
-      window.clearTimeout(fallback);
-      finish();
-    },
   });
 }
 
