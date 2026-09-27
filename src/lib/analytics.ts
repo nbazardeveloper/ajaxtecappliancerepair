@@ -86,15 +86,21 @@ export function trackLandingPageViewConversion() {
   });
 }
 
-// Dedicated click-to-call and page-load conversions for the /appliance-repair
-// landing page, kept separate from the washer/dryer page's so the two ad
-// groups report independently. Intentionally no-ops until that page's own
-// conversion actions are created in Ads — firing the washer/dryer ones here
-// would mix the two pages' numbers.
-export function trackApplianceRepairCallConversion(_telHref: string) {
-  return (_event: { preventDefault: () => void }) => {};
+// Google Ads "Click to call (4)" conversion — the dedicated click-to-call
+// conversion action for the /appliance-repair landing page, kept separate
+// from the washer/dryer page's "Click to call (3)" so the two ad groups
+// report independently.
+export function trackApplianceRepairCallConversion(telHref: string) {
+  return reportCallConversion(telHref, {
+    send_to: "AW-990368648/msmmCO6wmYcdEIinn9gD",
+    value: 1.0,
+    currency: "USD",
+  });
 }
 
+// Page-load conversion for /appliance-repair — intentionally a no-op until
+// that page gets its own page-view conversion action in Ads (firing the
+// washer/dryer page's "Page view (4)" here would mix the two pages' numbers).
 export function trackApplianceRepairPageViewConversion() {}
 
 declare global {
