@@ -114,6 +114,18 @@ export function trackApplianceRepairFormStartConversion() {
   });
 }
 
+// Google Ads "Submit lead form" conversion for the washer/dryer landing page —
+// its own conversion action, fired on form start for the same reason as
+// trackApplianceRepairFormStartConversion above.
+export function trackLandingFormStartConversion() {
+  if (typeof window === "undefined") return;
+  window.gtag?.("event", "conversion", {
+    send_to: "AW-990368648/GUqACPncl4cdEIinn9gD",
+    value: 1.0,
+    currency: "USD",
+  });
+}
+
 // Page-load conversion for /appliance-repair — intentionally a no-op until
 // that page gets its own page-view conversion action in Ads (firing the
 // washer/dryer page's "Page view (4)" here would mix the two pages' numbers).

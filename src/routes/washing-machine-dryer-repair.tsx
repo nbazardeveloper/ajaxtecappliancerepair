@@ -9,7 +9,11 @@ import { ImagePlaceholder } from "@/components/site/ImagePlaceholder";
 import { FinalCta } from "@/components/site/FinalCta";
 import { JobyBookingWidget, JOBY_BOOKING_URL } from "@/components/site/JobyBookingWidget";
 import { getSiteSettings } from "@/lib/site.functions";
-import { trackLandingCallConversion, trackLandingPageViewConversion } from "@/lib/analytics";
+import {
+  trackLandingCallConversion,
+  trackLandingFormStartConversion,
+  trackLandingPageViewConversion,
+} from "@/lib/analytics";
 import { buildTitle, buildMetaDescription, absUrl, DEFAULT_OG_IMAGE } from "@/lib/seo";
 
 const AREAS = [
@@ -213,7 +217,7 @@ function WasherDryerLanding() {
                 </a>
               </div>
               <div className="mt-6 overflow-hidden rounded-lg border border-border">
-                <JobyBookingWidget />
+                <JobyBookingWidget onFormStart={trackLandingFormStartConversion} />
               </div>
               <a
                 href={JOBY_BOOKING_URL}
