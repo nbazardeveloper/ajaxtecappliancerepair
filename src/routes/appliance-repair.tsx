@@ -11,6 +11,7 @@ import { JobyBookingWidget, JOBY_BOOKING_URL } from "@/components/site/JobyBooki
 import { getSiteSettings } from "@/lib/site.functions";
 import {
   trackApplianceRepairCallConversion,
+  trackApplianceRepairFormConversion,
   trackApplianceRepairPageViewConversion,
 } from "@/lib/analytics";
 import { buildMetaDescription, absUrl, DEFAULT_OG_IMAGE } from "@/lib/seo";
@@ -258,7 +259,7 @@ function ApplianceRepairLanding() {
                 </a>
               </div>
               <div className="mt-6 overflow-hidden rounded-lg border border-border">
-                <JobyBookingWidget />
+                <JobyBookingWidget trackBooking={trackApplianceRepairFormConversion} />
               </div>
               <a
                 href={JOBY_BOOKING_URL}

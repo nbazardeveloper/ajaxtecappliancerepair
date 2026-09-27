@@ -98,6 +98,37 @@ export function trackApplianceRepairCallConversion(telHref: string) {
   });
 }
 
+// Google Ads "Submit lead form" conversion for the /appliance-repair landing
+// page — fired when the embedded Joby scheduler reports a completed booking
+// (see JobyBookingWidget), then calls onDone (the redirect to /thank-you).
+// Same beacon-before-navigation pattern as reportCallConversion: wait for
+// gtag's event_callback, with a short fallback so a blocked/slow beacon
+// never strands the visitor on the form.
+export function trackApplianceRepairFormConversion(onDone: () => void) {
+  if (typeof window === "undefined" || typeof window.gtag !== "function") {
+    onDone();
+    return;
+  }
+
+  let done = false;
+  const finish = () => {
+    if (done) return;
+    done = true;
+    onDone();
+  };
+
+  const fallback = window.setTimeout(finish, 1000);
+  window.gtag("event", "conversion", {
+    send_to: "AW-990368648/t4XWCJyzkocdEIinn9gD",
+    value: 1.0,
+    currency: "USD",
+    event_callback: () => {
+      window.clearTimeout(fallback);
+      finish();
+    },
+  });
+}
+
 // Page-load conversion for /appliance-repair — intentionally a no-op until
 // that page gets its own page-view conversion action in Ads (firing the
 // washer/dryer page's "Page view (4)" here would mix the two pages' numbers).

@@ -26,8 +26,19 @@ function isBookingSuccessMessage(data: unknown): boolean {
 // forwards visitors to the shared /thank-you page once a booking succeeds.
 // Shared by every page that embeds the scheduler (contact page, service
 // landing pages) so they all point at the same form and behave the same way.
-export function JobyBookingWidget() {
+export function JobyBookingWidget({
+  trackBooking,
+}: {
+  /**
+   * Page-specific Google Ads form conversion to fire on a completed booking
+   * before redirecting to /thank-you (e.g. the /appliance-repair landing
+   * page's own "Submit lead form" action). Receives the redirect as its
+   * callback so the beacon can go out first.
+   */
+  trackBooking?: (onDone: () => void) => void;
+} = {}) {
   const iframeRef = useRef<HTMLIFrameElement>(null);
+  const bookedRef = useRef(false);
 
   useEffect(() => {
     function handleMessage(event: MessageEvent) {
@@ -46,12 +57,20 @@ export function JobyBookingWidget() {
       }
 
       if (isBookingSuccessMessage(data)) {
-        window.location.href = "/thank-you";
+        // Joby may post more than one success-shaped message per booking —
+        // only count (and redirect) once.
+        if (bookedRef.current) return;
+        bookedRef.current = true;
+        const goToThankYou = () => {
+          window.location.href = "/thank-you";
+        };
+        if (trackBooking) trackBooking(goToThankYou);
+        else goToThankYou();
       }
     }
     window.addEventListener("message", handleMessage);
     return () => window.removeEventListener("message", handleMessage);
-  }, []);
+  }, [trackBooking]);
 
   return (
     <iframe
