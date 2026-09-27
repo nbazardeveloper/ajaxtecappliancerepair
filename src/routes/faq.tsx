@@ -26,12 +26,8 @@ const FAQ = [
     a: "Warranty depends on the specific repair and the parts installed.",
   },
   {
-    q: "Which brands do you service?",
-    a: "We service all brands except Samsung, LG and Liebherr.",
-  },
-  {
-    q: "Which appliances or brands do you NOT service?",
-    a: "We repair all types of home appliances, but we do not service Samsung, LG or Liebherr — for any appliance type. We also do not install new appliances; we handle repairs and maintenance only.",
+    q: "Which appliances and brands do you service?",
+    a: "We repair all types of home appliances for every brand except Samsung, LG and Liebherr. We handle repairs and maintenance only — we do not install new appliances.",
   },
   {
     q: "Do you repair washing machines and dryers?",
