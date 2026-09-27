@@ -473,7 +473,7 @@ function Home() {
           <div className="h-[420px] overflow-hidden rounded-lg border border-border md:h-[640px]">
             <iframe
               title="Map of NJ and PA service area"
-              src="https://maps.google.com/maps?ll=40.927171,-75.77488&z=8&output=embed"
+              src="https://maps.google.com/maps?q=AjaxTec+Appliance+Repair&ll=40.2321035,-75.7749003&z=8&output=embed"
               width="100%"
               height="100%"
               className="border-0"
