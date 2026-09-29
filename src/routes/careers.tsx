@@ -1,4 +1,3 @@
-import { useState, type FormEvent } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { CheckCircle2, Mail, Phone } from "lucide-react";
@@ -6,9 +5,6 @@ import { absUrl, DEFAULT_OG_IMAGE } from "@/lib/seo";
 import { getSiteSettings } from "@/lib/site.functions";
 import { ImagePlaceholder } from "@/components/site/ImagePlaceholder";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
 
 const PERKS = [
   {
@@ -38,26 +34,6 @@ const REQUIREMENTS = [
   "Located in or willing to cover our NJ & PA service area.",
 ];
 
-// No backend on this site — the application is sent as a pre-filled email
-// to the business inbox via mailto:, so the applicant can also attach a résumé.
-type ApplicationForm = {
-  name: string;
-  phone: string;
-  email: string;
-  location: string;
-  experience: string;
-  message: string;
-};
-
-const EMPTY_FORM: ApplicationForm = {
-  name: "",
-  phone: "",
-  email: "",
-  location: "",
-  experience: "",
-  message: "",
-};
-
 export const Route = createFileRoute("/careers")({
   head: () => ({
     meta: [
@@ -82,28 +58,6 @@ export const Route = createFileRoute("/careers")({
 
 function Careers() {
   const { data: s } = useQuery({ queryKey: ["site-settings"], queryFn: () => getSiteSettings() });
-  const [form, setForm] = useState<ApplicationForm>(EMPTY_FORM);
-
-  const update = (key: keyof ApplicationForm) => (e: { target: { value: string } }) =>
-    setForm((f) => ({ ...f, [key]: e.target.value }));
-
-  const onSubmit = (e: FormEvent) => {
-    e.preventDefault();
-    if (!s) return;
-    const subject = `Technician application — ${form.name}`;
-    const body = [
-      `Name: ${form.name}`,
-      `Phone: ${form.phone}`,
-      `Email: ${form.email}`,
-      `Location: ${form.location}`,
-      `Years of experience: ${form.experience}`,
-      "",
-      form.message,
-      "",
-      "(Please attach your résumé if you have one.)",
-    ].join("\n");
-    window.location.href = `mailto:${s.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-  };
 
   return (
     <div>
@@ -174,89 +128,24 @@ function Careers() {
           <span className="text-accent">Apply</span> today
         </h2>
         <p className="mt-3 text-muted-foreground">
-          Fill out the form below — it opens a pre-filled email to our team where you can attach
-          your résumé.
+          Send your résumé by email or give us a call — tell us about your experience, the brands
+          you've worked on and your availability.
         </p>
 
-        <form onSubmit={onSubmit} className="mt-10 grid gap-5 sm:grid-cols-2">
-          <div className="grid gap-2">
-            <Label htmlFor="name">Full name</Label>
-            <Input
-              id="name"
-              required
-              autoComplete="name"
-              value={form.name}
-              onChange={update("name")}
-            />
-          </div>
-          <div className="grid gap-2">
-            <Label htmlFor="phone">Phone</Label>
-            <Input
-              id="phone"
-              type="tel"
-              required
-              autoComplete="tel"
-              value={form.phone}
-              onChange={update("phone")}
-            />
-          </div>
-          <div className="grid gap-2">
-            <Label htmlFor="email">Email</Label>
-            <Input
-              id="email"
-              type="email"
-              autoComplete="email"
-              value={form.email}
-              onChange={update("email")}
-            />
-          </div>
-          <div className="grid gap-2">
-            <Label htmlFor="location">City / area</Label>
-            <Input id="location" value={form.location} onChange={update("location")} />
-          </div>
-          <div className="grid gap-2 sm:col-span-2">
-            <Label htmlFor="experience">Years of appliance repair experience</Label>
-            <Input
-              id="experience"
-              inputMode="numeric"
-              value={form.experience}
-              onChange={update("experience")}
-            />
-          </div>
-          <div className="grid gap-2 sm:col-span-2">
-            <Label htmlFor="message">Tell us about yourself</Label>
-            <Textarea
-              id="message"
-              rows={5}
-              placeholder="Brands you've worked on, certifications, availability…"
-              value={form.message}
-              onChange={update("message")}
-            />
-          </div>
-          <div className="sm:col-span-2">
-            <Button type="submit" size="lg" disabled={!s}>
-              Send application
-            </Button>
-          </div>
-        </form>
-
         {s && (
-          <div className="mt-10 flex flex-wrap gap-x-8 gap-y-3 text-sm text-muted-foreground">
-            <span>Prefer to reach out directly?</span>
-            <a
-              href={`mailto:${s.email}?subject=${encodeURIComponent("Technician application")}`}
-              className="flex items-center gap-2 text-accent hover:underline"
-            >
-              <Mail className="h-4 w-4" aria-hidden />
-              {s.email}
-            </a>
-            <a
-              href={`tel:${s.phone.replace(/[^\d+]/g, "")}`}
-              className="flex items-center gap-2 text-accent hover:underline"
-            >
-              <Phone className="h-4 w-4" aria-hidden />
-              {s.phone}
-            </a>
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <Button asChild size="lg">
+              <a href={`mailto:${s.email}?subject=${encodeURIComponent("Technician application")}`}>
+                <Mail className="h-4 w-4" aria-hidden />
+                {s.email}
+              </a>
+            </Button>
+            <Button asChild size="lg" variant="outline">
+              <a href={`tel:${s.phone.replace(/[^\d+]/g, "")}`}>
+                <Phone className="h-4 w-4" aria-hidden />
+                {s.phone}
+              </a>
+            </Button>
           </div>
         )}
       </section>
