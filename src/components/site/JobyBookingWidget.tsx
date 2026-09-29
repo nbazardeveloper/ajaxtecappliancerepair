@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 
 export const JOBY_BOOKING_ORIGIN = "https://ajaxtec-appliance-repair.joby.io";
-export const JOBY_BOOKING_URL = `${JOBY_BOOKING_ORIGIN}/book-appointment/newshortform`;
+export const JOBY_BOOKING_URL = `${JOBY_BOOKING_ORIGIN}/book-appointment`;
 const JOBY_BOOKING_EMBED_URL = `${JOBY_BOOKING_URL}?embed=1`;
 
 // Joby doesn't publicly document a "submission complete" postMessage event.
