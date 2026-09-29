@@ -186,6 +186,11 @@ export function SiteFooter() {
               </Link>
             </li>
             <li>
+              <Link to="/careers" className="transition-colors hover:text-primary-foreground">
+                Careers
+              </Link>
+            </li>
+            <li>
               <Link
                 to="/privacy-policy"
                 className="transition-colors hover:text-primary-foreground"
