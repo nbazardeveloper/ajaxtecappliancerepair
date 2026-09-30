@@ -27,11 +27,11 @@ const FAQ = [
   },
   {
     q: "Which appliances and brands do you service?",
-    a: "We repair all types of home appliances for every brand except Samsung, LG and Liebherr. We handle repairs and maintenance only — we do not install new appliances.",
+    a: "We repair all major home appliances from every brand. The only exception is refrigerators from Samsung, LG and Liebherr — we don't service those. We handle repairs and maintenance only — we do not install new appliances.",
   },
   {
     q: "Do you repair washing machines and dryers?",
-    a: "Yes. We repair washers and dryers — front-load, top-load and stackable units — for every brand except Samsung, LG and Liebherr.",
+    a: "Yes. We repair washers and dryers — front-load, top-load and stackable units — for every brand, including Samsung and LG.",
   },
   {
     q: "Do you install new appliances?",

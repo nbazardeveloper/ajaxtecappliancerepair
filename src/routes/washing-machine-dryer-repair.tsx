@@ -70,7 +70,7 @@ export const Route = createFileRoute("/washing-machine-dryer-repair")({
       "Same-day washing machine and dryer repair across NJ & PA — most major brands.";
     const description = buildMetaDescription(
       shortDescription,
-      "From a washer that won't spin or drain to a dryer that won't heat, plus door seal (gasket) replacement — licensed technicians, upfront pricing, $95 diagnostic waived with repair. We do not currently service Samsung or LG.",
+      "From a washer that won't spin or drain to a dryer that won't heat, plus door seal (gasket) replacement — licensed technicians, upfront pricing, $95 diagnostic waived with repair. All brands, including Samsung and LG.",
     );
     return {
       meta: [
@@ -141,7 +141,7 @@ function WasherDryerLanding() {
               </a>
             </div>
             <p className="mt-4 text-xs text-muted-foreground">
-              Note: we do not currently service Samsung or LG washers and dryers.
+              We repair washers and dryers from every brand, including Samsung and LG.
             </p>
             <ReviewsBar className="mt-6" />
           </div>

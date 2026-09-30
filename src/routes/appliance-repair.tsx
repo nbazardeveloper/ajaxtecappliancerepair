@@ -200,8 +200,8 @@ function ApplianceRepairLanding() {
           <div className="rounded-lg border border-border bg-card p-6">
             <h2 className="text-2xl font-semibold tracking-tight">Appliances we repair</h2>
             <p className="mt-3 text-sm text-muted-foreground">
-              Residential appliances of every brand except Samsung, LG and Liebherr. Repairs and
-              maintenance only — we don't install new appliances.
+              Residential appliances of every brand — except Samsung, LG and Liebherr refrigerators.
+              Repairs and maintenance only — we don't install new appliances.
             </p>
             <ul className="mt-4 grid grid-cols-2 gap-2.5 text-sm">
               {APPLIANCES.map((a) => (

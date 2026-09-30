@@ -62,8 +62,8 @@ function ServicesPage() {
             appliance.
           </p>
           <p className="mt-3 max-w-2xl text-sm text-muted-foreground">
-            We service all brands except Samsung, LG and Liebherr. We handle repairs and
-            maintenance only — we don't install new appliances.
+            We service all brands — except Samsung, LG and Liebherr refrigerators. We handle repairs
+            and maintenance only — we don't install new appliances.
           </p>
         </div>
       </section>
