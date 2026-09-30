@@ -35,12 +35,13 @@ function reportCallConversion(
   };
 }
 
-// Google Ads "Click to call" conversion — fired on click of any tel: link
-// site-wide so a phone call started from the site counts as a conversion in
-// the AW-990368648 account.
+// Google Ads "Click to call (3)" conversion — fired on click of any tel: link
+// site-wide (every page except the two ad landing pages, which have their own
+// actions) so a phone call started from the site counts as a conversion in
+// the AW-990368648 account. Replaced the earlier "Click to call" action.
 export function trackCallConversion(telHref: string) {
   return reportCallConversion(telHref, {
-    send_to: "AW-990368648/N7DWCOv_gv8cEIinn9gD",
+    send_to: "AW-990368648/8SXaCOT6mYsdEIinn9gD",
     value: 95.0,
     currency: "USD",
   });
