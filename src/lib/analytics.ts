@@ -86,13 +86,13 @@ export function trackLandingPageViewConversion() {
   });
 }
 
-// Google Ads "Click to call (4)" conversion — the dedicated click-to-call
+// Google Ads "Click to call (2)" conversion — the dedicated click-to-call
 // conversion action for the /appliance-repair landing page, kept separate
 // from the washer/dryer page's "Click to call (3)" so the two ad groups
-// report independently.
+// report independently. Replaced the earlier "Click to call (4)" action.
 export function trackApplianceRepairCallConversion(telHref: string) {
   return reportCallConversion(telHref, {
-    send_to: "AW-990368648/msmmCO6wmYcdEIinn9gD",
+    send_to: "AW-990368648/lrUhCJLck4sdEIinn9gD",
     value: 1.0,
     currency: "USD",
   });
