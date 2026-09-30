@@ -46,15 +46,16 @@ export function trackCallConversion(telHref: string) {
   });
 }
 
-// Google Ads "Click to call (3)" conversion — the dedicated click-to-call
-// conversion action set up in Ads specifically for the washer/dryer landing
+// Google Ads click-to-call conversion (label 95YTCNvbmIsdEIinn9gD) — the
+// dedicated click-to-call conversion action for the washer/dryer landing
 // page, so calls started from that page report separately from the rest of
 // the site's phone links (see trackLandingPageViewConversion below for the
-// same page-specific-conversion-action pattern).
+// same page-specific-conversion-action pattern). Replaced the earlier
+// "Click to call (3)" action.
 export function trackLandingCallConversion(telHref: string) {
   return reportCallConversion(telHref, {
-    send_to: "AW-990368648/AUu5COK8iv8cEIinn9gD",
-    value: 1.0,
+    send_to: "AW-990368648/95YTCNvbmIsdEIinn9gD",
+    value: 95.0,
     currency: "USD",
   });
 }
