@@ -17,6 +17,7 @@ const DEDICATED_PAGES: Record<string, string> = {
   "ice-maker-repair": "/ice-maker-repair",
   "range-stove-repair": "/gas-stove-repair",
   "oven-repair": "/oven-repair",
+  "cooktop-repair": "/cooktop-repair",
 };
 
 export const Route = createFileRoute("/services")({

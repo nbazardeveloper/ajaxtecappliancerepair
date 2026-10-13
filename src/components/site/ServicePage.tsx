@@ -46,7 +46,8 @@ export type ServicePageConfig = {
 };
 
 // Shared head() for the dedicated per-appliance service pages
-// (/refrigerator-repair, /ice-maker-repair, /gas-stove-repair, /oven-repair).
+// (/refrigerator-repair, /ice-maker-repair, /gas-stove-repair, /oven-repair,
+// /cooktop-repair).
 export function servicePageHead(c: ServicePageConfig) {
   const title = buildTitle(c.name);
   const description = buildMetaDescription(c.shortDescription, c.metaDetail);

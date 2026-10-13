@@ -21,6 +21,7 @@ const STATIC_ROUTES = [
   { path: "/ice-maker-repair", priority: "0.8", changefreq: "monthly" as const },
   { path: "/gas-stove-repair", priority: "0.8", changefreq: "monthly" as const },
   { path: "/oven-repair", priority: "0.8", changefreq: "monthly" as const },
+  { path: "/cooktop-repair", priority: "0.8", changefreq: "monthly" as const },
   { path: "/careers", priority: "0.5", changefreq: "monthly" as const },
   { path: "/privacy-policy", priority: "0.3", changefreq: "yearly" as const },
 ];

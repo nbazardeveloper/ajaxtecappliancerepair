@@ -22,6 +22,7 @@ import { Route as OvenRepairRouteImport } from './routes/oven-repair'
 import { Route as IceMakerRepairRouteImport } from './routes/ice-maker-repair'
 import { Route as GasStoveRepairRouteImport } from './routes/gas-stove-repair'
 import { Route as FaqRouteImport } from './routes/faq'
+import { Route as CooktopRepairRouteImport } from './routes/cooktop-repair'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CareersRouteImport } from './routes/careers'
 import { Route as BlogRouteImport } from './routes/blog'
@@ -98,6 +99,11 @@ const FaqRoute = FaqRouteImport.update({
   path: '/faq',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CooktopRepairRoute = CooktopRepairRouteImport.update({
+  id: '/cooktop-repair',
+  path: '/cooktop-repair',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
@@ -151,6 +157,7 @@ export interface FileRoutesByFullPath {
   '/blog': typeof BlogRoute
   '/careers': typeof CareersRoute
   '/contact': typeof ContactRoute
+  '/cooktop-repair': typeof CooktopRepairRoute
   '/faq': typeof FaqRoute
   '/gas-stove-repair': typeof GasStoveRepairRoute
   '/ice-maker-repair': typeof IceMakerRepairRoute
@@ -175,6 +182,7 @@ export interface FileRoutesByTo {
   '/blog': typeof BlogRoute
   '/careers': typeof CareersRoute
   '/contact': typeof ContactRoute
+  '/cooktop-repair': typeof CooktopRepairRoute
   '/faq': typeof FaqRoute
   '/gas-stove-repair': typeof GasStoveRepairRoute
   '/ice-maker-repair': typeof IceMakerRepairRoute
@@ -200,6 +208,7 @@ export interface FileRoutesById {
   '/blog': typeof BlogRoute
   '/careers': typeof CareersRoute
   '/contact': typeof ContactRoute
+  '/cooktop-repair': typeof CooktopRepairRoute
   '/faq': typeof FaqRoute
   '/gas-stove-repair': typeof GasStoveRepairRoute
   '/ice-maker-repair': typeof IceMakerRepairRoute
@@ -226,6 +235,7 @@ export interface FileRouteTypes {
     | '/blog'
     | '/careers'
     | '/contact'
+    | '/cooktop-repair'
     | '/faq'
     | '/gas-stove-repair'
     | '/ice-maker-repair'
@@ -250,6 +260,7 @@ export interface FileRouteTypes {
     | '/blog'
     | '/careers'
     | '/contact'
+    | '/cooktop-repair'
     | '/faq'
     | '/gas-stove-repair'
     | '/ice-maker-repair'
@@ -274,6 +285,7 @@ export interface FileRouteTypes {
     | '/blog'
     | '/careers'
     | '/contact'
+    | '/cooktop-repair'
     | '/faq'
     | '/gas-stove-repair'
     | '/ice-maker-repair'
@@ -299,6 +311,7 @@ export interface RootRouteChildren {
   BlogRoute: typeof BlogRoute
   CareersRoute: typeof CareersRoute
   ContactRoute: typeof ContactRoute
+  CooktopRepairRoute: typeof CooktopRepairRoute
   FaqRoute: typeof FaqRoute
   GasStoveRepairRoute: typeof GasStoveRepairRoute
   IceMakerRepairRoute: typeof IceMakerRepairRoute
@@ -410,6 +423,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FaqRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/cooktop-repair': {
+      id: '/cooktop-repair'
+      path: '/cooktop-repair'
+      fullPath: '/cooktop-repair'
+      preLoaderRoute: typeof CooktopRepairRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/contact': {
       id: '/contact'
       path: '/contact'
@@ -483,6 +503,7 @@ const rootRouteChildren: RootRouteChildren = {
   BlogRoute: BlogRoute,
   CareersRoute: CareersRoute,
   ContactRoute: ContactRoute,
+  CooktopRepairRoute: CooktopRepairRoute,
   FaqRoute: FaqRoute,
   GasStoveRepairRoute: GasStoveRepairRoute,
   IceMakerRepairRoute: IceMakerRepairRoute,
