@@ -17,6 +17,10 @@ const STATIC_ROUTES = [
   { path: "/contact", priority: "0.9", changefreq: "monthly" as const },
   { path: "/appliance-repair", priority: "0.8", changefreq: "monthly" as const },
   { path: "/washing-machine-dryer-repair", priority: "0.8", changefreq: "monthly" as const },
+  { path: "/refrigerator-repair", priority: "0.8", changefreq: "monthly" as const },
+  { path: "/ice-maker-repair", priority: "0.8", changefreq: "monthly" as const },
+  { path: "/gas-stove-repair", priority: "0.8", changefreq: "monthly" as const },
+  { path: "/oven-repair", priority: "0.8", changefreq: "monthly" as const },
   { path: "/careers", priority: "0.5", changefreq: "monthly" as const },
   { path: "/privacy-policy", priority: "0.3", changefreq: "yearly" as const },
 ];

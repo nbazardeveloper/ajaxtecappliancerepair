@@ -15,8 +15,12 @@ import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as ServiceAreaRouteImport } from './routes/service-area'
 import { Route as ReviewsRouteImport } from './routes/reviews'
+import { Route as RefrigeratorRepairRouteImport } from './routes/refrigerator-repair'
 import { Route as ProjectsRouteImport } from './routes/projects'
 import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
+import { Route as OvenRepairRouteImport } from './routes/oven-repair'
+import { Route as IceMakerRepairRouteImport } from './routes/ice-maker-repair'
+import { Route as GasStoveRepairRouteImport } from './routes/gas-stove-repair'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CareersRouteImport } from './routes/careers'
@@ -59,6 +63,11 @@ const ReviewsRoute = ReviewsRouteImport.update({
   path: '/reviews',
   getParentRoute: () => rootRouteImport,
 } as any)
+const RefrigeratorRepairRoute = RefrigeratorRepairRouteImport.update({
+  id: '/refrigerator-repair',
+  path: '/refrigerator-repair',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProjectsRoute = ProjectsRouteImport.update({
   id: '/projects',
   path: '/projects',
@@ -67,6 +76,21 @@ const ProjectsRoute = ProjectsRouteImport.update({
 const PrivacyPolicyRoute = PrivacyPolicyRouteImport.update({
   id: '/privacy-policy',
   path: '/privacy-policy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OvenRepairRoute = OvenRepairRouteImport.update({
+  id: '/oven-repair',
+  path: '/oven-repair',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IceMakerRepairRoute = IceMakerRepairRouteImport.update({
+  id: '/ice-maker-repair',
+  path: '/ice-maker-repair',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GasStoveRepairRoute = GasStoveRepairRouteImport.update({
+  id: '/gas-stove-repair',
+  path: '/gas-stove-repair',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FaqRoute = FaqRouteImport.update({
@@ -128,8 +152,12 @@ export interface FileRoutesByFullPath {
   '/careers': typeof CareersRoute
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
+  '/gas-stove-repair': typeof GasStoveRepairRoute
+  '/ice-maker-repair': typeof IceMakerRepairRoute
+  '/oven-repair': typeof OvenRepairRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/projects': typeof ProjectsRoute
+  '/refrigerator-repair': typeof RefrigeratorRepairRoute
   '/reviews': typeof ReviewsRoute
   '/service-area': typeof ServiceAreaRoute
   '/services': typeof ServicesRoute
@@ -148,8 +176,12 @@ export interface FileRoutesByTo {
   '/careers': typeof CareersRoute
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
+  '/gas-stove-repair': typeof GasStoveRepairRoute
+  '/ice-maker-repair': typeof IceMakerRepairRoute
+  '/oven-repair': typeof OvenRepairRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/projects': typeof ProjectsRoute
+  '/refrigerator-repair': typeof RefrigeratorRepairRoute
   '/reviews': typeof ReviewsRoute
   '/service-area': typeof ServiceAreaRoute
   '/services': typeof ServicesRoute
@@ -169,8 +201,12 @@ export interface FileRoutesById {
   '/careers': typeof CareersRoute
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
+  '/gas-stove-repair': typeof GasStoveRepairRoute
+  '/ice-maker-repair': typeof IceMakerRepairRoute
+  '/oven-repair': typeof OvenRepairRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/projects': typeof ProjectsRoute
+  '/refrigerator-repair': typeof RefrigeratorRepairRoute
   '/reviews': typeof ReviewsRoute
   '/service-area': typeof ServiceAreaRoute
   '/services': typeof ServicesRoute
@@ -191,8 +227,12 @@ export interface FileRouteTypes {
     | '/careers'
     | '/contact'
     | '/faq'
+    | '/gas-stove-repair'
+    | '/ice-maker-repair'
+    | '/oven-repair'
     | '/privacy-policy'
     | '/projects'
+    | '/refrigerator-repair'
     | '/reviews'
     | '/service-area'
     | '/services'
@@ -211,8 +251,12 @@ export interface FileRouteTypes {
     | '/careers'
     | '/contact'
     | '/faq'
+    | '/gas-stove-repair'
+    | '/ice-maker-repair'
+    | '/oven-repair'
     | '/privacy-policy'
     | '/projects'
+    | '/refrigerator-repair'
     | '/reviews'
     | '/service-area'
     | '/services'
@@ -231,8 +275,12 @@ export interface FileRouteTypes {
     | '/careers'
     | '/contact'
     | '/faq'
+    | '/gas-stove-repair'
+    | '/ice-maker-repair'
+    | '/oven-repair'
     | '/privacy-policy'
     | '/projects'
+    | '/refrigerator-repair'
     | '/reviews'
     | '/service-area'
     | '/services'
@@ -252,8 +300,12 @@ export interface RootRouteChildren {
   CareersRoute: typeof CareersRoute
   ContactRoute: typeof ContactRoute
   FaqRoute: typeof FaqRoute
+  GasStoveRepairRoute: typeof GasStoveRepairRoute
+  IceMakerRepairRoute: typeof IceMakerRepairRoute
+  OvenRepairRoute: typeof OvenRepairRoute
   PrivacyPolicyRoute: typeof PrivacyPolicyRoute
   ProjectsRoute: typeof ProjectsRoute
+  RefrigeratorRepairRoute: typeof RefrigeratorRepairRoute
   ReviewsRoute: typeof ReviewsRoute
   ServiceAreaRoute: typeof ServiceAreaRoute
   ServicesRoute: typeof ServicesRoute
@@ -309,6 +361,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ReviewsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/refrigerator-repair': {
+      id: '/refrigerator-repair'
+      path: '/refrigerator-repair'
+      fullPath: '/refrigerator-repair'
+      preLoaderRoute: typeof RefrigeratorRepairRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/projects': {
       id: '/projects'
       path: '/projects'
@@ -321,6 +380,27 @@ declare module '@tanstack/react-router' {
       path: '/privacy-policy'
       fullPath: '/privacy-policy'
       preLoaderRoute: typeof PrivacyPolicyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/oven-repair': {
+      id: '/oven-repair'
+      path: '/oven-repair'
+      fullPath: '/oven-repair'
+      preLoaderRoute: typeof OvenRepairRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ice-maker-repair': {
+      id: '/ice-maker-repair'
+      path: '/ice-maker-repair'
+      fullPath: '/ice-maker-repair'
+      preLoaderRoute: typeof IceMakerRepairRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gas-stove-repair': {
+      id: '/gas-stove-repair'
+      path: '/gas-stove-repair'
+      fullPath: '/gas-stove-repair'
+      preLoaderRoute: typeof GasStoveRepairRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/faq': {
@@ -404,8 +484,12 @@ const rootRouteChildren: RootRouteChildren = {
   CareersRoute: CareersRoute,
   ContactRoute: ContactRoute,
   FaqRoute: FaqRoute,
+  GasStoveRepairRoute: GasStoveRepairRoute,
+  IceMakerRepairRoute: IceMakerRepairRoute,
+  OvenRepairRoute: OvenRepairRoute,
   PrivacyPolicyRoute: PrivacyPolicyRoute,
   ProjectsRoute: ProjectsRoute,
+  RefrigeratorRepairRoute: RefrigeratorRepairRoute,
   ReviewsRoute: ReviewsRoute,
   ServiceAreaRoute: ServiceAreaRoute,
   ServicesRoute: ServicesRoute,

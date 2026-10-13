@@ -10,6 +10,15 @@ import { listServices } from "@/lib/site.functions";
 import { getServiceIcon, getServiceCategoryIconClassName } from "@/lib/service-category-icons";
 import { FinalCta } from "@/components/site/FinalCta";
 
+// Services that have their own dedicated page; every other card links to its
+// generic /services/$slug detail page.
+const DEDICATED_PAGES: Record<string, string> = {
+  "refrigerator-freezer-repair": "/refrigerator-repair",
+  "ice-maker-repair": "/ice-maker-repair",
+  "range-stove-repair": "/gas-stove-repair",
+  "oven-repair": "/oven-repair",
+};
+
 export const Route = createFileRoute("/services")({
   head: () => ({
     meta: [
@@ -121,10 +130,16 @@ function ServicesPage() {
         <div className="mt-10 grid gap-x-6 gap-y-10 md:grid-cols-2 lg:grid-cols-3">
           {filtered.map((s) => {
             const CategoryIcon = getServiceIcon(s);
+            const dedicatedPath = DEDICATED_PAGES[s.slug];
+            // The title link is stretched over the whole card (after:inset-0)
+            // so the card is clickable without nesting the "Request Service"
+            // link inside another <a>.
+            const titleLinkClass =
+              "after:absolute after:inset-0 after:rounded-lg after:content-[''] focus-visible:outline-none";
             return (
               <div
                 key={s.id}
-                className="relative flex flex-col rounded-lg border border-border bg-card"
+                className="group relative flex flex-col rounded-lg border border-border bg-card transition-shadow hover:shadow-md focus-within:ring-2 focus-within:ring-accent"
               >
                 <div className="relative">
                   <ImagePlaceholder
@@ -153,12 +168,26 @@ function ServicesPage() {
                       </Badge>
                     ))}
                   </div>
-                  <h2 className="mt-3 text-lg font-semibold">{s.title}</h2>
+                  <h2 className="mt-3 text-lg font-semibold group-hover:text-accent">
+                    {dedicatedPath ? (
+                      <Link to={dedicatedPath} className={titleLinkClass}>
+                        {s.title}
+                      </Link>
+                    ) : (
+                      <Link
+                        to="/services/$slug"
+                        params={{ slug: s.slug }}
+                        className={titleLinkClass}
+                      >
+                        {s.title}
+                      </Link>
+                    )}
+                  </h2>
                   <p className="mt-2 flex-1 text-sm text-muted-foreground">{s.short_description}</p>
                 </div>
                 <Link
                   to="/contact"
-                  className="absolute -bottom-5 left-6 inline-flex items-center justify-center rounded-md bg-accent px-5 py-2.5 font-display text-sm font-bold text-accent-foreground shadow-sm transition-colors hover:bg-accent/90"
+                  className="absolute -bottom-5 left-6 z-10 inline-flex items-center justify-center rounded-md bg-accent px-5 py-2.5 font-display text-sm font-bold text-accent-foreground shadow-sm transition-colors hover:bg-accent/90"
                 >
                   Request Service
                 </Link>
