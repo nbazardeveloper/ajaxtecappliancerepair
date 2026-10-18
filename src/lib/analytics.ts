@@ -145,8 +145,17 @@ export function trackContactFormStartConversion() {
 // washer/dryer page's "Page view (4)" here would mix the two pages' numbers).
 export function trackApplianceRepairPageViewConversion() {}
 
+// OpenAI Ads pixel "appointment_scheduled" event — fired on /thank-you,
+// which visitors only reach after JobyBookingWidget sees a successful booking.
+// The base oaiq snippet is loaded in __root.tsx.
+export function trackAppointmentScheduled() {
+  if (typeof window === "undefined") return;
+  window.oaiq?.("measure", "appointment_scheduled", { type: "customer_action" });
+}
+
 declare global {
   interface Window {
     gtag?: (...args: unknown[]) => void;
+    oaiq?: (...args: unknown[]) => void;
   }
 }

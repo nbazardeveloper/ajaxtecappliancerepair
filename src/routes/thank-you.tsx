@@ -4,7 +4,8 @@ import { CheckCircle2, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { GuaranteeBadge } from "@/components/site/GuaranteeBadge";
 import { getSiteSettings } from "@/lib/site.functions";
-import { trackCallConversion } from "@/lib/analytics";
+import { useEffect } from "react";
+import { trackAppointmentScheduled, trackCallConversion } from "@/lib/analytics";
 
 // Shared confirmation page for every booking form on the site (main contact
 // scheduler, washer/dryer landing page, and any future ones) — one place to
@@ -24,6 +25,10 @@ function ThankYou() {
   const { data: s } = useQuery({ queryKey: ["site-settings"], queryFn: () => getSiteSettings() });
   const phone = s?.phone ?? "+1 (267) 447-8580";
   const telHref = `tel:${phone.replace(/[^+\d]/g, "")}`;
+
+  useEffect(() => {
+    trackAppointmentScheduled();
+  }, []);
 
   return (
     <div className="mx-auto flex max-w-2xl flex-col items-center px-4 py-24 text-center md:px-8">

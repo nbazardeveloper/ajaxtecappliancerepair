@@ -154,6 +154,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "\n" +
           "gtag('config', 'AW-990368648');",
       },
+      // OpenAI Ads pixel (oaiq) — base snippet on every page. The
+      // appointment_scheduled event is fired from /thank-you (see
+      // trackAppointmentScheduled in lib/analytics.ts).
+      {
+        children:
+          '!function(w,d,s,u){if(w.oaiq)return;var q=function(){q.q.push(arguments)};q.q=[];w.oaiq=q;var j=d.createElement(s);j.async=1;j.src=u;var f=d.getElementsByTagName(s)[0];f.parentNode.insertBefore(j,f)}(window,document,"script","https://bzrcdn.openai.com/sdk/oaiq.min.js");' +
+          'oaiq("init",{pixelId:"4rYB19mewP6Gh6ePZkeBNE",debug:true});',
+      },
       // GoHighLevel (LeadConnector) chat widget — replaces the site's old
       // custom ChatWidget. Chat conversations captured here go straight to
       // the CRM directly through GHL, not through Supabase, so they won't
