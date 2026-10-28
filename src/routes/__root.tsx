@@ -19,6 +19,7 @@ import { LandingFooter } from "@/components/site/LandingFooter";
 import { Button } from "@/components/ui/button";
 import { getSiteSettings } from "@/lib/site.functions";
 import { trackLandingCallConversion, trackApplianceRepairCallConversion } from "@/lib/analytics";
+import { BOOKING_FORM_URL } from "@/lib/booking";
 
 // Standalone ad landing pages (no site nav — see LandingHeader/LandingFooter)
 // keyed by path so the root shell knows to swap chrome for them. Each maps to
@@ -242,7 +243,7 @@ function RootComponent() {
       </div>
       <div className="fixed inset-x-0 bottom-0 z-40 border-t border-border bg-background p-3 shadow-[0_-4px_16px_rgba(0,0,0,0.1)] md:hidden">
         {isLandingRoute ? (
-          <a href="#book">
+          <a href={BOOKING_FORM_URL}>
             <Button
               size="lg"
               className="w-full gap-2 bg-accent text-accent-foreground hover:bg-accent/90"
@@ -251,14 +252,14 @@ function RootComponent() {
             </Button>
           </a>
         ) : (
-          <Link to="/contact">
+          <a href={BOOKING_FORM_URL}>
             <Button
               size="lg"
               className="w-full gap-2 bg-accent text-accent-foreground hover:bg-accent/90"
             >
               <CalendarClock className="h-4 w-4" /> Request Service
             </Button>
-          </Link>
+          </a>
         )}
       </div>
       <Suspense fallback={null}>

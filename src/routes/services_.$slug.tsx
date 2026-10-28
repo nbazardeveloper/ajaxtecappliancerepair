@@ -8,6 +8,7 @@ import { getServiceBySlug, listServices, getSiteSettings } from "@/lib/site.func
 import { trackCallConversion } from "@/lib/analytics";
 import { buildTitle, buildMetaDescription, absUrl, DEFAULT_OG_IMAGE } from "@/lib/seo";
 import { FinalCta } from "@/components/site/FinalCta";
+import { BOOKING_FORM_URL } from "@/lib/booking";
 
 const AREAS = [
   "Trenton",
@@ -157,11 +158,11 @@ function ServiceDetail() {
                     <Phone className="h-4 w-4" /> Call {phone}
                   </Button>
                 </a>
-                <Link to="/contact">
+                <a href={BOOKING_FORM_URL}>
                   <Button size="lg" variant="outline">
                     Request service
                   </Button>
-                </Link>
+                </a>
               </div>
             </div>
             <ImagePlaceholder

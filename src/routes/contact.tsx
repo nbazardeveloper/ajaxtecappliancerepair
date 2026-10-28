@@ -6,13 +6,9 @@ import { Phone, Mail, MapPin, CalendarClock, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { GuaranteeBadge } from "@/components/site/GuaranteeBadge";
 import { ReviewsBar } from "@/components/site/ReviewsBar";
-import { JobyBookingWidget, JOBY_BOOKING_URL } from "@/components/site/JobyBookingWidget";
+import { BOOKING_FORM_URL } from "@/lib/booking";
 import { getSiteSettings } from "@/lib/site.functions";
-import {
-  trackCallConversion,
-  trackBookingPageViewConversion,
-  trackContactFormStartConversion,
-} from "@/lib/analytics";
+import { trackCallConversion, trackBookingPageViewConversion } from "@/lib/analytics";
 
 const AREAS = [
   "Trenton",
@@ -89,48 +85,16 @@ function Contact() {
       <section className="mx-auto grid max-w-7xl gap-12 px-4 py-16 md:grid-cols-[3fr_2fr] md:px-8">
         <div>
           <div className="rounded-2xl border border-border bg-card p-6 md:p-8">
-            <div className="flex items-center justify-between gap-4">
-              <div>
-                <h2 className="text-2xl font-semibold tracking-tight">Book your service</h2>
-                <p className="mt-2 text-sm text-muted-foreground">
-                  Pick a time that works for you — our online scheduler books your diagnostic
-                  appointment directly.
-                </p>
-              </div>
-              <a
-                href={JOBY_BOOKING_URL}
-                target="_blank"
-                rel="noreferrer noopener"
-                className="hidden sm:inline-flex"
-              >
-                <Button variant="outline" className="gap-2">
-                  <CalendarClock className="h-4 w-4" /> Open scheduler
-                </Button>
-              </a>
-            </div>
-            <div className="mt-6 overflow-hidden rounded-lg border border-border">
-              <JobyBookingWidget onFormStart={trackContactFormStartConversion} />
-            </div>
-            <a
-              href={JOBY_BOOKING_URL}
-              target="_blank"
-              rel="noreferrer noopener"
-              className="mt-3 inline-flex text-sm text-accent hover:underline sm:hidden"
-            >
-              Open the scheduler in a new tab →
-            </a>
-            <p className="mt-3 text-xs text-muted-foreground">
-              Trouble loading the scheduler above?{" "}
-              <a
-                href={JOBY_BOOKING_URL}
-                target="_blank"
-                rel="noreferrer noopener"
-                className="text-accent hover:underline"
-              >
-                Open it in a new tab
-              </a>
-              .
+            <h2 className="text-2xl font-semibold tracking-tight">Book your service</h2>
+            <p className="mt-2 text-sm text-muted-foreground">
+              Pick a time that works for you — our online scheduler books your diagnostic
+              appointment directly.
             </p>
+            <a href={BOOKING_FORM_URL} className="mt-6 inline-flex">
+              <Button size="lg" className="gap-2">
+                <CalendarClock className="h-4 w-4" /> Book online
+              </Button>
+            </a>
           </div>
         </div>
 

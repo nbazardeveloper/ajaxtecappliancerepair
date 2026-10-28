@@ -5,17 +5,21 @@ import { Button } from "@/components/ui/button";
 import { GuaranteeBadge } from "@/components/site/GuaranteeBadge";
 import { getSiteSettings } from "@/lib/site.functions";
 import { useEffect } from "react";
-import { trackAppointmentScheduled, trackCallConversion } from "@/lib/analytics";
+import {
+  trackAppointmentScheduled,
+  trackBookingSubmitted,
+  trackCallConversion,
+} from "@/lib/analytics";
 
-// Shared confirmation page for every booking form on the site (main contact
-// scheduler, washer/dryer landing page, and any future ones) — one place to
-// land after a successful Joby booking instead of a separate thank-you page
-// per form. Not indexed: it's a transient confirmation state, not content.
+// Confirmation page the Joby booking form (BOOKING_FORM_URL) redirects to
+// after a successful booking — the one place the completed-booking conversion
+// is tracked. Not indexed and left out of the sitemap: it's a transient
+// confirmation state, not content.
 export const Route = createFileRoute("/thank-you")({
   head: () => ({
     meta: [
       { title: "Thank You | Ajaxtec Appliance Repair" },
-      { name: "robots", content: "noindex" },
+      { name: "robots", content: "noindex, nofollow" },
     ],
   }),
   component: ThankYou,
@@ -27,6 +31,7 @@ function ThankYou() {
   const telHref = `tel:${phone.replace(/[^+\d]/g, "")}`;
 
   useEffect(() => {
+    trackBookingSubmitted();
     trackAppointmentScheduled();
   }, []);
 

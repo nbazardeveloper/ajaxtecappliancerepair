@@ -7,9 +7,9 @@ import { GuaranteeBadge } from "@/components/site/GuaranteeBadge";
 import { ReviewsBar } from "@/components/site/ReviewsBar";
 import { ImagePlaceholder } from "@/components/site/ImagePlaceholder";
 import { FinalCta } from "@/components/site/FinalCta";
-import { JobyBookingWidget, JOBY_BOOKING_URL } from "@/components/site/JobyBookingWidget";
+import { BOOKING_FORM_URL } from "@/lib/booking";
 import { getSiteSettings } from "@/lib/site.functions";
-import { trackCallConversion, trackContactFormStartConversion } from "@/lib/analytics";
+import { trackCallConversion } from "@/lib/analytics";
 import { buildTitle, buildMetaDescription, absUrl } from "@/lib/seo";
 
 export const SERVICE_AREAS = [
@@ -108,7 +108,7 @@ export function ServicePage({ config: c }: { config: ServicePageConfig }) {
                   <Phone className="h-4 w-4" /> Call {phone}
                 </Button>
               </a>
-              <a href="#book">
+              <a href={BOOKING_FORM_URL}>
                 <Button size="lg" variant="outline" className="gap-2">
                   <CalendarClock className="h-4 w-4" /> Book online
                 </Button>
@@ -153,40 +153,16 @@ export function ServicePage({ config: c }: { config: ServicePageConfig }) {
         <div className="mx-auto max-w-7xl px-4 py-16 md:px-8">
           <div className="mx-auto max-w-xl">
             <div className="rounded-2xl border border-border bg-card p-6 md:p-8">
-              <div className="flex items-center justify-between gap-4">
-                <div>
-                  <h2 className="text-2xl font-semibold tracking-tight">Book your service</h2>
-                  <p className="mt-2 text-sm text-muted-foreground">
-                    Pick a time that works for you — our online scheduler books your diagnostic
-                    appointment directly.
-                  </p>
-                </div>
-                <a
-                  href={JOBY_BOOKING_URL}
-                  target="_blank"
-                  rel="noreferrer noopener"
-                  className="hidden sm:inline-flex"
-                >
-                  <Button variant="outline" className="gap-2">
-                    <CalendarClock className="h-4 w-4" /> Open scheduler
-                  </Button>
-                </a>
-              </div>
-              <div className="mt-6 overflow-hidden rounded-lg border border-border">
-                <JobyBookingWidget onFormStart={trackContactFormStartConversion} />
-              </div>
-              <p className="mt-3 text-xs text-muted-foreground">
-                Trouble loading the scheduler above?{" "}
-                <a
-                  href={JOBY_BOOKING_URL}
-                  target="_blank"
-                  rel="noreferrer noopener"
-                  className="text-accent hover:underline"
-                >
-                  Open it in a new tab
-                </a>
-                .
+              <h2 className="text-2xl font-semibold tracking-tight">Book your service</h2>
+              <p className="mt-2 text-sm text-muted-foreground">
+                Pick a time that works for you — our online scheduler books your diagnostic
+                appointment directly.
               </p>
+              <a href={BOOKING_FORM_URL} className="mt-6 inline-flex">
+                <Button size="lg" className="gap-2">
+                  <CalendarClock className="h-4 w-4" /> Book online
+                </Button>
+              </a>
             </div>
           </div>
         </div>

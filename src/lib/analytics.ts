@@ -62,11 +62,8 @@ export function trackLandingCallConversion(telHref: string) {
 }
 
 // Google Ads "Page view (3)" conversion — a proxy conversion for the
-// /contact page. The actual booking happens inside Joby's embedded iframe (a
-// different origin), which doesn't expose a "booking completed" signal we
-// can listen for, so this counts every visit to the booking page instead of
-// the real completed booking. Less precise, but the only client-side signal
-// available until Joby offers a postMessage/webhook on success.
+// /contact page: counts every visit to the contact page. The real completed
+// booking is tracked separately on /thank-you (see trackBookingSubmitted).
 export function trackBookingPageViewConversion() {
   if (typeof window === "undefined") return;
   window.gtag?.("event", "conversion", {
@@ -100,62 +97,35 @@ export function trackApplianceRepairCallConversion(telHref: string) {
   });
 }
 
-// Google Ads "Submit lead form" conversion for the /appliance-repair landing
-// page — fired when the visitor STARTS filling in the embedded Joby scheduler
-// (first click/tap into it; see JobyBookingWidget's onFormStart), not on a
-// completed booking. Joby's embed never tells the parent page a booking went
-// through (it only posts resize messages, and has no redirect-after-submit
-// setting), so "started the form" is the closest signal available. It
-// overcounts real bookings — swap it for a completion signal if Joby adds one.
-export function trackApplianceRepairFormStartConversion() {
-  if (typeof window === "undefined") return;
-  window.gtag?.("event", "conversion", {
-    send_to: "AW-990368648/t4XWCJyzkocdEIinn9gD",
-    value: 1.0,
-    currency: "USD",
-  });
-}
-
-// Google Ads "Submit lead form" conversion for the washer/dryer landing page —
-// its own conversion action, fired on form start for the same reason as
-// trackApplianceRepairFormStartConversion above.
-export function trackLandingFormStartConversion() {
-  if (typeof window === "undefined") return;
-  window.gtag?.("event", "conversion", {
-    send_to: "AW-990368648/GUqACPncl4cdEIinn9gD",
-    value: 1.0,
-    currency: "USD",
-  });
-}
-
-// Google Ads "Submit lead form" conversion for the main site's booking form
-// on /contact — its own conversion action, fired on form start for the same
-// reason as trackApplianceRepairFormStartConversion above.
-export function trackContactFormStartConversion() {
-  if (typeof window === "undefined") return;
-  window.gtag?.("event", "conversion", {
-    send_to: "AW-990368648/w8BQCKXwoYcdEIinn9gD",
-    value: 1.0,
-    currency: "USD",
-  });
-}
-
 // Page-load conversion for /appliance-repair — intentionally a no-op until
 // that page gets its own page-view conversion action in Ads (firing the
 // washer/dryer page's "Page view (4)" here would mix the two pages' numbers).
 export function trackApplianceRepairPageViewConversion() {}
 
 // OpenAI Ads pixel "appointment_scheduled" event — fired on /thank-you,
-// which visitors only reach after JobyBookingWidget sees a successful booking.
-// The base oaiq snippet is loaded in __root.tsx.
+// where the Joby booking form (BOOKING_FORM_URL) sends visitors after a
+// successful booking. The base oaiq snippet is loaded in __root.tsx.
 export function trackAppointmentScheduled() {
   if (typeof window === "undefined") return;
   window.oaiq?.("measure", "appointment_scheduled", { type: "customer_action" });
+}
+
+// Completed booking — fired on /thank-you. Pushes a `booking_submitted` event
+// to dataLayer (for GTM/GA) and fires the Google Ads "PA Booking Thank-you"
+// page-load conversion. dataLayer/gtag are defined in __root.tsx's <head>.
+export function trackBookingSubmitted() {
+  if (typeof window === "undefined") return;
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({ event: "booking_submitted" });
+  window.gtag?.("event", "conversion", {
+    send_to: "AW-990368648/c5CNCLquo6wdEIinn9gD",
+  });
 }
 
 declare global {
   interface Window {
     gtag?: (...args: unknown[]) => void;
     oaiq?: (...args: unknown[]) => void;
+    dataLayer?: unknown[];
   }
 }

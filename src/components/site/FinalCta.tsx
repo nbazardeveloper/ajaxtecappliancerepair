@@ -1,11 +1,11 @@
 import type { ReactNode } from "react";
-import { Link } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { getSiteSettings } from "@/lib/site.functions";
 import { trackCallConversion } from "@/lib/analytics";
 import { cn } from "@/lib/utils";
+import { BOOKING_FORM_URL } from "@/lib/booking";
 
 interface FinalCtaProps {
   heading?: ReactNode;
@@ -55,11 +55,11 @@ export function FinalCta({
               <Phone className="h-4 w-4" /> Call {phone}
             </Button>
           </a>
-          <Link to="/contact">
+          <a href={BOOKING_FORM_URL}>
             <Button size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90">
               Book online
             </Button>
-          </Link>
+          </a>
         </div>
       </div>
     </section>
